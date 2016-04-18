@@ -5,6 +5,29 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  before_create :generate_authentication_token
+
+     def generate_authentication_token
+       # self.authentication_token = SecureRandom.hex(16)
+       self.authentication_token = Devise.friendly_token
+     end
+
+
+      def self.get_fb_data(access_token)
+      res = RestClient.get "https://graph.facebook.com/v2.4/me",  { :params => { :access_token => access_token } }
+
+        if res.code == 200
+          JSON.parse( res.to_str )
+        else
+          Rails.logger.warn(res.body)
+          nil
+        end
+      end
+
+
+
+
+
 
      def self.from_omniauth(auth)
        # Case 1: Find existing user by facebook uid
