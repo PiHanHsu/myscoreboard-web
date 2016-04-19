@@ -2,12 +2,28 @@ class ApiV1::AuthController < ApiController
 
    before_action :authenticate_user!, :only => [:logout]
 
+
+    def create
+      #POST /api/v1/create
+
+      if params[:email] && params[:password]
+
+        User.create(:email => params.permit![:email], :password => params.permit![:password])
+
+        user = User.find_by_email( params[:email] )
+
+        render :json => { :auth_token => user.authentication_token }
+      end
+
+    end
+
     def login
      success = false
 
      if params[:email] && params[:password]
        user = User.find_by_email( params[:email] )
        success = user && user.valid_password?( params[:password] )
+
      elsif params[:access_token]
        fb_data = User.get_fb_data( params[:access_token] )
          if fb_data
