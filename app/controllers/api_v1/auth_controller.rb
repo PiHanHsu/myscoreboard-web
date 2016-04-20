@@ -3,16 +3,21 @@ class ApiV1::AuthController < ApiController
    before_action :authenticate_user!, :only => [:logout]
 
 
-    def create
-      #POST /api/v1/create
+    def signup
+      #POST /api/v1/signup
 
       if params[:email] && params[:password]
 
-        User.create(:email => params.permit![:email], :password => params.permit![:password])
+        user = User.new(:email => params[:email], :password => params[:password])
+        if user.save
+          render :json => { :auth_token => user.authentication_token }, :status => 200
+        else
+          render :json => {}, :status => 400
+        end
 
-        user = User.find_by_email( params[:email] )
 
-        render :json => { :auth_token => user.authentication_token }
+      else
+        render :json => { :message => "email or password is not correct" }, :status => 401
       end
 
     end
@@ -45,7 +50,7 @@ class ApiV1::AuthController < ApiController
 
         if success
          render :json => { :auth_token => user.authentication_token,
-                           :user_id => user.id}
+                           :user_id => user.id}, :status => 200
         else
          render :json => { :message => "email or password is not correct" }, :status => 401
         end
