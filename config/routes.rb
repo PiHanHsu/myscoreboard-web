@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
      post "/login" => "auth#login"
      post "/logout" => "auth#logout"
+     post "/signup" => "auth#signup"
 
-  resources :events
 
   end
 

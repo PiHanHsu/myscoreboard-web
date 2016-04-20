@@ -2,12 +2,33 @@ class ApiV1::AuthController < ApiController
 
    before_action :authenticate_user!, :only => [:logout]
 
+
+    def signup
+      #POST /api/v1/signup
+
+      if params[:email] && params[:password]
+
+        user = User.new(:email => params[:email], :password => params[:password])
+        if user.save
+          render :json => { :auth_token => user.authentication_token }, :status => 200
+        else
+          render :json => {}, :status => 400
+        end
+
+
+      else
+        render :json => { :message => "email or password is not correct" }, :status => 401
+      end
+
+    end
+
     def login
      success = false
 
      if params[:email] && params[:password]
        user = User.find_by_email( params[:email] )
        success = user && user.valid_password?( params[:password] )
+
      elsif params[:access_token]
        fb_data = User.get_fb_data( params[:access_token] )
          if fb_data
@@ -29,7 +50,7 @@ class ApiV1::AuthController < ApiController
 
         if success
          render :json => { :auth_token => user.authentication_token,
-                           :user_id => user.id}
+                           :user_id => user.id}, :status => 200
         else
          render :json => { :message => "email or password is not correct" }, :status => 401
         end
