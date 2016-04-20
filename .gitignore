@@ -15,4 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
-/congig/.yml
+
+
+
+/config/facebook.yml

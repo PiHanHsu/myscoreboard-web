@@ -4,6 +4,7 @@ class ApiV1::AuthController < ApiController
 
 
     def signup
+      success = false
       #POST /api/v1/signup
 
       if params[:email] && params[:password]
@@ -15,10 +16,29 @@ class ApiV1::AuthController < ApiController
           render :json => {}, :status => 400
         end
 
+       elsif params[:access_token]
+           fb_data = User.get_fb_data( params[:access_token] )
+             if fb_data
+               auth_hash = OmniAuth::AuthHash.new({
+                 uid: fb_data["id"],
+                 info: {
+                   email: fb_data["email"]
+                 },
+                 credentials: {
+                   token: params[:access_token]
+                 }
+               })
+               user = User.from_omniauth(auth_hash)
+             end
+           success = fb_data && user.persisted?
+         end
 
-      else
-        render :json => { :message => "email or password is not correct" }, :status => 401
-      end
+        if success
+         render :json => { :auth_token => user.authentication_token,
+                           :user_id => user.id}, :status => 200
+        else
+         render :json => { :message => "email or password is not correct" }, :status => 401
+        end
 
     end
 
