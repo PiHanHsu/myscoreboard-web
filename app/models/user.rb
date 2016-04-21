@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 
   before_create :generate_authentication_token
 
+  has_many :user_teamships
+  has_many :teams, :through => :user_teamships
+
+
      def generate_authentication_token
        # self.authentication_token = SecureRandom.hex(16)
        self.authentication_token = Devise.friendly_token

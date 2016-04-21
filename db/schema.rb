@@ -11,13 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418055711) do
+ActiveRecord::Schema.define(version: 20160421024502) do
 
   create_table "events", force: :cascade do |t|
     t.text     "topic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "place_name"
+    t.string   "address"
+    t.string   "lat"
+    t.string   "lng"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "locations", ["team_id"], name: "index_locations_on_team_id"
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "day"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.integer  "location_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "teams", ["location_id"], name: "index_teams_on_location_id"
+
+  create_table "user_teamships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_teamships", ["team_id"], name: "index_user_teamships_on_team_id"
+  add_index "user_teamships", ["user_id"], name: "index_user_teamships_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
