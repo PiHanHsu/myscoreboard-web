@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421042054) do
+ActiveRecord::Schema.define(version: 20160421065144) do
 
   create_table "events", force: :cascade do |t|
     t.text     "topic"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20160421042054) do
     t.string   "fb_uid"
     t.string   "fb_token"
     t.string   "authentication_token"
+    t.string   "fb_pic"
+    t.text     "fb_raw_data"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true
