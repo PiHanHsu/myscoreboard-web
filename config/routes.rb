@@ -10,6 +10,8 @@ Rails.application.routes.draw do
      post "/logout" => "auth#logout"
      post "/signup" => "auth#signup"
 
+  resources :teams
+
 
   end
 
