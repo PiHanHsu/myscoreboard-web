@@ -1,0 +1,6 @@
+ <h1> 這是個人頁面！！</h1>
+  <P><%= image_tag(@user.fb_pic) %></P>
+  <P> name：<%= @user.username %></P>
+  <P> gender：<%= @user.gender %></P>
+  <P> E-mail：<%= @user.email %> </P>
+  <P> 上次登入時間：<%= @user.current_sign_in_at.strftime('%F')  + " " +@user.current_sign_in_at.strftime('%r') %></P>
