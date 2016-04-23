@@ -2,7 +2,7 @@ class ApiV1::GamesController < ApplicationController
     # before_action :authenticate_user!
     protect_from_forgery except: :create
 	def index
-		games = Game.where( :team_id = params[:team_id])
+		games = Game.where( :team_id => params[:team_id])
    	  
    	    render :json => { :message => "Test"}
     end
