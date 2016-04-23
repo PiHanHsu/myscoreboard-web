@@ -17,18 +17,25 @@ class ApiV1::AuthController < ApiController
         end
 
        elsif params[:access_token]
+
            fb_data = User.get_fb_data( params[:access_token] )
+
              if fb_data
                auth_hash = OmniAuth::AuthHash.new({
                  uid: fb_data["id"],
                  info: {
-                   email: fb_data["email"]
+
+                   email: fb_data["email"],
+                   gender: fb_data["gender"],
+                   username: fb_data["name"],
+                   picture: fb_data["picture"]
+
                  },
                  credentials: {
                    token: params[:access_token]
                  }
                })
-               user = User.from_omniauth(auth_hash)
+               user = User.from_omniauth_api(auth_hash)
              end
            success = fb_data && user.persisted?
          end
@@ -55,7 +62,10 @@ class ApiV1::AuthController < ApiController
            auth_hash = OmniAuth::AuthHash.new({
              uid: fb_data["id"],
              info: {
-               email: fb_data["email"]
+               email: fb_data["email"],
+               gender: fb_data["gender"],
+               username: fb_data["name"],
+               picture: { data: { url: fb_data["url"] } }
              },
              credentials: {
                token: params[:access_token]
