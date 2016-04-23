@@ -2,18 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  resources :events
-<<<<<<< HEAD
   resources :users
-
-  scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
-
-    resources :users
-
-     post "/login" => "auth#login"
-     post "/logout" => "auth#logout"
-     post "/signup" => "auth#signup"
-=======
   resources :games
   resources :teams
   resources :players
@@ -23,8 +12,8 @@ Rails.application.routes.draw do
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
     post "/signup" => "auth#signup"
->>>>>>> cfad4348cfd179891b9981610e33499202b6eb22
 
+    resources :users
     resources :teams
     resources :games
 
