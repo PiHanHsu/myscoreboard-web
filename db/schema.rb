@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421065144) do
+ActiveRecord::Schema.define(version: 20160423115700) do
 
   create_table "events", force: :cascade do |t|
     t.text     "topic"
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20160421065144) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.datetime "day"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.date     "day"
+    t.time     "start_time"
+    t.time     "end_time"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
