@@ -28,7 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
-gem "mysql2"
+gem 'mysql2'
+
+gem 'bootstrap-sass', '~> 3.3.6'
 
 gem "rest-client"
 

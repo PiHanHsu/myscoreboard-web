@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :events
+<<<<<<< HEAD
   resources :users
 
   scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
@@ -12,7 +13,20 @@ Rails.application.routes.draw do
      post "/login" => "auth#login"
      post "/logout" => "auth#logout"
      post "/signup" => "auth#signup"
+=======
+  resources :games
+  resources :teams
+  resources :players
 
+  scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
+
+    post "/login" => "auth#login"
+    post "/logout" => "auth#logout"
+    post "/signup" => "auth#signup"
+>>>>>>> cfad4348cfd179891b9981610e33499202b6eb22
+
+    resources :teams
+    resources :games
 
   end
 
@@ -21,7 +35,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'events#index'
+   root 'games#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
