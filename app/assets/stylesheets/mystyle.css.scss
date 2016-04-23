@@ -1,0 +1,27 @@
+body {
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-image: image-url('bg_badminton.jpg');
+}
+
+.info {
+	background-color: white;
+	height: 550px;
+	border-radius: 25px;
+}
+
+.container_mobile {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 320px;
+	background-color: white;
+	height: 500px;
+	border-radius: 10px;
+}
+
+#navbar {
+	min-height: 50px;
+	background-color: transparent;
+	border-color: transparent;
+}
