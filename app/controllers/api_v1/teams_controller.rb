@@ -14,7 +14,7 @@ class ApiV1::TeamsController < ApplicationController
                              :day => params[:day],
                              :start_time => params[:start_time],
                              :end_time => params[:end_time],
-                            #  :logo => params[:logo]
+                             :logo => params[:logo]
                              )
     if @team.save
       render json: {
@@ -29,10 +29,6 @@ class ApiV1::TeamsController < ApplicationController
 
 
   # private
-  #
-  #   def team_params
-  #     params.require(:v1_team).permit(:name, :day, :start_time, :end_time , :logo)
-  #   end
 
     # def test_set_user
     #   current_user = User.first
