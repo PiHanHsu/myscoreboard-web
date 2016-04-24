@@ -8,21 +8,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
   <nav id="navbar" class="navbar navbar-inverse " role="navigation">
         <div class="container">
             <% if flash[:notice].present? %>
               <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
             <%end%>
-            
+
             <% if flash[:alert].present? %>
               <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
             <%end%>
-            
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <%#= link_to('My ScoreBoard Fourm', games_path, :class => "navbar-brand") %>
-                <span class="navbar-brand"> MyScoreBoard </span>
+                <span class="navbar-brand"> <%= link_to 'MyScoreBoard', games_path %></span>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -33,23 +33,24 @@
                   <% else %>
                     <li><%= link_to('註冊', new_registration_path(:user)) %></li>
                     <li><%= link_to('登入', new_session_path(:user)) %></li>
-                    <li><%= link_to "Facebook登入", user_omniauth_authorize_path(:facebook) %></li>
-                    
+
                   <% end %>
                 </ul>
                 <div>
                   <ul class="nav navbar-nav">
-                    <li><%= link_to "個人頁面", players_path %></li>
+                    <% if current_user %>
+                    <li><%= link_to "個人頁面", user_path(current_user),:method => :get%></li>
                     <li><%= link_to "我的球隊", teams_path %></li>
                     <li><%= link_to "排行榜", games_path %></li>
+                    <% end %>
                   </ul>
                 </div>
             </div>
         </div>
   </nav>
 
-  
-  
+
+
 
 
 <script>
@@ -69,10 +70,6 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
-
 
 <%= yield %>
 
