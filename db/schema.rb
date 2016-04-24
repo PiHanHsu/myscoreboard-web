@@ -33,12 +33,9 @@ ActiveRecord::Schema.define(version: 20160423115700) do
     t.string   "address"
     t.string   "lat"
     t.string   "lng"
-    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "locations", ["team_id"], name: "index_locations_on_team_id"
 
   create_table "records", force: :cascade do |t|
     t.integer  "game_id"
@@ -61,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160423115700) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "location_id"
+    t.integer  "location_id",       null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -69,8 +66,8 @@ ActiveRecord::Schema.define(version: 20160423115700) do
   add_index "teams", ["location_id"], name: "index_teams_on_location_id"
 
   create_table "user_teamships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
+    t.integer  "user_id",    null: false
+    t.integer  "team_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
