@@ -82,7 +82,6 @@ class User < ActiveRecord::Base
        # Case 3: Create new password
        user = User.new
 
-       byebug
 
        user.fb_pic = auth.info.picture.data.url
        user.fb_uid = auth.uid
