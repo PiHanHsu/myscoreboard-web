@@ -1,10 +1,10 @@
 class ApiV1::GamesController < ApiController
     # before_action :authenticate_user!
     protect_from_forgery except: :create
-	def index
-		games = Game.where( :team_id => params[:team_id])
-
-   	    render :json => { :message => "Test"}
+	  def index
+		  @games = Game.where( :team_id => params[:team_id])
+      #games = Record.where( :result => "W").group( :player ).count.sort_by{|k,v|v}.reverse
+      #render :json => { :message => "Test"}
     end
 
   	def create
