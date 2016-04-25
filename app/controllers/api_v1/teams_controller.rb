@@ -1,20 +1,17 @@
-class ApiV1::TeamsController < ApplicationController
+class ApiV1::TeamsController < ApiController
   protect_from_forgery :except => [:create, :update]
   # before_action :test_set_user
-  before_action :set_user
+  # before_action :set_user
+  before_action :authenticate_user!
   before_action :set_team_params, :only => [:update]
 
   def index
-    @teams = @user.teams.all
-  end
-
-  def show
-
+    @teams = current_user.teams.all
   end
 
 
   def create
-    @team = @user.teams.new( :name => params[:name],
+    @team = current_user.teams.new( :name => params[:name],
                              :day => params[:day],
                              :start_time => params[:start_time],
                              :end_time => params[:end_time],
@@ -50,14 +47,14 @@ class ApiV1::TeamsController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.first
-  end
+  # def set_user
+  #   @user = User.first
+  # end
 
   def set_team_params
-    @team = @user.teams.find( params[:id] )
+    @team = current_user.teams.find( params[:id] )
   end
 
 
-  
+
 end
