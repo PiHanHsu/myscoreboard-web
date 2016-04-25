@@ -33,12 +33,9 @@ ActiveRecord::Schema.define(version: 20160423115700) do
     t.string   "address"
     t.string   "lat"
     t.string   "lng"
-    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "locations", ["team_id"], name: "index_locations_on_team_id"
 
   create_table "records", force: :cascade do |t|
     t.integer  "game_id"
