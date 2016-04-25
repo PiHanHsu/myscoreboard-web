@@ -1,6 +1,12 @@
-<div class="container_mobile">
+<div class="container_mobile_first">
 <br>
-<h2>Sign up</h2>
+
+ <%=  image_tag("logo.png") %>
+
+ <h1>我的記分板</h1>
+ <h4>創造你的大聯盟</h4>
+
+<%= render "devise/shared/links" %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -26,7 +32,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
 </div>

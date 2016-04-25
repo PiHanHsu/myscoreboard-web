@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
 
-  before_action :set_user, :only => [ :show, :update, :destroy]
+  before_action :set_user, :only => [ :index, :show, :update, :destroy]
 
 
   def index
@@ -21,6 +21,10 @@ class UsersController < ApplicationController
 
 
   private
+
+  def user_params
+    params.require(:user).permit(:id, :user_id )
+  end
 
   def set_user
     @user = User.find(params[:id])
