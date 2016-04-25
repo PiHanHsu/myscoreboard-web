@@ -16,6 +16,6 @@
 !/log/.keep
 /tmp
 
-
+/public/system
 .byebug_history
 /config/facebook.yml

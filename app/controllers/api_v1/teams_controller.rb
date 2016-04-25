@@ -1,20 +1,24 @@
 class ApiV1::TeamsController < ApplicationController
-  protect_from_forgery except: :create
+  protect_from_forgery :except => [:create, :update]
   # before_action :test_set_user
+  before_action :set_user
+  before_action :set_team_params, :only => [:update]
 
   def index
-    @user = User.first
-    @teams = @User.teams
+    @teams = @user.teams.all
+  end
+
+  def show
+
   end
 
 
   def create
-    @user = User.first
     @team = @user.teams.new( :name => params[:name],
                              :day => params[:day],
                              :start_time => params[:start_time],
                              :end_time => params[:end_time],
-                            #  :logo => params[:logo]
+                             :logo => params[:logo]
                              )
     if @team.save
       render json: {
@@ -27,14 +31,33 @@ class ApiV1::TeamsController < ApplicationController
     end
   end
 
+  def update
+    team = set_team_params
+    @team = team.update( :name => params[:name],
+                         :day => params[:day],
+                         :start_time => params[:start_time],
+                         :end_time => params[:end_time],
+                         :logo => params[:logo]
+                          )
+     render json: {
+     message: "更新成功",
+     status: 200  }
 
-  # private
-  #
-  #   def team_params
-  #     params.require(:v1_team).permit(:name, :day, :start_time, :end_time , :logo)
-  #   end
+  end
 
-    # def test_set_user
-    #   current_user = User.first
-    # end
+
+
+
+  private
+
+  def set_user
+    @user = User.first
+  end
+
+  def set_team_params
+    @team = @user.teams.find( params[:id] )
+  end
+
+
+  
 end
