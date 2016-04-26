@@ -1,0 +1,11 @@
+<div class="container info">
+
+   <% @cards.each do |card| %>
+     <%= image_tag card.avatar_file_name %>
+   <% end %>
+
+
+
+    <%= link_to 'New card', new_card_path %>
+
+</div>

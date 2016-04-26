@@ -2,10 +2,19 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
 
-  before_action :set_user, :only => [ :index, :show, :update, :destroy]
+  before_action :set_user, :only => [ :show, :update, :destroy]
 
 
   def index
+
+  @users = User.all
+
+  if params[:search]
+    @users = User.where( [ "email like ?", "%#{params[:search]}%" ] )
+  else
+    @users = User.all
+  end
+
   end
 
   def show

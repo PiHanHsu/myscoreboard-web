@@ -1,0 +1,11 @@
+<div class="container info">
+
+
+<h1> new </h1>
+
+  <%= form_for @card, url: cards_path, html: { multipart: true } do |form| %>
+  <%= form.file_field :avatar %>
+  <%= form.submit %>
+  <% end %>
+
+</div>
