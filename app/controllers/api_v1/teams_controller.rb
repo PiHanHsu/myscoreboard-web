@@ -12,18 +12,19 @@ class ApiV1::TeamsController < ApiController
     @location = Location.find_or_create_by(:place_name => params[:place_name],
                                            :address => params[:address],
                                            :lat => params[:lat],
-                                           :lng => params[:lng],
+                                           :lng => params[:lng])
     # params[:team][:location_id] = @location.id
 
-    @team = current_user.teams.new(:name => params[:name],
-                                   :day => params[:day],
-                                   :start_time => params[:start_time],
-                                   :end_time => params[:end_time],
-                                   :logo => params[:logo])
-    @team.location_id = @location.id
+    @team = current_user.teams.create(:name => params[:name],
+                                      :day => params[:day],
+                                      :start_time => params[:start_time],
+                                      :end_time => params[:end_time],
+                                      :logo => params[:logo],
+                                      :location_id => @location.id
+                                      )
 
 
-    if @team.save
+    if @team
       render json: {
         message: "儲存成功",
         status: 200
