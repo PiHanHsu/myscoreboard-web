@@ -10,10 +10,16 @@ class UsersController < ApplicationController
   @users = User.all
 
   if params[:search]
-    @users = User.where( [ "email like ?", "%#{params[:search]}%" ] )
+    @users = User.where( 'email LIKE ? OR username LIKE?' , "%#{params[:search]}%", "%#{params[:search]}%" )
+
   else
     @users = User.all
   end
+
+  respond_to do |format|
+  format.html
+  format.js
+end
 
   end
 

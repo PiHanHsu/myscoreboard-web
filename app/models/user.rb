@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
   has_many :user_teamships
   has_many :teams, :through => :user_teamships
 
-
-
+     def display_name
+        self.email.split('@').first
+     end
 
 
      def generate_authentication_token
