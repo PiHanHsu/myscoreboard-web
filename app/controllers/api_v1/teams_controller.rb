@@ -1,7 +1,7 @@
 class ApiV1::TeamsController < ApiController
-  protect_from_forgery :except => [:create, :update]
+  protect_from_forgery :except => [:create, :update, :edit]
   before_action :authenticate_user!
-  before_action :set_team_params, :only => [:update]
+  before_action :set_team_params, :only => [:update, :edit]
 
   def index
     @teams = current_user.teams.all.page(params[:page])
@@ -35,6 +35,10 @@ class ApiV1::TeamsController < ApiController
         status: 400
       }
     end
+  end
+
+  def edit
+    @team = set_team_params
   end
 
   def update
