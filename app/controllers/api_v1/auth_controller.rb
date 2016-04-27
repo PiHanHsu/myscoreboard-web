@@ -16,7 +16,7 @@ def signup
       render :json => {}, :status => 400
     end
 
-   elsif params[:access_token]
+  elsif params[:access_token]
 
        fb_data = User.get_fb_data( params[:access_token] )
 
@@ -38,15 +38,14 @@ def signup
            user = User.from_omniauth_api(auth_hash)
          end
        success = fb_data && user.persisted?
-     end
 
-    if success
-     render :json => { :auth_token => user.authentication_token,
-                       :user_id => user.id}, :status => 200
-    else
-     render :json => { :message => "email or password is not correct" }, :status => 401
+         if success
+          render :json => { :auth_token => user.authentication_token,
+                            :user_id => user.id}, :status => 200
+         else
+          render :json => { :message => "email or password is not correct" }, :status => 401
+         end
     end
-
 end
 
     def login
