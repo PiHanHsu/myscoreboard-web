@@ -15,7 +15,11 @@ Rails.application.routes.draw do
 
     resources :users
     resources :teams
-    resources :games
+    resources :games do
+      collection do
+        get :stats
+      end
+    end
 
   end
 

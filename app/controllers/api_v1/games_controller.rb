@@ -27,11 +27,33 @@ class ApiV1::GamesController < ApiController
     	end
 
     	if transaction
-  	  		render :json => { :message => "transaction success!!! Yah!!" }
+  	  	render :json => { :message => "Records Save Success." }
     	else
-    		render :json => { :message => "transaction failed" }, :status => 401
+    		render :json => { :message => "Records Save Failed!" }, :status => 401
    		end
    	end
+
+    def stats
+      current_user = User.first
+      @teams = current_user.teams.all
+      
+      @stats= @teams.map do |t|
+        @user_records = current_user.records.joins(:game).where( games: { team_id: t.id } )
+        @wins = @user_records.where( :result => "W" ).count
+        @losses = @user_records.where( :result => "L" ).count
+        @games = @wins + @losses
+        @rate = @wins / (@wins + @losses)
+        @points = @wins * 3 + @losses * 1
+
+        { :wins => @wins,
+          :losses => @losses,
+          :games => @games,
+          :rate => @rate,
+          :points => @points }
+        
+      end
+      
+    end
 
     private
     def create_ranking(records)
@@ -62,4 +84,5 @@ class ApiV1::GamesController < ApiController
       
       @records.sort! {|a, b| b[4] <=> a[4] }
     end 
+
 end
