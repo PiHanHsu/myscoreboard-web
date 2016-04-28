@@ -14,14 +14,12 @@ Rails.application.routes.draw do
     post "/signup" => "auth#signup"
 
     resources :users
-    resources :teams do
-      member do
-        post 'add_team_member'
-        post 'delete_team_member'
+    resources :teams
+    resources :games do
+      collection do
+        get :stats
       end
     end
-    resources :games
-
   end
 
 

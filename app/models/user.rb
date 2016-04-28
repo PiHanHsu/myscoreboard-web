@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :user_teamships
   has_many :teams, :through => :user_teamships
+  has_many :records
 
 
      def generate_authentication_token
