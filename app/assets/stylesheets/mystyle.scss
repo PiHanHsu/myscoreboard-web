@@ -4,6 +4,12 @@ body {
    background-image: image-url('bg_badminton.jpg');
 }
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .info {
 	background-color: rgba(255,255,255, 0.8);
 	height: 550px;
@@ -30,15 +36,52 @@ body {
 // login & singup
 
 .container_mobile_first {
+	position: relative;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	width: 320px;
-	background-color: rgba(255,255,255, 0.6);
-	height: 500px;
+	background-color: rgba(255,255,255, 0.8);
+	height: 600px;
 	border-radius: 10px;
 }
 
 .fb_button {
   box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
+}
+
+.field {
+ text-align: center;
+ margin-left: auto;
+ margin-right: auto;
+ width: 250px;
+ border-bottom-style: solid;
+ border-bottom-width: medium;
+ border-bottom-color:#000000;
+}
+
+.email_area {
+padding-right: 60px;
+}
+
+.email_area2 {
+padding-right: 76px;
+}
+.btn-success {
+	width: 250px;
+}
+
+.password_area{
+padding-right: 76px;
+}
+
+.transparent {
+	background: transparent;
+	border: none;
+}
+
+.createuser {
+	  position: absolute;
+	  left: 40px;
+    bottom: 8px;
 }

@@ -1,36 +1,51 @@
 <div class="container_mobile_first">
 <br>
-
- <%=  image_tag("logo.png") %>
-
+<br>
+<%=  image_tag("logo.png") %>
  <h1>我的記分板</h1>
  <h4>創造你的大聯盟</h4>
+ <br>
+ <br>
 
-<%= render "devise/shared/links" %>
+ <%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to omniauth_authorize_path(resource_name, provider) do%>
+     <%=  image_tag("loginfb.png") %><br>
+    <% end %>
+  <% end -%>
+<% end -%>
+
+  <br />
+   <span style="text-decoration:underline;">或</span>
+  <br />
+  <br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="field email_area2">
+   <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+    <%= f.email_field :email, autofocus: true, placeholder: "信箱", class: "transparent"  %>
   </div>
-
+ <br>
   <div class="field">
-    <%= f.label :password %>
+    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "輸入密碼", class: "transparent"%>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+     <em>(最少<%= @minimum_password_length %>位數)</em>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <br>
+  <div class="field password_area">
+  <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "請再輸入一次密碼", class: "transparent"%>
   </div>
 
+  <br>
+  <br>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "註冊", class: "btn btn-success"  %>
   </div>
 
 <% end %>
