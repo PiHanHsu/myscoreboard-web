@@ -86,4 +86,35 @@ class ApiV1::GamesController < ApiController
       @records.sort! {|a, b| b[4] <=> a[4] }
     end 
 
+    def get_ranking_agaist_teammates
+      
+      user_games = Current_user.records.joins(:game).where( games: { team_id: params[:team_id] } ).group(:user_id)
+      user_teammates = Record.where( :game_id => user_games ).group( :user_id ).pluck(:user_id)
+      teammates = user_teammates.drop(Current_user.id)
+
+      user_win_games = Current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
+      wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "L" ).group(:user_id).count
+
+      user_loss_games = Current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
+      losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "W" ).group(:user_id).count
+       
+      teammates.map do |teammate|
+        wins = 0
+        losses = 0
+        if wins_with_teammates[teammate]
+          wins = wins_with_teammates[teammate]
+        end
+        if losses_with_teammates[teammate]
+          losses = losses_with_teammates[teammate]
+        end
+        rate = wins.to_f / (wins.to_f + losses.to_f)
+        {user: teammate,
+         wins: wins,
+         losses: losses,
+         rate: rate.round(2)}
+      end
+
+
+    end
+
 end
