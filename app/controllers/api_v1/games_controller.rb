@@ -98,7 +98,7 @@ class ApiV1::GamesController < ApiController
       user_loss_games = Current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
       losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "W" ).group(:user_id).count
        
-      teammates.map do |teammate|
+      teammates.map! do |teammate|
         wins = 0
         losses = 0
         if wins_with_teammates[teammate]
@@ -114,7 +114,7 @@ class ApiV1::GamesController < ApiController
          rate: rate.round(2)}
       end
 
-
+      teammates.sort! {|a, b| b[:rate] <=> a[:rate] }
     end
 
 end
