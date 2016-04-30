@@ -45,7 +45,8 @@ class ApiV1::GamesController < ApiController
         @rate = @wins / (@wins + @losses)
         @points = @wins * 3 + @losses * 1
 
-        { :wins => @wins,
+        { :team => t,
+          :wins => @wins,
           :losses => @losses,
           :games => @games,
           :rate => @rate,
