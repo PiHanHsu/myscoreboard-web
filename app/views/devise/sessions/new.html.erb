@@ -10,7 +10,7 @@
       <h1>我的記分板</h1>
       <h4>創造你的大聯盟</h4>
       </div>
-      <div class="sign_logo"> <h3>登入</h3> </div>
+      <div class="sign_logo2"> <h3>登入</h3> </div>
     <br>
 
   </div>
@@ -18,33 +18,14 @@
 
   <div class="row">
 
-    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 facebook">
-
-      <%- if devise_mapping.omniauthable? %>
-        <%- resource_class.omniauth_providers.each do |provider| %>
-          <%= link_to omniauth_authorize_path(resource_name, provider) do%>
-           <%=  image_tag("loginfb.png") %><br>
-          <% end %>
-        <% end -%>
-      <% end -%>
-    </div>
-
-
-    <div class="visible-xs visible-sm or_bar">
-      <br>
-      <br>
-      <br>
-       <span style="text-decoration:underline;">或</span>
-      <br>
-      <br>
-    </div>
-
-
-    <div class=" hidden-xs hidden-sm col-md-2 col-lg-2 ">
-      <div class="nil_line"></div>
-    </div>
-
     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 signin_box ">
+
+     <div class="visible-xs visible-sm or_bar">
+
+       <span style="text-decoration:underline;">或</span>
+
+    </div>
+
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -69,6 +50,22 @@
         </div>
       <% end %>
 
+    </div>
+
+    <div class=" hidden-xs hidden-sm col-md-2 col-lg-2 ">
+      <div class="nil_line"></div>
+    </div>
+
+
+    <div class="col-xs-12 colcol-sm-12 col-md-5 col-lg-5 facebook">
+
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider) do%>
+           <%=  image_tag("loginfb.png") %><br>
+          <% end %>
+        <% end -%>
+      <% end -%>
     </div>
 
   </div>
