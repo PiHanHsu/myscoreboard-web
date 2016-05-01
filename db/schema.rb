@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20160430044711) do
+
+  create_table "cards", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+=======
 ActiveRecord::Schema.define(version: 20160501074232) do
+>>>>>>> 5ad6979569fbaa6ad800829aff7f20e34e1b3a3b
 
   create_table "events", force: :cascade do |t|
     t.text     "topic"
@@ -96,6 +111,8 @@ ActiveRecord::Schema.define(version: 20160501074232) do
     t.string   "authentication_token"
     t.string   "fb_pic"
     t.text     "fb_raw_data"
+    t.string   "email_first"
+    t.string   "userid"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true

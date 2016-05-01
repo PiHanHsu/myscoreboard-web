@@ -1,8 +1,16 @@
  <div class="container info">
  <h1> 這是個人頁面！！</h1>
   <P><%= image_tag(@user.fb_pic) %></P>
-  <P> name：<%= @user.username %></P>
+   <P> id：<%= @user.userid %></P>
+   <br>
+   <br>
+  <P> 暱稱：<%= @user.username %></P>
   <P> gender：<%= @user.gender %></P>
   <P> E-mail：<%= @user.email %> </P>
-  <P> 上次登入時間：<%= @user.current_sign_in_at.strftime('%F')  + " " +@user.current_sign_in_at.strftime('%r') %></P>
+
+  <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
+  <%= form.file_field :avatar %>
+  <%= form.submit %>
+  <% end %>
+
 </div>
