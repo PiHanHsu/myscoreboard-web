@@ -14,11 +14,11 @@ before_action :set_card, :only => [:show, :update, :destroy]
   end
 
   def show
-    @card = Card.create( card_params)
   end
 
   def create
-   @card = Card.create( card_params)
+   @card = @user.cards.new(card_params)
+   @card.user = current_user
 
    redirect_to cards_path
 

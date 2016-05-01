@@ -25,26 +25,24 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="field password_area">
+    <div class="field1 password_area">
      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
       <%= f.text_field :userid, autofocus: true, placeholder: "使用者名稱", class: "transparent"  %>
     </div>
 
     <br>
-    <div class="field password_area">
+    <div class="field1 password_area">
       <%=  image_tag("glyphicons-758-gender-ori-hetero.png", size: "18x18") %>
       <%= f.text_field :gender, autofocus: true, placeholder: "男/女", class: "transparent"  %>
     </div>
 
-
-
     <br>
-    <div class="field email_area2">
+    <div class="field1 email_area2">
      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
       <%= f.email_field :email, autofocus: true, placeholder: "信箱", class: "transparent"  %>
     </div>
    <br>
-    <div class="field">
+    <div class="field1">
       <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
       <%= f.password_field :password, autocomplete: "off", placeholder: "輸入密碼", class: "transparent"%>
       <% if @minimum_password_length %>
@@ -53,7 +51,7 @@
     </div>
 
     <br>
-    <div class="field password_area">
+    <div class="field1 password_area">
     <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "請再輸入一次密碼", class: "transparent"%>
     </div>

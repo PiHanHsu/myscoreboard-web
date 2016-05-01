@@ -40,7 +40,7 @@ body {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	width: 320px;
+	width: 380px;
 	background-color: rgba(255,255,255, 0.8);
 	height: 600px;
 	border-radius: 10px;
@@ -67,7 +67,7 @@ body {
   box-shadow:4px 4px 3px rgba(20%,20%,40%,0.5);
 }
 
-.field {
+.field1 {
  text-align: center;
  margin-left: auto;
  margin-right: auto;
@@ -102,13 +102,17 @@ padding-right: 76px;
 }
 
 .nil_line {
- height: 180px;
+ height: 130px;
  width: 1px;
  background:#000000;
  margin:0px auto;
 }
 
+// edit
 
+.edit_area {
+padding-right: 70px;
+}
 
 
 
@@ -153,7 +157,7 @@ padding-bottom: 30px;
 
 .container_mobile_first {
   width: 650px;
-  height: 450px;
+  height: 500px;
 }
 
 .logo_bar {
@@ -161,15 +165,14 @@ padding-bottom: 30px;
 }
 
 .facebook{
-  padding-top: 64px;
+  padding-top: 44px;
   height:160px;
   padding-left: 0px;
-  padding-right: 130px;
+  padding-right: 150px;
 
 }
 
 .signin_box {
-  padding-top: 20px;
   height:160px;
   padding-left: 50px;
   padding-right: 0px;
