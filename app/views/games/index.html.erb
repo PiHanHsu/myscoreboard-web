@@ -1,5 +1,77 @@
 <div class="container info">
-    <h1> 這是排行榜頁面</h1>
-    <h2> 在這裡可以看到個人在球隊中的排行榜</h2>
-    <h2> 也可以看到比賽歷史紀錄唷！！ </h2>
+	<h1>  排行榜Page </h1>
+	
+    <div class="row ">
+      <div class="col-sm-1"></div>
+  
+      <div class="col-sm-10">
+      	<div class="nav nav-tabs pull-left">
+			<li class="dropdown">
+             <a data-toggle="dropdown" class="dropdown-toggle" href="#">選擇球隊 <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+       			 <li><%= link_to 'team1', games_path %></li>
+        			<li><%= link_to 'team2', games_path %></li>
+            </li>
+      	</div>
+        <div class="nav nav-tabs pull-right">  
+          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "單打", games_path %></li>
+          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "雙打", games_path %></li>
+          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "混雙", games_path %></li>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-1"></div>
+        <div class="col-sm-5">
+        	<table class = "table table-striped">
+      			<thead class = "thead">
+       				<th> <%= "男子選手排行榜"%></th>
+       				</thead>
+       				<tbody> 
+      				 <tr>
+        				<td>aaa</td>
+        			 </tr>
+        			  <tr>
+        				<td>bbb</td>
+        			 </tr>
+        			  <tr>
+        				<td>ccc</td>
+        			 </tr>
+        			  <tr>
+        				<td>ddd</td>
+        			 </tr>
+        			  <tr>
+        				<td>eee</td>
+        			 </tr>
+        			</tbody>
+       		</table>
+        </div>
+        <div class="col-sm-5">
+       		<table class = "table table-striped">
+     			<thead class = "thead">
+       			 <th> <%= "女子選手排行榜"%></th>
+       			</thead>
+       			<tbody> 
+     				<tr>
+        				<td>aaa</td>
+        			 </tr>
+        			  <tr>
+        				<td>bbb</td>
+        			 </tr>
+        			  <tr>
+        				<td>ccc</td>
+        			 </tr>
+        			  <tr>
+        				<td>ddd</td>
+        			 </tr>
+        			  <tr>
+        				<td>eee</td>
+        			 </tr>
+        		</tbody>
+       		</table>
+        </div>
+       	<div class="col-sm-1"></div>
+  
+    </div>
+    
 </div>
