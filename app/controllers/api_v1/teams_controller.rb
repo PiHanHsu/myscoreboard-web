@@ -10,7 +10,7 @@ class ApiV1::TeamsController < ApiController
   def create
     # @location = Location.find_or_create_by(:place_name => params[:place_name])
     @location = Location.find_or_create_by(location_params)
-    @team = current_user.teams.new(team_params)
+    @team = current_user.teams.create(team_params)
     @team.location = @location
 
     #重構
