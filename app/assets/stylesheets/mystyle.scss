@@ -36,7 +36,6 @@ body {
 // login & singup
 
 .container_mobile_first {
-	position: relative;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
@@ -44,6 +43,16 @@ body {
 	background-color: rgba(255,255,255, 0.8);
 	height: 600px;
 	border-radius: 10px;
+}
+
+.container_mobile_signup {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 320px;
+  background-color: rgba(255,255,255, 0.8);
+  height: 670px;
+  border-radius: 10px;
 }
 
 .fb_button {
@@ -81,7 +90,71 @@ padding-right: 76px;
 }
 
 .createuser {
-	  position: absolute;
-	  left: 40px;
-    bottom: 8px;
+  text-align: center;
+}
+
+.nil_line {
+ height: 180px;
+ width: 1px;
+ background:#000000;
+ margin:0px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************
+          ＲＷＤ
+*************************/
+
+/*中中中中中中中中中中中中中中中中中*/
+
+
+@media (max-width: 992px) {
+
+.sign_logo {
+ margin: 0px 30%;
+ border-bottom-style: solid;
+ border-bottom-width: 1px;
+ border-bottom-color:#0000000;
+}
+
+}
+/*大大大大大大大大大大大大大大大大大*/
+@media (min-width: 992px) {
+
+.container_mobile_first {
+  width: 650px;
+  height: 450px;
+}
+
+.logo_bar {
+  display: none;
+}
+
+.facebook{
+  padding-top: 64px;
+  height:160px;
+  padding-left: 100px;
+  padding-right: 0px;
+
+}
+
+.signin_box {
+  padding-top: 20px;
+  height:160px;
+  padding-left: 0px;
+  padding-right: 120px;
+}
+
+
+
 }
