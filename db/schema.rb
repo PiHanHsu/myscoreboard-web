@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20160501153914) do
 
+  create_table "cards", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
   create_table "events", force: :cascade do |t|
     t.text     "topic"
     t.datetime "created_at", null: false
@@ -58,16 +69,16 @@ ActiveRecord::Schema.define(version: 20160501153914) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "location_id"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.integer  "location_id",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "teams", ["location_id"], name: "index_teams_on_location_id"
 
   create_table "user_teamships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
+    t.integer  "user_id",    null: false
+    t.integer  "team_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,6 +107,8 @@ ActiveRecord::Schema.define(version: 20160501153914) do
     t.string   "authentication_token"
     t.string   "fb_pic"
     t.text     "fb_raw_data"
+    t.string   "email_first"
+    t.string   "userid"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true

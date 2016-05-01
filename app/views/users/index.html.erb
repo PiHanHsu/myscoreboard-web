@@ -1,0 +1,16 @@
+
+ <div class="container info">
+
+<%= form_tag users_path, :method => :get, :remote => true do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "搜尋" %>
+  </p>
+<% end %>
+
+
+<div class="find_user">
+  <% render @users %>
+</div>
+
+</div>

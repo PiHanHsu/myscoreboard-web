@@ -24,33 +24,13 @@
             <div class="navbar-header">
                 <%#= link_to('My ScoreBoard Fourm', games_path, :class => "navbar-brand") %>
                 <span class="navbar-brand"> <%= link_to 'MyScoreBoard', games_path %></span>
-
-             <div class="visible-xs-block">
-
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Dropdown
-                  <span class="caret"></span>
-                </button>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-              </div>
-
-            </div>
-
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                   <% if current_user %>
                     <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
-                    <li><%= link_to('修改個人資訊', edit_registration_path(:user)) %><li>
+                    <li><%= link_to('修改個人資訊', edit_user_path(:id)) %><li>
                   <% else %>
                     <li><%= link_to('註冊', new_registration_path(:user)) %></li>
                     <li><%= link_to('登入', new_session_path(:user)) %></li>
