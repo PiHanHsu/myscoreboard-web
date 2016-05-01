@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423115700) do
+ActiveRecord::Schema.define(version: 20160501074232) do
 
   create_table "events", force: :cascade do |t|
     t.text     "topic"
@@ -51,14 +51,14 @@ ActiveRecord::Schema.define(version: 20160423115700) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.date     "day"
+    t.string   "day"
     t.time     "start_time"
     t.time     "end_time"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "location_id",       null: false
+    t.integer  "location_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20160423115700) do
   add_index "teams", ["location_id"], name: "index_teams_on_location_id"
 
   create_table "user_teamships", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "team_id",    null: false
+    t.integer  "user_id"
+    t.integer  "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
