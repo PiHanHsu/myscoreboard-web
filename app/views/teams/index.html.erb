@@ -40,9 +40,23 @@
 						<div class="col-md-3 col-xs-2 team_member">
 							我是某個成員
 						</div>
+
+            <h2> 誰要當我隊友啦~ </h2>
+            <%= form_tag users_path, :method => :get, :remote => true do %>
+              <p>
+                <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
+                <%= submit_tag "搜尋" %>
+              </p>
+            <% end %>
+
+
+            <div class="find_user">
+              <% render @users %>
+            </div>
 					<%# end %>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </div>

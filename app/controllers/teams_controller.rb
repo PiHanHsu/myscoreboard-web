@@ -1,10 +1,19 @@
 class TeamsController < ApplicationController
+
 	protect_from_forgery :except => [:create, :update, :edit, :add_team_member ]
-	before_action :authenticate_user!
+	before_action :authenticate_user!, :except => [:index]
 	before_action :set_team_params, :only => [:update, :edit]
 
 	def index
 		@teams = current_user.teams.all
+
+    @users = User.all
+
+    if params[:search]
+      @users = User.where( 'email_first LIKE ? OR username LIKE?' , "%#{params[:search]}%", "%#{params[:search]}%" )
+    else
+      @users = User.all
+    end
 	end
 
 	def create
@@ -81,5 +90,5 @@ class TeamsController < ApplicationController
 	def team_params
 		params.permit(:name, :day, :start_time, :end_time, :logo)
 	end
-	
+
 end
