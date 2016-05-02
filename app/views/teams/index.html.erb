@@ -1,20 +1,62 @@
 <div class="container info">
-	<h1> 這是球隊頁面！ </h1>
-    <h2> 在這裡可以看到自己所屬的球隊以及隊員 </h2>
-    <h2> 當然也可以新增球隊，以及邀請新球友加入球隊</h2>
-    <br>
-    <br>
-    <h2> 誰要當我隊友啦~ </h2>
-    <%= form_tag users_path, :method => :get, :remote => true do %>
-      <p>
-        <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
-        <%= submit_tag "搜尋" %>
-      </p>
-    <% end %>
+	<div class="container ">
+		<div class="row">
+			<div class="col-md-4">
+				<h1> 我的球隊列表 </h1>
+			</div>
+			<div class="col-md-6 Title">
+				搜尋bar
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-offset-9 col-md-3">
+				<%= button_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
+			</div>
+		</div>
+	<%%>
+		<div class="row">
+			<div class="col-md-4 col-xs-12 team_info ">
+				<div class="team_logo">
+					球隊照片
+				</div>
+				<div class="team_name">
+					球隊名稱
+				</div>
+				<div class="team_edit">
+					編輯球隊
+				</div>
+				<div class="team_content">
+					球隊資訊
+				</div>
+			</div>
+
+			<div class="col-md-8 col-xs-12 team_list">
+				<div class="row">
+					<%# .each %>
+						<div class="col-md-3 col-xs-2 team_member">
+							我是某個成員
+						</div>
+
+            <h2> 誰要當我隊友啦~ </h2>
+            <%= form_tag users_path, :method => :get, :remote => true do %>
+              <p>
+                <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
+                <%= submit_tag "搜尋" %>
+              </p>
+            <% end %>
 
 
-    <div class="find_user">
-      <% render @users %>
-    </div>
+            <div class="find_user">
+              <% render @users %>
+            </div>
+					<%# end %>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </div>
