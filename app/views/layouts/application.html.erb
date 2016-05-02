@@ -9,7 +9,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <nav id="navbar" class="navbar navbar-inverse " role="navigation">
         <div class="container">
             <% if flash[:notice].present? %>
@@ -22,9 +21,15 @@
 
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <%#= link_to('My ScoreBoard Fourm', games_path, :class => "navbar-brand") %>
                 <span class="navbar-brand"> <%= link_to 'MyScoreBoard', games_path %></span>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
             </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -34,7 +39,6 @@
                   <% else %>
                     <li><%= link_to('註冊', new_registration_path(:user)) %></li>
                     <li><%= link_to('登入', new_session_path(:user)) %></li>
-
                   <% end %>
                 </ul>
                 <div>
