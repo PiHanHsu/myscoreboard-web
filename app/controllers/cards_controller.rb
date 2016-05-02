@@ -17,8 +17,7 @@ before_action :set_card, :only => [:show, :update, :destroy]
   end
 
   def create
-   @card = @user.cards.new(card_params)
-   @card.user = current_user
+   @card = current_user.cards.create(card_params)
 
    redirect_to cards_path
 
@@ -38,7 +37,7 @@ before_action :set_card, :only => [:show, :update, :destroy]
   private
 
   def card_params
-    params.require(:card).permit(:id, :user_id, :avatar, :card , :card_id)
+    params.require(:card).permit(:avatar) #=> {:avatar=> ... }
   end
 
   def set_card

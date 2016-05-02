@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+
 	protect_from_forgery :except => [:create, :update, :edit, :add_team_member ]
   before_action :authenticate_user!
   before_action :set_team, :only => [:update, :edit]
