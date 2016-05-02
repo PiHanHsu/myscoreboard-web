@@ -1,5 +1,5 @@
 <div class="container info">
-	<h1>  排行榜Page </h1>
+	<h1><%= @team.name %>  排行榜</h1>
 	
     <div class="row ">
       <div class="col-sm-1"></div>
@@ -7,7 +7,7 @@
       <div class="col-sm-10">
       	<div class="nav nav-tabs pull-left">
 			    <li class="dropdown">
-             <a data-toggle="dropdown" class="dropdown-toggle" href="#">選擇球隊 <b class="caret"></b></a>
+             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><% if params[:team] %><%=@team.name %> <%else%> <%= "選擇球隊" %> <%end%> <b class="caret"></b></a>
              <ul class="dropdown-menu">
               <% @teams.each do |team| %>
        			  <li><%= link_to team.name, games_path( :team => team ) %></li>
@@ -29,21 +29,12 @@
        				<th> <%= "男子選手排行榜"%></th>
        				</thead>
        				<tbody> 
+               <% @male_records.each do |key, value| %>
       				 <tr>
-        				<td>aaa</td>
+        				<td><%= key.username %></td>
+                <td><%= value %></td>
         			 </tr>
-        			  <tr>
-        				<td>bbb</td>
-        			 </tr>
-        			  <tr>
-        				<td>ccc</td>
-        			 </tr>
-        			  <tr>
-        				<td>ddd</td>
-        			 </tr>
-        			  <tr>
-        				<td>eee</td>
-        			 </tr>
+               <% end %>
         			</tbody>
        		</table>
         </div>
@@ -53,21 +44,12 @@
        			 <th> <%= "女子選手排行榜"%></th>
        			</thead>
        			<tbody> 
-     				<tr>
-        				<td>aaa</td>
-        			 </tr>
-        			  <tr>
-        				<td>bbb</td>
-        			 </tr>
-        			  <tr>
-        				<td>ccc</td>
-        			 </tr>
-        			  <tr>
-        				<td>ddd</td>
-        			 </tr>
-        			  <tr>
-        				<td>eee</td>
-        			 </tr>
+     				<% @female_records.each do |key, value| %>
+               <tr>
+                <td><%= key.username %></td>
+                <td><%= value %></td>
+               </tr>
+               <% end %>
         		</tbody>
        		</table>
         </div>

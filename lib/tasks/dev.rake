@@ -1,10 +1,15 @@
 namespace :dev do
 
   task :fake => :environment do
+    
     Game.delete_all
     Record.delete_all
     
     users = []
+    tester = User.create!( :email => "tester@msb.com",
+                                  :password => "12345678",
+                                  :gender => "male",
+                                  :username => "tester")
     10.times do
       users << User.create!( :email => Faker::Internet.email,
                              :password => "12345678",
@@ -24,6 +29,7 @@ namespace :dev do
     3.times do |index|
       team = Team.create!( :name => "team#{index + 1}", :location_id => 0)
       team_users = users.sample(10)
+      team_users << tester
       team_users.each do |user|
         UserTeamship.create( :user_id => user.id, :team_id => team.id )
       end
@@ -31,10 +37,10 @@ namespace :dev do
     end
 
     
-    40.times do
+    100.times do
       game_type = ["single", "double", "mix"]
       scores = []
-      team = teams[0]
+      team = teams.sample
       game = Game.create!( :team_id => team.id,
                            :game_type => game_type.sample )
       if game_type == "single"
