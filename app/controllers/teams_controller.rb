@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   before_action :set_team, :only => [:update, :edit]
 
   def index
-    @teams = current_user.teams.all
+    @teams = current_user.teams
   end
 
   def create
