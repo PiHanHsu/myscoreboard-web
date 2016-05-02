@@ -7,7 +7,7 @@
       <div class="col-sm-10">
       	<div class="nav nav-tabs pull-left">
 			    <li class="dropdown">
-             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><% if params[:team] %><%=@team.name %> <%else%> <%= "選擇球隊" %> <%end%> <b class="caret"></b></a>
+             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=@team.name %><b class="caret"></b></a>
              <ul class="dropdown-menu">
               <% @teams.each do |team| %>
        			  <li><%= link_to team.name, games_path( :team => team ) %></li>
