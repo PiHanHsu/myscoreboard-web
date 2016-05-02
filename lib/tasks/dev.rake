@@ -1,8 +1,6 @@
 namespace :dev do
 
   task :fake => :environment do
-    User.delete_all
-    Team.delete_all
     Game.delete_all
     Record.delete_all
     
