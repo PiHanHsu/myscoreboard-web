@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :cards
+    collection do
+      get :search
+    end
   end
   resources :cards
   resources :games
