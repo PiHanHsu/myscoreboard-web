@@ -6,30 +6,19 @@ class UsersController < ApplicationController
 
 
   def index
-
    @users = User.all
-
-    if params[:search]
-      @users = User.where( 'email_first LIKE ? OR username LIKE?' , "%#{params[:search]}%", "%#{params[:search]}%" )
-    else
-      @users = User.all
-    end
-
-    respond_to do |format|
-    format.html
-    format.js
-    end
-
   end
 
   def show
-    @user = current_user
+    # @user = current_user
     @card = Card.new
     @cards = @user.cards
   end
 
   def edit
-    @user = current_user
+    @user = User.find_by(:id => params[:id]) # => User instance or nil
+    # @user = User.find(params[:id]) # => User instance or 例外
+    redirect_to '/' unless @user == current_user
   end
 
   def update
