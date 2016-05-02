@@ -110,10 +110,6 @@ padding-right: 76px;
  margin:0px auto;
 }
 
-// team
-
-
-
 
 // edit
 
@@ -127,7 +123,27 @@ padding-right: 70px;
     outline: 0px;
   }
 
+//team
 
+.teams_container{
+  margin: 0 auto;
+}
+
+.team_item{
+  border-style: outset;
+  margin: 0,auto;
+  width: 1100px;
+  height: 631px;
+}
+
+.team_logo{
+  width: 200px;
+  height: 200px;
+}
+
+.team_info{
+  border-style: outset;
+}
 
 
 

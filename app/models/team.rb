@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
   validates_presence_of :name
 
 
-  has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :logo, styles: { medium: "300x300>", thumb: "200x200>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
   def male_single_ranking
@@ -57,7 +57,7 @@ class Team < ActiveRecord::Base
                     losses_count = l[1]
                   end
                 end
-                if (wins_count + losses_count) > 0 
+                if (wins_count + losses_count) > 0
                   rate = wins_count.to_f / (wins_count.to_f + losses_count.to_f ) * 100
                 else
                   rate = 0
