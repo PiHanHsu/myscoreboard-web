@@ -15,9 +15,9 @@
           </li>
       	</div>
         <div class="nav nav-tabs pull-right">  
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "單打", games_path %></li>
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "雙打", games_path %></li>
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "混雙", games_path %></li>
+          <li class="<%= 'active' if @game_type == "single" %>"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
+          <li class="<%= 'active' if @game_type == "double" %>"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
+          <li class="<%= 'active' if @game_type == "mix" %>"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
         </div>
       </div>
     </div>
@@ -27,12 +27,20 @@
         	<table class = "table">
       			<thead class = "thead">
        				<th> <%= "男子選手排行榜"%></th>
+              <th> <%= "勝"%></th>
+              <th> <%= "敗"%></th>
+              <th> <%= "勝率"%></th>
+              <th> <%= "積分"%></th>
+
        				</thead>
        				<tbody> 
-               <% @male_records.each do |key, value| %>
+               <% @male_ranking.each do |player| %>
       				 <tr>
-        				<td><%= key.username %></td>
-                <td><%= value %></td>
+        				<td><%= player[:user].username %></td>
+                <td><%= player[:wins] %></td>
+                <td><%= player[:losses] %></td>
+                <td><%= player[:rate] %></td>
+                <td><%= player[:points] %></td>
         			 </tr>
                <% end %>
         			</tbody>
@@ -40,16 +48,23 @@
         </div>
         <div class="col-sm-5">
        		<table class = "table ">
-     			<thead class = "thead">
-       			 <th> <%= "女子選手排行榜"%></th>
+     			  <thead class = "thead">
+       			  <th> <%= "女子選手排行榜"%></th>
+              <th> <%= "勝"%></th>
+              <th> <%= "敗"%></th>
+              <th> <%= "勝率"%></th>
+              <th> <%= "積分"%></th>
        			</thead>
        			<tbody> 
-     				<% @female_records.each do |key, value| %>
-               <tr>
-                <td><%= key.username %></td>
-                <td><%= value %></td>
-               </tr>
-               <% end %>
+     				  <% @female_ranking.each do |player| %>
+                <tr>
+                  <td><%= player[:user].username %></td>
+                  <td><%= player[:wins] %></td>
+                  <td><%= player[:losses] %></td>
+                  <td><%= player[:rate] %></td>
+                  <td><%= player[:points] %></td>
+                </tr>
+              <% end %>
         		</tbody>
        		</table>
         </div>

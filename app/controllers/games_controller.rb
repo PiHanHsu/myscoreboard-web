@@ -9,9 +9,20 @@ class GamesController < ApplicationController
 	  else
       @team = @teams.first
     end
-
-    @male_records = Record.includes(:user, :game).where( users: { :gender => "male" } ).where( games: { team_id: @team.id } ).where( :result => "W" ).group( :user ).count
-    @female_records = Record.includes(:user, :game).where( users: { :gender => "female" } ).where( games: { team_id: @team.id } ).where( :result => "W" ).group( :user ).count
+    
+    @game_type = "mix"
+    if params[:game_type] == "single"
+      @game_type = "single"
+      @male_ranking = @team.male_single_ranking
+      @female_ranking = @team.female_single_ranking
+    elsif params[:game_type] == "double"
+      @game_type = "double"
+      @male_ranking = @team.male_double_ranking
+      @female_ranking = @team.female_double_ranking
+    else
+      @male_ranking = @team.male_mix_ranking
+      @female_ranking = @team.female_mix_ranking
+    end
 
   end
 end
