@@ -1,48 +1,18 @@
 <div class="container info">
-	<div class="container ">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-4">
-				<h1> 我的球隊列表 </h1>
+				<h1>
+					我的球隊列表
+				</h1>
 			</div>
-			<div class="col-md-6 Title">
+			<div class="col-md-6 search">
 				搜尋bar
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
-
-		<div class="row">
-			<div class="col-md-offset-9 col-md-3">
-				<%= button_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
-			</div>
-		</div>
-	<%%>
-		<div class="row">
-			<div class="col-md-4 col-xs-12 team_info ">
-				<div class="team_logo">
-					球隊照片
-				</div>
-				<div class="team_name">
-					球隊名稱
-				</div>
-				<div class="team_edit">
-					編輯球隊
-				</div>
-				<div class="team_content">
-					球隊資訊
-				</div>
-			</div>
-
-			<div class="col-md-8 col-xs-12 team_list">
-				<div class="row">
-					<%# .each %>
-						<div class="col-md-3 col-xs-2 team_member">
-							我是某個成員
-						</div>
-					<%# end %>
-				</div>
-			</div>
-		</div>
+		<%= render :partial => 'team_list', :collection => @teams, :as => :team  %>
 	</div>
 </div>
