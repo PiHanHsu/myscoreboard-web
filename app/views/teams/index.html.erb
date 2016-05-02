@@ -17,7 +17,6 @@
 				<%= button_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
 			</div>
 		</div>
-	<%%>
 		<div class="row">
 			<div class="col-md-4 col-xs-12 team_info ">
 				<div class="team_logo">
@@ -36,24 +35,23 @@
 
 			<div class="col-md-8 col-xs-12 team_list">
 				<div class="row">
-					<%# .each %>
 						<div class="col-md-3 col-xs-2 team_member">
 							我是某個成員
 						</div>
 
+            <!-- 以下是搜尋隊友 -->
+
             <h2> 誰要當我隊友啦~ </h2>
-            <%= form_tag users_path, :method => :get, :remote => true do %>
+            <%= form_tag search_users_path, :method => :get, :remote => true do %>
               <p>
                 <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
                 <%= submit_tag "搜尋" %>
               </p>
             <% end %>
-
-
             <div class="find_user">
-              <% render @users %>
             </div>
-					<%# end %>
+             <!-- 以上是搜尋隊友 -->
+
 				</div>
 			</div>
 		</div>
