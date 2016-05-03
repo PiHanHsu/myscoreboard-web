@@ -108,9 +108,7 @@ body {
     border-radius: 10px;
 }
 
-.teams_container {
-    // margin: 0 auto;
-}
+
 .team_item {
     margin: 0,auto;
     width: 1100px;
@@ -121,12 +119,15 @@ body {
     height: 200px;
 }
 .team_info {
-    height: 600px;
+    height: auto;
     margin-left: 25px;
     border: 1px solid #bbb;
     .col-md-4 {border: 1px solid #bbb;}
 }
 
+.team_list{
+  margin-bottom: 10px;
+}
 /*************************
           ＲＷＤ
 *************************/
