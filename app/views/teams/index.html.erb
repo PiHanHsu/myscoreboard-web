@@ -1,28 +1,30 @@
-<div class="container info">
-	<div class="container head">
-		<div class="row">
-			<div class="col-md-4">
-				<h1>
-					我的球隊列表
-				</h1>
-			</div>
-			<div class="col-md-6 search">
-				<h2>
-					誰要當我隊友啦~
-				</h2>
-				<%= form_tag search_users_path, :method => :get, :remote => true do %>
-				<p>
-					<%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
-					<%= submit_tag "搜尋" %>
-				</p>
-				<% end %>
-				<div class="find_user"></div>
+<div class="container">
+	<div class="myteam_info">
+		<div class="container head">
+			<div class="row">
+				<div class="col-md-4">
+					<h1>
+						我的球隊列表
+					</h1>
+				</div>
+				<div class="col-md-6 search">
+					<h2>
+						誰要當我隊友啦~
+					</h2>
+					<%= form_tag search_users_path, :method => :get, :remote => true do %>
+					<p>
+						<%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
+						<%= submit_tag "搜尋" %>
+					</p>
+					<% end %>
+					<div class="find_user"></div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="container teams_container">
-		<%= render :partial => 'team_list', :collection => @teams, :as => :team  %>
-	</div>
+		<div class="container teams_container">
+			<%= render :partial => 'team_list', :collection => @teams, :as => :team  %>
+		</div>
 
+	</div>
 </div>
