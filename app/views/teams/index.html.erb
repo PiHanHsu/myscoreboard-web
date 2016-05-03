@@ -1,60 +1,30 @@
-<div class="container info">
-	<div class="container ">
-		<div class="row">
-			<div class="col-md-4">
-				<h1> 我的球隊列表 </h1>
-			</div>
-			<div class="col-md-6 Title">
-				搜尋bar
+<div class="container">
+	<div class="myteam_info">
+		<div class="container head">
+			<div class="row">
+				<div class="col-md-4">
+					<h1>
+						我的球隊列表
+					</h1>
+				</div>
+				<div class="col-md-6 search">
+					<h2>
+						誰要當我隊友啦~
+					</h2>
+					<%= form_tag search_users_path, :method => :get, :remote => true do %>
+					<p>
+						<%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
+						<%= submit_tag "搜尋" %>
+					</p>
+					<% end %>
+					<div class="find_user"></div>
+				</div>
 			</div>
 		</div>
+
+		<div class="container teams_container">
+			<%= render :partial => 'team_list', :collection => @teams, :as => :team  %>
+		</div>
+
 	</div>
-
-	<div class="container">
-
-		<div class="row">
-			<div class="col-md-offset-9 col-md-3">
-				<%= button_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-xs-12 team_info ">
-				<div class="team_logo">
-					球隊照片
-				</div>
-				<div class="team_name">
-					球隊名稱
-				</div>
-				<div class="team_edit">
-					編輯球隊
-				</div>
-				<div class="team_content">
-					球隊資訊
-				</div>
-			</div>
-
-			<div class="col-md-8 col-xs-12 team_list">
-				<div class="row">
-						<div class="col-md-3 col-xs-2 team_member">
-							我是某個成員
-						</div>
-
-            <!-- 以下是搜尋隊友 -->
-
-            <h2> 誰要當我隊友啦~ </h2>
-            <%= form_tag search_users_path, :method => :get, :remote => true do %>
-              <p>
-                <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
-                <%= submit_tag "搜尋" %>
-              </p>
-            <% end %>
-            <div class="find_user">
-            </div>
-             <!-- 以上是搜尋隊友 -->
-
-				</div>
-			</div>
-		</div>
-	</div>
-
 </div>

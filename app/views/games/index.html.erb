@@ -1,13 +1,12 @@
 <div class="container info">
-	<h1>  排行榜Page </h1>
-	
+  <% if @team %>
+	<h1><%= @team.name %>  排行榜</h1>	  
     <div class="row ">
       <div class="col-sm-1"></div>
-  
       <div class="col-sm-10">
       	<div class="nav nav-tabs pull-left">
 			    <li class="dropdown">
-             <a data-toggle="dropdown" class="dropdown-toggle" href="#">選擇球隊 <b class="caret"></b></a>
+             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=@team.name %><b class="caret"></b></a>
              <ul class="dropdown-menu">
               <% @teams.each do |team| %>
        			  <li><%= link_to team.name, games_path( :team => team ) %></li>
@@ -15,9 +14,9 @@
           </li>
       	</div>
         <div class="nav nav-tabs pull-right">  
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "單打", games_path %></li>
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "雙打", games_path %></li>
-          <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "混雙", games_path %></li>
+          <li class="<%= 'active' if @game_type == "single" %>"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
+          <li class="<%= 'active' if @game_type == "double" %>"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
+          <li class="<%= 'active' if @game_type == "mix" %>"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
         </div>
       </div>
     </div>
@@ -27,52 +26,50 @@
         	<table class = "table">
       			<thead class = "thead">
        				<th> <%= "男子選手排行榜"%></th>
+              <th> <%= "勝"%></th>
+              <th> <%= "敗"%></th>
+              <th> <%= "勝率"%></th>
+              <th> <%= "積分"%></th>
+
        				</thead>
        				<tbody> 
+               <% @male_ranking.each do |player| %>
       				 <tr>
-        				<td>aaa</td>
+        				<td><%= player[:user].username %></td>
+                <td><%= player[:wins] %></td>
+                <td><%= player[:losses] %></td>
+                <td><%= player[:rate] %></td>
+                <td><%= player[:points] %></td>
         			 </tr>
-        			  <tr>
-        				<td>bbb</td>
-        			 </tr>
-        			  <tr>
-        				<td>ccc</td>
-        			 </tr>
-        			  <tr>
-        				<td>ddd</td>
-        			 </tr>
-        			  <tr>
-        				<td>eee</td>
-        			 </tr>
+               <% end %>
         			</tbody>
        		</table>
         </div>
         <div class="col-sm-5">
        		<table class = "table ">
-     			<thead class = "thead">
-       			 <th> <%= "女子選手排行榜"%></th>
+     			  <thead class = "thead">
+       			  <th> <%= "女子選手排行榜"%></th>
+              <th> <%= "勝"%></th>
+              <th> <%= "敗"%></th>
+              <th> <%= "勝率"%></th>
+              <th> <%= "積分"%></th>
        			</thead>
        			<tbody> 
-     				<tr>
-        				<td>aaa</td>
-        			 </tr>
-        			  <tr>
-        				<td>bbb</td>
-        			 </tr>
-        			  <tr>
-        				<td>ccc</td>
-        			 </tr>
-        			  <tr>
-        				<td>ddd</td>
-        			 </tr>
-        			  <tr>
-        				<td>eee</td>
-        			 </tr>
+     				  <% @female_ranking.each do |player| %>
+                <tr>
+                  <td><%= player[:user].username %></td>
+                  <td><%= player[:wins] %></td>
+                  <td><%= player[:losses] %></td>
+                  <td><%= player[:rate] %></td>
+                  <td><%= player[:points] %></td>
+                </tr>
+              <% end %>
         		</tbody>
        		</table>
         </div>
        	<div class="col-sm-1"></div>
-  
     </div>
-    
+  <% else %>
+  <h1> 目前沒有排行榜 </h1>
+  <% end %>
 </div>

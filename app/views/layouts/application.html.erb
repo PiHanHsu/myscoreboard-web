@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -31,21 +32,19 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <% if current_user %>
-                    <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
-                  <% else %>
-                    <li><%= link_to('註冊', new_registration_path(:user)) %></li>
-                    <li><%= link_to('登入', new_session_path(:user)) %></li>
-                  <% end %>
-                </ul>
                 <div>
-                  <ul class="nav navbar-nav">
+                  <ul class="nav navbar-nav pull-right">
                     <% if current_user %>
                     <li><%= link_to "個人頁面", user_path(current_user),:method => :get%></li>
                     <li><%= link_to "我的球隊", teams_path %></li>
                     <li><%= link_to "排行榜", games_path %></li>
                     <% end %>
+                    <% if current_user %>
+                    <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
+                    <% else %>
+                    <li><%= link_to('註冊', new_registration_path(:user)) %></li>
+                    <li><%= link_to('登入', new_session_path(:user)) %></li>
+                  <% end %>
                   </ul>
                 </div>
             </div>

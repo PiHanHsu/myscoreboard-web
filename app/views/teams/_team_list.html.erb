@@ -1,0 +1,37 @@
+<div class="row team_item">
+    <div class="col-md-offset-9 col-md-3 col-xs-12">
+        <%= link_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
+    </div>
+    <div class="row team_info">
+        <div class="col-md-4 col-xs-12">
+            <div class="team_logo">
+                <%= image_tag(team.logo.url(:thumb)) %>
+            </div>
+            <div class="team_name">
+                <h3>球隊名稱：<%= team.name %></h3>
+            </div>
+            <div class="team_content">
+                <h4>球聚時間：</h4>
+                <div class="day">
+                    <h3><%= team.day %></h3>
+                </div>
+                <div class="hour">
+                    <span>
+                        <h5><%= "%02d" %team.start_time.hour %></h5>
+                        <h5><%= "%02d" %team.end_time.hour %></h5>
+                    </span>
+                </div>
+                <div class="team_edit"></div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12 team_list">
+            <% team.users.each do |u| %>
+            <div class="col-md-3 col-xs-2 team_member">
+                <span class="user_name">
+                    <%= u.username %></span>
+                <img src="http://placehold.it/140x150">
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
