@@ -24,7 +24,7 @@ namespace :dev do
                              :username => Faker::Name.first_name)
     end
     teams = []
-    location = Location.create!(place_name: "中正運動中心")
+    location = Location.create!(place_name: "Taipei Arena")
 
     3.times do |index|
       team = Team.create!( :name => "team#{index + 1}", :location_id => 0)
