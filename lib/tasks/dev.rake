@@ -26,6 +26,7 @@ namespace :dev do
                              :gender => "female",
                              :username => Faker::Name.first_name)
     end
+
     3.times do |index|
       locations << Location.create!(:place_name => Faker::Company.name)
       team = Team.create!( :name => "team#{index + 1}", :location => locations.sample )
