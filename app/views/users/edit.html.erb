@@ -39,9 +39,12 @@
         </div>
 
         性別:
-        <div class="field1 edit_area">
+        <div class=" edit_area">
           <%=  image_tag("glyphicons-758-gender-ori-hetero.png", size: "18x18") %>
-           <%= f.text_field :gender, autofocus: "off", placeholder: "男/女", class: "transparent"  %>
+           <%= f.radio_button :gender, "male" %>
+           <%= f.label :gender_male, "Male" %>
+           <%= f.radio_button :gender, "female" %>
+           <%= f.label :gender_female, "Female" %>
         </div>
         <br>
         <br>
