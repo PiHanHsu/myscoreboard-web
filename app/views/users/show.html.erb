@@ -7,7 +7,10 @@
 <div class="row">
 
    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 ">
-      <P><%= image_tag(@user.fb_pic) %></P>
+
+       <%= user_avatar(@user) %>
+
+
        <P> id：<%= @user.userid %></P>
        <%= link_to('修改個人資訊', edit_user_path(current_user)) %>
        <br>
@@ -39,7 +42,6 @@
    <%= image_tag c.avatar.url(:thumb)%>
    <% end %>
    <br> <br> <br> <br> <br> <br> <br>
-   <%= image_tag @user.head.url(:thumb)%>
 
    </div>
 
