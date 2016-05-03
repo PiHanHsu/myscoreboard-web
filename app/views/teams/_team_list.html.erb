@@ -12,16 +12,9 @@
             </div>
             <div class="team_content">
                 <h3>球聚地點：<%= team.location.place_name %></h3>
-                <h4>球聚時間：</h4>
-                <div class="day">
-                    <h3><%= team.day %></h3>
-                </div>
-                <div class="hour">
-                    <span>
-                        <h5><%= "%02d" %team.start_time.hour %></h5>
-                        <h5><%= "%02d" %team.end_time.hour %></h5>
-                    </span>
-                </div>
+                <h3>球聚時間：<%= team.day %><br><%= "%02d" %team.start_time.hour %>：<%= "%02d" %team.start_time.min %>~~<%= "%02d" %team.end_time.hour %>：<%= "%02d" %team.end_time.min %></h3>
+
+
                 <div class="team_edit">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
