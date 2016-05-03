@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   has_many :records
   has_many :cards
 
+
+  # paperclicp
+
+  has_attached_file :head, styles: { medium: "300x300!", thumb: "100x100!" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :head, content_type: /\Aimage\/.*\Z/
+
   after_create :set_email_first
 
    def generate_authentication_token

@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = current_user
+    #產生新球員卡用
     @card = Card.new
-    @cards = @user.cards
+    # 撈球員卡用
+    @cards = current_user.cards
   end
 
   def edit
@@ -22,14 +23,19 @@ class UsersController < ApplicationController
   end
 
   def update
-      @user = current_user
+
+    @user = current_user
 
     if @user.update( user_params )
-      redirect_to root_path
+      redirect_to :back
     else
-      render "edit"
+      redirect_to :back
     end
 
+  end
+
+  def create
+  @user = User.create(user_params)
   end
 
 
@@ -50,7 +56,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :user_id, :emial, :username, :userid, :gender )
+    params.require(:user).permit(:id, :user_id, :emial, :username, :userid, :gender, :head )
   end
 
   def set_user

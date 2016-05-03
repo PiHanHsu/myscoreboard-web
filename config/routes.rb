@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :cards
   resources :games
   resources :teams
-  resources :players
 
   scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
 

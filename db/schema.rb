@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501153914) do
+ActiveRecord::Schema.define(version: 20160503034417) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -109,6 +109,10 @@ ActiveRecord::Schema.define(version: 20160501153914) do
     t.text     "fb_raw_data"
     t.string   "email_first"
     t.string   "userid"
+    t.string   "head_file_name"
+    t.string   "head_content_type"
+    t.integer  "head_file_size"
+    t.datetime "head_updated_at"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true

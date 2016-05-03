@@ -19,7 +19,7 @@ before_action :set_card, :only => [:show, :update, :destroy]
   def create
    @card = current_user.cards.create(card_params)
 
-   redirect_to cards_path
+  redirect_to :back
 
   end
 
