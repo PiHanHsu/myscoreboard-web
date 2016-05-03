@@ -17,9 +17,12 @@ before_action :set_card, :only => [:show, :update, :destroy]
   end
 
   def create
-   @card = current_user.cards.create(card_params)
 
-  redirect_to :back
+    if params[:card] && params[:card][:avatar] && current_user.cards.create(card_params)
+    else
+    end
+
+    redirect_to :back
 
   end
 
@@ -37,7 +40,7 @@ before_action :set_card, :only => [:show, :update, :destroy]
   private
 
   def card_params
-    params.require(:card).permit(:avatar) #=> {:avatar=> ... }
+    params.require(:card).permit(:avatar)
   end
 
   def set_card

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
 
-  before_action :set_user, :only => [:update, :destroy, :show]
+  before_action :set_user, :only => [:edit, :update, :destroy, :show]
 
 
   def index
@@ -17,20 +17,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(:id => params[:id]) # => User instance or nil
-    # @user = User.find(params[:id]) # => User instance or 例外
     redirect_to '/' unless @user == current_user
+
   end
 
   def update
 
-    @user = current_user
-
-    if @user.update( user_params )
-      redirect_to :back
+    if params[:user] && @user == current_user && current_user.update( user_params )
+      redirect_to user_path(current_user)
     else
       redirect_to :back
     end
+
 
   end
 
