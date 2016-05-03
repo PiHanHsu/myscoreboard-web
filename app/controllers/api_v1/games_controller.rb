@@ -44,19 +44,23 @@ class ApiV1::GamesController < ApiController
         @games = @wins + @losses
         @rate = @wins / (@wins + @losses)
         @points = @wins * 3 + @losses * 1
+         
+        @best_double_partner, @best_mix_partner = get_best_partners(t) 
 
         { :team => t,
           :wins => @wins,
           :losses => @losses,
           :games => @games,
           :rate => @rate,
-          :points => @points }
+          :points => @points,
+          :best_double_partner => @best_double_partner,
+          :best_mix_partner => @mix_double_partner }
         
       end
       
     end
 
-    private
+  private
     def create_ranking(records)
 
       @records = records.where( :result => "W" ).group( :user_id ).count
@@ -86,19 +90,36 @@ class ApiV1::GamesController < ApiController
       @records.sort! {|a, b| b[4] <=> a[4] }
     end 
 
-    def get_ranking_agaist_teammates
+    def get_best_partners(team)
+
+      if current_user.gender == "male"
+        double_teammates = team.users.where( :gender => "male" )
+        mix_teammates = team.users.where( :gender => "female" )
+      else
+        double_teammates = team.users.where( :gender => "female" )
+        mix_teammates = team.users.where( :gender => "male" )
+      end
+
+      #double_teammates.drop(current_user)
+
+      double_teammates_standing = calculate_partner_standing(double_teammates)
+      mix_teammates_standing = calculate_partner_standing(mix_teammates)
+
+      return double_teammates_standing[0], mix_teammates_standing[0]
+
+    end
+
+end
+
+    def calculate_partner_standing(teammates)
+
+      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
+      wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "L" ).group(:user).count
+
+      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
+      losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "W" ).group(:user).count
       
-      user_games = Current_user.records.joins(:game).where( games: { team_id: params[:team_id] } ).group(:user_id)
-      user_teammates = Record.where( :game_id => user_games ).group( :user_id ).pluck(:user_id)
-      teammates = user_teammates.drop(Current_user.id)
-
-      user_win_games = Current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
-      wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "L" ).group(:user_id).count
-
-      user_loss_games = Current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
-      losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "W" ).group(:user_id).count
-       
-      teammates.map! do |teammate|
+      teammates.map do |teammate|
         wins = 0
         losses = 0
         if wins_with_teammates[teammate]
@@ -114,7 +135,5 @@ class ApiV1::GamesController < ApiController
          rate: rate.round(2)}
       end
 
-      teammates.sort! {|a, b| b[:rate] <=> a[:rate] }
+      teammates = teammates.sort {|a, b| b[:rate] <=> a[:rate] }
     end
-
-end
