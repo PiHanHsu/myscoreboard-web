@@ -1,11 +1,14 @@
 namespace :dev do
 
   task :fake => :environment do
-    
+
     Game.delete_all
     Record.delete_all
-    
+    Location.delete_all
+    Team.delete_all
     users = []
+    teams=[]
+    locations=[]
     tester = User.create!( :email => "tester@msb.com",
                                   :password => "12345678",
                                   :gender => "male",
@@ -23,20 +26,20 @@ namespace :dev do
                              :gender => "female",
                              :username => Faker::Name.first_name)
     end
-    teams = []
-    location = Location.create!(place_name: "Taipei Arena")
 
     3.times do |index|
-      team = Team.create!( :name => "team#{index + 1}", :location_id => 0)
+      locations << Location.create!(:place_name => Faker::Company.name)
+      team = Team.create!( :name => "team#{index + 1}", :location => locations.sample )
+      # team.location = location
+
       team_users = users.sample(10)
       team_users << tester
       team_users.each do |user|
-        UserTeamship.create( :user_id => user.id, :team_id => team.id )
+        UserTeamship.create!( :user_id => user.id, :team_id => team.id )
       end
       teams << team
     end
 
-    
     100.times do
       game_type = ["single", "double", "mix"]
       scores = []
@@ -60,5 +63,4 @@ namespace :dev do
       end
     end
   end
-
 end
