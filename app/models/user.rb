@@ -12,6 +12,12 @@ class User < ActiveRecord::Base
   has_many :records
   has_many :cards
 
+
+  # paperclicp
+
+  has_attached_file :head, styles: { medium: "300x300#", thumb: "200x200#" }, default_url: "default_head.png"
+  validates_attachment_content_type :head, content_type: /\Aimage\/.*\Z/
+
   after_create :set_email_first
 
    def generate_authentication_token
@@ -99,7 +105,7 @@ class User < ActiveRecord::Base
   end
 
   protected
-
+ # 當使用者儲存時,產生 email_first, 也產生head
   def set_email_first
     self.email_first = email.split("@").first
     self.save

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
 
-  before_action :set_user, :only => [:update, :destroy, :show]
+  before_action :set_user, :only => [:edit, :update, :destroy, :show]
 
 
   def index
@@ -10,26 +10,30 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = current_user
+    #產生新球員卡用
     @card = Card.new
-    @cards = @user.cards
+    # 撈球員卡用
+    @cards = current_user.cards
   end
 
   def edit
-    @user = User.find_by(:id => params[:id]) # => User instance or nil
-    # @user = User.find(params[:id]) # => User instance or 例外
     redirect_to '/' unless @user == current_user
+
   end
 
   def update
-      @user = current_user
 
-    if @user.update( user_params )
-      redirect_to root_path
+    if params[:user] && @user == current_user && current_user.update( user_params )
+      redirect_to user_path(current_user)
     else
-      render "edit"
+      redirect_to :back
     end
 
+
+  end
+
+  def create
+  @user = User.create(user_params)
   end
 
 
@@ -50,7 +54,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :user_id, :emial, :username, :userid, :gender )
+    params.require(:user).permit(:id, :user_id, :emial, :username, :userid, :gender, :head )
   end
 
   def set_user
