@@ -1,5 +1,11 @@
+<div.class="button_wrap">
+	<div class="create_team_wrap"></div>
+</div>
+<div class="add_team_form">
+
+</div>
 <div class="container">
-	<div class="myteam_info">
+	<div class="container myteam_info">
 		<div class="container head">
 			<div class="row">
 				<div class="col-md-4">
@@ -23,8 +29,14 @@
 		</div>
 
 		<div class="container teams_container">
-			<%= render :partial => 'team_list', :collection => @teams, :as => :team  %>
+			<%= render :partial => 'team_list', :collection => @teams, :as => :team %>
 		</div>
 
 	</div>
 </div>
+
+<script>
+	$(".create_team_wrap").click(function(){
+		$("#createModal").modal();
+	});
+</script>

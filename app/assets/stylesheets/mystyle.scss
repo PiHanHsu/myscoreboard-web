@@ -141,7 +141,7 @@ body {
     border-radius: 10px;
 }
 
-
+// team
 .team_item {
     margin: 0,auto;
     width: 1100px;
@@ -153,6 +153,7 @@ body {
 }
 .team_info {
     height: auto;
+    width: 1050px;
     margin-left: 25px;
     border: 1px solid #bbb;
     .col-md-4 {border: 1px solid #bbb;}
@@ -160,6 +161,23 @@ body {
 
 .team_list{
   margin-bottom: 10px;
+}
+.create_team_wrap::before{
+  content: "+";
+}
+
+.create_team_wrap{
+  background-color: #2196F3;
+  color: #FFF;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  line-height: 55px;
+  text-align: center;
+  position: fixed;
+  border-radius: 100%;
+  bottom: 85px;
+  left: 1253px;
 }
 
 // 翻轉球員卡
