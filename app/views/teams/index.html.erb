@@ -7,32 +7,6 @@
 						我的球隊列表
 					</h1>
 				</div>
-
-				<!-- 以下是找隊友 -->
-				<div class="col-md-6 search">
-					<h2>
-						誰要當我隊友啦~
-					</h2>
-					<%= form_tag search_users_path, :method => :get, :remote => true do %>
-					<p>
-						<%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
-						<%= submit_tag "搜尋" %>
-					</p>
-					<% end %>
-					<div class="find_user"></div>
-					<div class="">
-					<h2>
-						誰要當我隊友啦~
-					</h2><h2>
-						誰要當我隊友啦~
-					</h2><h2>
-						誰要當我隊友啦~
-					</h2><h2>
-						誰要當我隊友啦~
-					</h2>
-				</div>
-				<!-- 以上是找隊友 -->
-
 			</div>
 		</div>
 
