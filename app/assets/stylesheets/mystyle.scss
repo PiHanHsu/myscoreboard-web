@@ -2,7 +2,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: image-url('bg_badminton.jpg');
+    padding-top: 80px;
 }
+
+
 .clearfix:after {
     content: "";
     display: table;
@@ -26,7 +29,7 @@ body {
 }
 #navbar {
     min-height: 50px;
-    background-color: transparent;
+    background-color: black;
     border-color: transparent;
 }
 
