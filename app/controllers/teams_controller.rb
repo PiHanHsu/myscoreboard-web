@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
 
   def index
     @teams = current_user.teams
+    @user = current_user
   end
 
   def create
@@ -65,8 +66,17 @@ class TeamsController < ApplicationController
     else
       render :action => :update
     end
+  end
+
+
+
+  def add_player
+
+    @user_teamship = UserTeamship.create( :team_id => params[:id], :user_id => params[:user_id] )
+
 
   end
+
 
   private
 
