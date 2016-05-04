@@ -4,7 +4,7 @@ class ApiV1::GamesController < ApiController
 	  def index
 
       #Ranking api for 3 game_types
-      
+
       @single_records = Record.joins(:game).where( games: { team_id: params[:team_id], game_type: "single" } )
       @single_ranking = create_ranking(@single_records)
 
@@ -55,7 +55,7 @@ class ApiV1::GamesController < ApiController
           :rate => @rate,
           :points => @points,
           :best_double_partner => @best_double_partner,
-          :best_mix_partner => @mix_double_partner }
+          :best_mix_partner => @best_mix_partner }
         
       end
       

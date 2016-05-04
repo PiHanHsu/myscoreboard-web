@@ -2,7 +2,21 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-image: image-url('bg_badminton.jpg');
+    padding-top: 80px;
 }
+
+#ranking_tr{
+    td{
+      height: 80px;
+      vertical-align: middle;
+    }
+}
+
+.head_image{
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .clearfix:after {
     content: "";
     display: table;
@@ -26,7 +40,7 @@ body {
 }
 #navbar {
     min-height: 50px;
-    background-color: transparent;
+    background-color: black;
     border-color: transparent;
 }
 

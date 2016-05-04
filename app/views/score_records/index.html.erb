@@ -1,0 +1,33 @@
+<div class="container info">
+<!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        選擇隊友
+                    </button>
+<!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    
+                                    <%= form_tag new_game_path(@game) do %>
+                                      <h4 class="modal-title" id="myModalLabel"> male players</h4>
+                                      <%= collection_check_boxes(:game, :user_ids, @males, :id, :username) do |b| %>
+                                      <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %><br>
+                                      <% end %>
+                                      <h4 class="modal-title" id="myModalLabel"> female players </h4>
+                                      <%= collection_check_boxes(:game, :user_ids, @females, :id, :username) do |b| %>
+                                      <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %><br>
+                                      <% end %>
+                                    
+                                </div>
+                                <div class="modal-footer"> 
+                                    <%= submit_tag "Start", class: "btn btn-primary" %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</div>
