@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'paperclip'
 gem 'kaminari'
 
+
+gem 'font-awesome-sass'
 gem 'omniauth-facebook'
 gem 'devise'
 # Use jquery as the JavaScript library

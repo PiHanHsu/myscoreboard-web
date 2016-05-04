@@ -39,10 +39,10 @@ class TeamsController < ApplicationController
   end
 
   def update
-    location = Location.find_or_create_by(location_params)
+    location = Location.find_or_create_by(place_name: location_params[:location_attributes][:place_name])
     # params[:location_id] = @location.id
-    @team.update(team_params)
-    @team.location = location
+		@team.location = location
+    @team.update_attributes!(team_params)
 
     #  params[:user_ids] #=> [], nil, [1,2,3,...]
     if params[:added_user_ids].present?
@@ -61,9 +61,9 @@ class TeamsController < ApplicationController
     end
 
     if @team.save
-      render json: { message: "更新成功" }
+      redirect_to teams_path
     else
-      render json: { message: "更新失敗" }, :status => 400
+      render :action => :update
     end
 
   end
@@ -76,11 +76,11 @@ class TeamsController < ApplicationController
   end
 
   def location_params
-    params.permit(:place_name, :address, :lat, :lng)
+    params.require(:team).permit(location_attributes:[:place_name])
   end
 
   def team_params
-    params.permit(:name, :day, :start_time, :end_time, :logo)
+    params.require(:team).permit(:name, :day, :start_time, :end_time, :logo)
   end
 
 end

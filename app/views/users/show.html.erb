@@ -1,20 +1,44 @@
  <div class="container_mobile_user">
 
 <div class="row">
- <h1>使用者頁面</h1>
+ <h1><%=@user.userid%>的個人頁面</h1>
 </div>
 
 <div class="row">
 
-   <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 ">
-      <P><%= image_tag(@user.fb_pic) %></P>
-       <P> id：<%= @user.userid %></P>
-       <%= link_to('修改個人資訊', edit_user_path(current_user)) %>
-       <br>
-       <br>
-      <P> 暱稱：<%= @user.username %></P>
-      <P> gender：<%= @user.gender %></P>
-      <P> E-mail：<%= @user.email %> </P>
+   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+
+      <div class="playercard">
+
+       <div class="face front">
+          <br>
+          <br>
+          <%= user_avatar(@user) %>
+          <ul>
+          <P> id：<%= @user.userid %></P>
+          <br>
+          <br>
+          <P> 暱稱：<%= @user.username %></P>
+          <P> gender：<%= @user.gender %></P>
+          <P> E-mail：<%= @user.email %> </P>
+          </ul>
+      </div>
+
+      <div class="face back ">
+
+       <%= image_tag "Kumamon.jpg"%>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+
+   <%= link_to('修改個人資訊', edit_user_path(current_user)) %>
+
       上傳球員卡
       <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
       <%= form.file_field :avatar %>
@@ -27,19 +51,10 @@
       <%= form.submit %>
       <% end %>
 
-  </div>
-
-  <div class=" hidden-xs hidden-sm col-md-2 col-lg-2 ">
-      <div class="nil_line2"></div>
-  </div>
-
-    許願池 雷達圖
-   <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 ">
    <% @cards.each do |c| %>
    <%= image_tag c.avatar.url(:thumb)%>
    <% end %>
    <br> <br> <br> <br> <br> <br> <br>
-   <%= image_tag @user.head.url(:thumb)%>
 
    </div>
 

@@ -82,6 +82,10 @@ body {
 .password_area {
     padding-right: 76px;
 }
+
+.gender_area {
+    padding-right: 110px;
+}
 .transparent {
     background: transparent;
     border: none;
@@ -126,7 +130,7 @@ body {
     margin-right: auto;
     width: 650px;
     background-color: rgba(255, 255, 255, 0.8);
-    height: 800px;
+    height: 650px;
     border-radius: 10px;
 }
 
@@ -157,6 +161,41 @@ body {
 .team_list{
   margin-bottom: 10px;
 }
+
+// 翻轉球員卡
+
+ .playercard {
+        position: relative;
+        -webkit-perspective: 600;
+        width: 100px;
+        height: 100px;
+    }
+    .face {
+        width: 325px;
+        height: 455px;
+        position: absolute;
+        -webkit-transition: all 1s;
+        -webkit-backface-visibility: hidden;
+    }
+    .front {
+        background: #FFFFFF;
+        z-index: 10;
+    }
+    .back {
+        background: #FFFFFF;
+        -webkit-transform: rotate3d(0, 1, 0, -180deg);
+        z-index: 8;
+    }
+    .playercard:hover .front {
+        -webkit-transform: rotate3d(0, 1, 0, 180deg);
+        z-index: 8;
+    }
+    .playercard:hover .back {
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        z-index: 8;
+    }
+
+
 /*************************
           ＲＷＤ
 *************************/

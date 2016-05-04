@@ -11,17 +11,40 @@
                 <h3>球隊名稱：<%= team.name %></h3>
             </div>
             <div class="team_content">
-                <h4>球聚時間：</h4>
-                <div class="day">
-                    <h3><%= team.day %></h3>
+                <h3>球聚地點：<%= team.location.place_name %></h3>
+                <h3>球聚時間：<%= team.day %><br><%= "%02d" %team.start_time.hour %>：<%= "%02d" %team.start_time.min %>~~<%= "%02d" %team.end_time.hour %>：<%= "%02d" %team.end_time.min %></h3>
+
+                <div class="team_edit">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        編輯球隊
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">編輯球隊</h4>
+                                </div>
+                                <%= form_for team do |t| %>
+                                <div class="form-group">
+                                    <%= render partial: "create_team", locals: {t: t} %>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">
+                                        <%= t.submit "儲存變更!", :class => "btn btn-primary btm-lg"%>
+                                    </button>
+                                </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hour">
-                    <span>
-                        <h5><%= "%02d" %team.start_time.hour %></h5>
-                        <h5><%= "%02d" %team.end_time.hour %></h5>
-                    </span>
-                </div>
-                <div class="team_edit"></div>
             </div>
         </div>
         <div class="col-md-8 col-xs-12 team_list">

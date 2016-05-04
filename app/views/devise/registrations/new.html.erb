@@ -31,10 +31,13 @@
     </div>
 
     <br>
-    <div class="field1 password_area">
-      <%=  image_tag("glyphicons-758-gender-ori-hetero.png", size: "18x18") %>
-      <%= f.text_field :gender, autofocus: true, placeholder: "男/女", class: "transparent"  %>
-    </div>
+        <div class=" gender_area">
+          <%=  image_tag("glyphicons-758-gender-ori-hetero.png", size: "18x18") %>
+           <%= f.radio_button :gender, "male" %>
+           <%= f.label :gender_male, "Male" %>
+           <%= f.radio_button :gender, "female" %>
+           <%= f.label :gender_female, "Female" %>
+        </div>
 
     <br>
     <div class="field1 email_area2">
