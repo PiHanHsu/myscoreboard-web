@@ -1,9 +1,10 @@
+<%= t.label :name,'球隊名稱' %>
 <%= t.text_field :name, :class => "form-control" %>
-<%= t.label :day %>
+<%= t.label :day,'球聚日期' %>
 <%= t.text_field :day, :class => "form-control" %>
-<%= t.label :start_time %>
+<%= t.label :start_time,'開始時間' %>
 <%= t.time_field :start_time, :class => "form-control" %>
-<%= t.label :end_time %>
+<%= t.label :end_time,'結束時間' %>
 <%= t.time_field :end_time, :class => "form-control" %>
 <%= t.file_field :logo %>
 <%= t.fields_for :location do |l| %>

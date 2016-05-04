@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   end
   resources :cards
   resources :games
+  resources :score_records
   resources :teams do
     member do
       post :add_player
     end
   end
+
 
   scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
 

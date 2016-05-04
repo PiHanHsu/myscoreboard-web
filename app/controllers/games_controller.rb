@@ -26,4 +26,13 @@ class GamesController < ApplicationController
       end
     end
   end
+
+  def new
+    @game = Game.create( :team_id => params[:team_id])
+    @record = Record.new
+  end
+
+  def create
+  end
+
 end
