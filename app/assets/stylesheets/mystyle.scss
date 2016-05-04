@@ -5,6 +5,17 @@ body {
     padding-top: 80px;
 }
 
+#ranking_tr{
+    td{
+      height: 80px;
+      vertical-align: middle;
+    }
+}
+
+.head_image{
+  border-radius: 50%;
+  overflow: hidden;
+}
 
 .clearfix:after {
     content: "";

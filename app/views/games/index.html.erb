@@ -9,8 +9,9 @@
              <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=@team.name %><b class="caret"></b></a>
              <ul class="dropdown-menu">
               <% @teams.each do |team| %>
-       			  <li><%= link_to team.name, games_path( :team => team ) %></li>
+       			    <li><%= link_to team.name, games_path( :team => team ) %></li>
               <% end %>
+            </ul>
           </li>
       	</div>
         <div class="nav nav-tabs pull-right">  
@@ -26,6 +27,7 @@
         	<table class = "table">
       			<thead class = "thead">
        				<th> <%= "男子選手排行榜"%></th>
+              <th class="empty_th"></th>
               <th> <%= "勝"%></th>
               <th> <%= "敗"%></th>
               <th> <%= "勝率"%></th>
@@ -34,8 +36,9 @@
        				</thead>
        				<tbody> 
                <% @male_ranking.each do |player| %>
-      				 <tr>
-        				<td><%= player[:user].username %></td>
+      				 <tr id="ranking_tr">
+        				<td ><%= image_tag(player[:user].head.url, height: '70', width: '70',:class => "head_image") %></td>
+                <td class="ranking_td"><div><%= player[:user].username %></div></td>
                 <td><%= player[:wins] %></td>
                 <td><%= player[:losses] %></td>
                 <td><%= player[:rate] %></td>
