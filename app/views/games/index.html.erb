@@ -52,6 +52,7 @@
        		<table class = "table ">
      			  <thead class = "thead">
        			  <th> <%= "女子選手排行榜"%></th>
+              <th class="empty_th"></th>
               <th> <%= "勝"%></th>
               <th> <%= "敗"%></th>
               <th> <%= "勝率"%></th>
@@ -59,8 +60,9 @@
        			</thead>
        			<tbody> 
      				  <% @female_ranking.each do |player| %>
-                <tr>
-                  <td><%= player[:user].username %></td>
+                <tr id="ranking_tr">
+                  <td ><%= image_tag(player[:user].head.url, height: '70', width: '70',:class => "head_image") %></td>
+                  <td class="ranking_td"><div><%= player[:user].username %></div></td>
                   <td><%= player[:wins] %></td>
                   <td><%= player[:losses] %></td>
                   <td><%= player[:rate] %></td>

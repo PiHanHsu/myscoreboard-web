@@ -12,13 +12,7 @@
 <body>
   <nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <% if flash[:notice].present? %>
-              <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
-            <%end%>
-
-            <% if flash[:alert].present? %>
-              <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-            <%end%>
+            
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <span class="navbar-brand"> <%= link_to 'MyScoreBoard', games_path %></span>

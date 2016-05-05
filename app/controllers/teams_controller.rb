@@ -6,25 +6,24 @@ class TeamsController < ApplicationController
 
   def index
     @teams = current_user.teams
-		@team = current_user.teams.new
+		@team = Team.new
 		@team.build_location
 		# @team.location_id=@location.id
     @user = current_user
 
     if params[:team]
-      @team = Team.find( params[:team] )
+      @team_tab = Team.find( params[:team] )
     else
-      @team = @teams.first
+      @team_tab = @teams.first
     end
   end
 
   def create
     # @location = Location.find_or_create_by(:place_name => params[:place_name])
 		location = Location.find_or_create_by(:place_name => params[:team][:location][:place_name])
-		team = current_user.teams.new(team_params)
+		team = current_user.teams.create!(team_params)
 		team.location = location
 		# team.location = location
-
     if team.save
       redirect_to teams_path
     else
@@ -83,7 +82,7 @@ class TeamsController < ApplicationController
   # end
 
   def team_params
-    params.require(:team).permit(:name, :day, :start_time, :end_time, :logo)
+    params.require(:team).permit(:name, :day, :start_time, :end_time, :logo, :locaiton_id)
   end
 
 end
