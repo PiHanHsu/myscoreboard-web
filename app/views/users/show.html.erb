@@ -37,7 +37,59 @@
 
    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
 
-   <%= link_to('修改個人資訊', edit_user_path(current_user)) %>
+<!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        編輯個人頁面
+                    </button>
+<!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+
+
+              <%= form_for @user do |f| %>
+                使用者名稱:
+                <div class="field1 edit_area">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "transparent"  %>
+                </div>
+
+                使用者ID:
+                <div class="field1 edit_area">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <%= f.text_field :userid, placeholder: "ID", class: "transparent" %>
+                </div>
+
+                Email:
+                <div class="field1 edit_area">
+                  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                  <%= f.email_field :email, autofocus: "off", class: "transparent"  %>
+                </div>
+
+                性別:
+                <div class=" edit_area">
+                  <%=  image_tag("glyphicons-758-gender-ori-hetero.png", size: "18x18") %>
+                   <%= f.radio_button :gender, "male" %>
+                   <%= f.label :gender_male, "Male" %>
+                   <%= f.radio_button :gender, "female" %>
+                   <%= f.label :gender_female, "Female" %>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                  <%= f.submit "儲存", class: "btn btn-primary" %><br><br>
+                  <% end %>
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">關閉</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+<br><br>
 
       上傳球員卡
       <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>

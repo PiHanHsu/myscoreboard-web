@@ -6,6 +6,9 @@ class TeamsController < ApplicationController
 
   def index
     @teams = current_user.teams
+		@team = current_user.teams.new
+		@team.build_location
+		# @team.location_id=@location.id
     @user = current_user
 
     if params[:team]
@@ -17,28 +20,15 @@ class TeamsController < ApplicationController
 
   def create
     # @location = Location.find_or_create_by(:place_name => params[:place_name])
-		@location = Location.find_or_create_by(location_params)
-    @team = current_user.teams.create(team_params)
-    @team.location_id = @location.id
+		location = Location.find_or_create_by(:place_name => params[:team][:location_attributes][:place_name])
+		team = current_user.teams.new(team_params)
+		team.location = location
+		# team.location = location
 
-    #重構
-    #@team = current_user.build_team( team_params, location_params )
-    #class User < ActiveRecord::Base
-    #def build_team( team_attrs, location_attrs)
-    #  location = Location.find_or_create_by(location_attrs)
-    #  team = self.teams.new(team_attrs)
-    #  team.location = location
-    #  return team
-    #end
-
-    if @team.save
-      render json: {
-        message: "儲存成功",
-      }
+    if team.save
+      redirect_to teams_path
     else
-      render json: {
-        message: "儲存失敗",
-      }, status: 400
+			render :action => :create
     end
   end
 
@@ -77,10 +67,7 @@ class TeamsController < ApplicationController
 
 
   def add_player
-
     @user_teamship = UserTeamship.create( :team_id => params[:id], :user_id => params[:user_id] )
-
-
   end
 
 
@@ -91,9 +78,9 @@ class TeamsController < ApplicationController
     @team = current_user.teams.find( params[:id] )
   end
 
-  def location_params
-    params.require(:team).permit(location_attributes:[:place_name])
-  end
+  # def location_params
+  #   params.require(:team).permit(location_attributes:[:place_name])
+  # end
 
   def team_params
     params.require(:team).permit(:name, :day, :start_time, :end_time, :logo)
