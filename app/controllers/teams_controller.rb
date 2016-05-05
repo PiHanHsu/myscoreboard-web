@@ -71,10 +71,7 @@ class TeamsController < ApplicationController
 
 
   def add_player
-
     @user_teamship = UserTeamship.create( :team_id => params[:id], :user_id => params[:user_id] )
-
-
   end
 
 
