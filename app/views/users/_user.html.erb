@@ -3,7 +3,7 @@
 <div class="search_box bolder">
  <div class="row">
 
-
+  <% @users.each do |user| %>
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 search_box_min">
    <%= user_head(user) %>
   </div>
@@ -15,6 +15,7 @@
 
   <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
   </div>
-  <%#= link_to "加", add_player_team_path(team, :user_id => user) %>
+  <%= link_to "加", add_player_team_path(team, :user_id => user) %>
+  <% end %>
   </div>
 </div>

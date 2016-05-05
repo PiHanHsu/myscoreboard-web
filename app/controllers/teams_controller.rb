@@ -7,6 +7,13 @@ class TeamsController < ApplicationController
   def index
     @teams = current_user.teams
     @user = current_user
+
+    if params[:team]
+      @team = Team.find( params[:team] )
+    else
+      @team = @teams.first
+    end
+
   end
 
   def create
