@@ -179,7 +179,19 @@ body {
 
 .team_list{
   margin-bottom: 10px;
+  .team_member{
+    label{
+      &.selected{
+        border: 5px solid red;
+      }
+      input[type=checkbox]{
+        display: none;
+      }
+    }
+  }
 }
+
+
 .create_team_wrap::before{
   content: "+";
 }
@@ -246,7 +258,18 @@ body {
     right:300px;
     z-index: 7;
 }
-
+.fix-lulu  {
+    height: 45px;
+    width: auto;
+    background-color: transparent;
+    border:none;
+    color: blue;
+    font-size: 14px;
+  
+}
+.fix-lulu:hover{
+  background-color: transparent;
+}
 
 /*************************
           ＲＷＤ

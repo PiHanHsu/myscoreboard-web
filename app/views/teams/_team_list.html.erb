@@ -1,5 +1,4 @@
 <div class="row team_item">
-
     <div class="row fuction_bar">
 
         <div class="search_bar col-md-offset-6 col-md-3 col-xs-12">
@@ -40,13 +39,33 @@
             </div>
         </div>
         <div class="col-md-8 col-xs-12 team_list">
+          <!-- <%= check_box_tag 'u_ids[], u.id',false %> -->
+
+          <form action="post">
             <% team.users.each do |u| %>
             <div class="col-md-3 col-xs-2 team_member">
                 <span class="user_name">
                     <%= u.username %></span>
-                <img src="http://placehold.it/140x150">
+
+                <label for="u.username">
+                  <img src="http://placehold.it/140x150">
+                  <input type="checkbox" name="u.username" id="u.username"></input>
+                </label>
             </div>
             <% end %>
+            <input type="submit" value="送出">
+          </form>
         </div>
     </div>
 </div>
+
+
+<script>
+  $('input[type="checkbox"]').change(function(){
+    if($(this).is(":checked")){
+      $(this).parent().addClass("selected");
+    }else{
+      $(this).parent().removeClass("selected");
+    }
+  });
+</script>
