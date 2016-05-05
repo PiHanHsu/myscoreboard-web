@@ -13,7 +13,11 @@ class TeamsController < ApplicationController
     else
       @team = @teams.first
     end
+  end
 
+  def new
+    @team = Team.new
+    render partial: "create_modal", locals: { team: @team }
   end
 
   def create
