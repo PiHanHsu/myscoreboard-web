@@ -246,7 +246,18 @@ body {
     right:300px;
     z-index: 7;
 }
-
+.fix-lulu  {
+    height: 45px;
+    width: auto;
+    background-color: transparent;
+    border:none;
+    color: blue;
+    font-size: 14px;
+  
+}
+.fix-lulu:hover{
+  background-color: transparent;
+}
 
 /*************************
           ＲＷＤ

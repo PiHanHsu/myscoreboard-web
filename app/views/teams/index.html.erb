@@ -1,3 +1,5 @@
+
+
 <div class="container">
 	<div class="myteam_info">
 		<div class="container head">
@@ -19,8 +21,9 @@
 	    		<%= link_to team.name, teams_path(team: team) %>
 	    	</li>
 	    	<% end %>
-	    	<li >
-	    		<%= link_to "Add Team" %>
+	    	<li>
+	    		<button type="button" class="btn btn-default btn-lg fix-lulu" data-toggle="modal" data-target="#createModal">
+            AddTeam</button>
 	    	</li>
 	    </div>
 				</div>
@@ -36,3 +39,36 @@
  		
 	</div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="createModalLabel">新增球隊</h4>
+            </div>
+            <%= form_for @team do |t| %>
+            <div class="form-group">
+                <%= render partial: "create_team", :locals => {:t => t} %>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">
+                    <%= t.submit "儲存變更!", :class => "btn btn-primary btm-lg"%>
+                </button>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+// <script>
+//     $("#createModal").click(function(){
+//         // console.log("hello")
+//         // $("#editModal").modal();
+//         $("#createModal").modal();
+//     });
+// </script>
+

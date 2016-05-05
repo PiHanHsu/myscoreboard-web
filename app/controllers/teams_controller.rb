@@ -15,11 +15,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  def new
-    @team = Team.new
-    render partial: "create_modal", locals: { team: @team }
-  end
-
   def create
     # @location = Location.find_or_create_by(:place_name => params[:place_name])
 		@location = Location.find_or_create_by(location_params)
