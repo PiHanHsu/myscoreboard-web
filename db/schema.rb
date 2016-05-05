@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503034417) do
+ActiveRecord::Schema.define(version: 20160505124327) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160503034417) do
     t.string   "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "google_id"
   end
 
   create_table "records", force: :cascade do |t|
@@ -69,12 +70,10 @@ ActiveRecord::Schema.define(version: 20160503034417) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.integer  "location_id",                                       null: false
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.integer  "location_id"
   end
-
-  add_index "teams", ["location_id"], name: "index_teams_on_location_id"
 
   create_table "user_teamships", force: :cascade do |t|
     t.integer  "user_id",    null: false
