@@ -43,13 +43,14 @@ class UsersController < ApplicationController
   def search
 
     if params[:search] == ''
-      @users = User.all
+      @users = User.all.limit(5)
     else
-      @users = User.where( 'email_first LIKE ? OR username LIKE?' , "%#{params[:search]}%", "%#{params[:search]}%" )
+      @users = User.where( 'email_first LIKE? OR username LIKE? OR userid LIKE?' , "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
     end
     @team = Team.find( params[:team_id])
     return render(:search_fail) unless @users.present?
   end
+
 
 
   private
