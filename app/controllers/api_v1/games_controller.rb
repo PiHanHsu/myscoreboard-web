@@ -88,7 +88,7 @@ class ApiV1::GamesController < ApiController
           end
       end
       
-      @records.sort! {|a, b| b[4] <=> a[4] }
+      @records = @records.sort {|a, b| b[4] <=> a[4] }
     end 
 
     def get_best_partners(team)
