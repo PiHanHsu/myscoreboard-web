@@ -7,6 +7,8 @@
 <%= t.label :end_time,'結束時間' %>
 <%= t.time_field :end_time, :class => "form-control" %>
 <%= t.file_field :logo %>
+
 <%= t.fields_for :location do |l| %>
-<%= render partial: "edit_location", locals: {l: l}  %>
+<%= l.label :place_name,'球聚地點' %>
+<%= l.text_field :place_name, :class => "form-control" %>
 <% end %>

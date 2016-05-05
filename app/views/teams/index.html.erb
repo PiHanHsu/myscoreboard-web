@@ -1,4 +1,5 @@
-<div.class="button_wrap">
+<div class="button_wrap">
+<%= render :partial => 'create_modal' %>
 	<div class="create_team_wrap"></div>
 </div>
 <div class="add_team_form">
@@ -37,7 +38,7 @@
 
 <script>
 	$(".create_team_wrap").click(function(){
-		console.log("hello")
+		// console.log("hello")
 		// $("#editModal").modal();
 		$("#createModal").modal();
 	});

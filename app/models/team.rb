@@ -5,7 +5,7 @@ class Team < ActiveRecord::Base
   has_many :users, :through => :user_teamships
   validates_length_of :name, :maximum => 20
   validates_presence_of :name
-  accepts_nested_attributes_for :location
+#  accepts_nested_attributes_for :location
 
 
 
