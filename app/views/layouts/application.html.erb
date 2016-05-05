@@ -14,7 +14,7 @@
         <div class="container">
             
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div id="brand-title" class="navbar-header">
                 <span class="navbar-brand"> <%= link_to 'MyScoreBoard', games_path %></span>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                   <span class="sr-only">Toggle navigation</span>
@@ -27,11 +27,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div>
-                  <ul class="nav navbar-nav pull-right">
+                  <ul id="brand-title" class="nav navbar-nav pull-right">
                     <% if current_user %>
-                    <li><%= link_to "個人頁面", user_path(current_user),:method => :get%></li>
                     <li><%= link_to "我的球隊", teams_path %></li>
                     <li><%= link_to "排行榜", games_path %></li>
+                    <li><%= link_to "個人資訊", user_path(current_user),:method => :get%></li>
                     <% end %>
                     <% if current_user %>
                     <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>

@@ -1,7 +1,5 @@
 body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: image-url('bg_badminton.jpg');
+    background-color: rgba(132, 174, 238, 1);
     padding-top: 80px;
 }
 
@@ -24,7 +22,7 @@ body {
 }
 .info {
     //background-color: rgba(0, 19, 49, 0.7);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(132, 174, 238, 1);
     height:600px;
     border-radius: 10px;
 }
@@ -38,10 +36,20 @@ body {
     height: 500px;
     border-radius: 10px;
 }
+//navbar
 #navbar {
     min-height: 50px;
-    background-color: black;
+    background-color: rgba(34, 92, 180, 1);
     border-color: transparent;
+}
+
+#brand-title {
+    a{
+        color: white;
+    }
+    li{
+        color: white;
+    }
 }
 
 // login & singup
