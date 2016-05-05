@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
 
   def create
     # @location = Location.find_or_create_by(:place_name => params[:place_name])
-		location = Location.find_or_create_by(:place_name => params[:team][:location_attributes][:place_name])
+		location = Location.find_or_create_by(:place_name => params[:team][:location][:place_name])
 		team = current_user.teams.new(team_params)
 		team.location = location
 		# team.location = location
@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
   end
 
   def update
-    location = Location.find_or_create_by(place_name: location_params[:location_attributes][:place_name])
+    location = Location.find_or_create_by(:place_name => params[:team][:location][:place_name])
     # params[:location_id] = @location.id
 		@team.location = location
     @team.update_attributes!(team_params)
