@@ -1,8 +1,18 @@
 <div class="row team_item">
-    <div class="col-md-offset-9 col-md-3 col-xs-12">
-        <%= link_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
+    <div class="row fuction_bar">
 
+        <div class="search_bar col-md-offset-6 col-md-3 col-xs-12">
+        <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
+            <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
+            <%= submit_tag "搜尋" %>
+        <% end %>
+        </div>
+
+        <div class="col-md-3 col-xs-12 ">
+          <%= link_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
+        </div>
     </div>
+    <div class="find_user"></div>
     <div class="row team_info">
         <div class="col-md-4 col-xs-12">
             <div class="team_logo">

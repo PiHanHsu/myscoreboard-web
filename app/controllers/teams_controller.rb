@@ -9,6 +9,13 @@ class TeamsController < ApplicationController
 		@team = current_user.teams.new
 		@team.build_location
 		# @team.location_id=@location.id
+    @user = current_user
+
+    if params[:team]
+      @team = Team.find( params[:team] )
+    else
+      @team = @teams.first
+    end
   end
 
   def create
@@ -55,8 +62,17 @@ class TeamsController < ApplicationController
     else
       render :action => :update
     end
+  end
+
+
+
+  def add_player
+
+    @user_teamship = UserTeamship.create( :team_id => params[:id], :user_id => params[:user_id] )
+
 
   end
+
 
   private
 
