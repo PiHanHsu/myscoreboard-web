@@ -1,1 +1,1 @@
-$('.find_user').html('<%= escape_javascript render(@users) %>');
+$('.find_user').html('<%= escape_javascript render(partial: 'user', :locals => { :users => @users, :team => @team}) %>');

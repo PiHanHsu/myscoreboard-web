@@ -3,7 +3,7 @@
     <div class="row fuction_bar">
 
         <div class="search_bar col-md-offset-6 col-md-3 col-xs-12">
-        <%= form_tag search_users_path, :method => :get, :remote => true do %>
+        <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
             <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
             <%= submit_tag "搜尋" %>
         <% end %>

@@ -9,16 +9,29 @@
 				</div>
 			</div>
 		</div>
-
-    <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">team1</a></li>
-    <li role="presentation"><a href="#">team2</a></li>
-    <li role="presentation"><a href="#">+</a></li>
-    </ul>
-
 		<div class="container teams_container">
-			<%= render :partial => 'team_list', :collection => @teams, :as => :team  %>
-		</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="nav nav-tabs pull-left">
+	    	<% @teams.each do |team| %>
+	    	<li class="<%= 'active' if @team == team %>">
+	    		<%= link_to team.name, teams_path(team: team) %>
+	    	</li>
+	    	<% end %>
+	    	<li >
+	    		<%= link_to "Add Team" %>
+	    	</li>
+	    </div>
+				</div>
+			</div>
+
+	    <div class="row">
+	    	<div class = "col-sm-12">
+					<%= render :partial => 'team_list', :locals => { :team => @team }  %>
+	    	</div>
+	    </div>
+	   </div>
+
 
 	</div>
 </div>
