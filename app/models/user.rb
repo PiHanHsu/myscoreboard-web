@@ -54,7 +54,6 @@ class User < ActiveRecord::Base
      end
 
      # Case 3: Create new password
-     byebug
      user = User.new
      user.fb_uid = auth.uid
      user.fb_token = auth.credentials.token
