@@ -2,6 +2,13 @@ class GamesController < ApplicationController
   before_action :authenticate_user!
 
 	def index
+
+    # 若使用者沒有id 會跳到輸入id的頁面
+    # if current_user.userid == nil
+    #   redirect_to enteruserid_path
+    # end
+    # 若使用者沒有id 會跳到輸入id的頁面
+
     @teams = current_user.teams
 
     if params[:team]
@@ -9,7 +16,7 @@ class GamesController < ApplicationController
 	  else
       @team = @teams.first
     end
-    
+
     if @team
       @game_type = "mix"
       if params[:game_type] == "single"

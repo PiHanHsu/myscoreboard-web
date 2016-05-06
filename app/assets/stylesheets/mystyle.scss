@@ -3,13 +3,6 @@ body {
     padding-top: 80px;
 }
 
-#ranking_tr{
-    td{
-      height: 80px;
-      vertical-align: middle;
-    }
-}
-
 .head_image{
   border-radius: 50%;
   overflow: hidden;
@@ -21,8 +14,8 @@ body {
     clear: both;
 }
 .info {
-    //background-color: rgba(0, 19, 49, 0.7);
-    background-color: rgba(132, 174, 238, 1);
+    background-color: rgba(0, 19, 49, 0.7);
+    //background-color: rgba(132, 174, 238, 1);
     height:600px;
     border-radius: 10px;
 }
@@ -50,6 +43,44 @@ body {
     li{
         color: white;
     }
+}
+//ranking
+.team-ranking{
+    background-color: rgba(119, 163, 238, 1);
+    border-radius: 5px;
+}
+
+.scrollit {
+    overflow: scroll;
+    height: 100px;
+}
+
+.ranking-table{
+   
+}
+.ranking-area{
+    background-color: white;
+    border-radius: 5px;
+}
+
+#ranking_tr{
+    td{
+      height: 50px;
+      vertical-align: middle;
+    }
+}
+
+.fix-lulu  {
+    height: 45px;
+    width: auto;
+    background-color: transparent;
+    border:none;
+    color: blue;
+    font-size: 14px;
+
+}
+.fix-lulu:hover{
+  background-color: transparent;
 }
 
 // login & singup
@@ -275,18 +306,7 @@ body {
     right:300px;
     z-index: 7;
 }
-.fix-lulu  {
-    height: 45px;
-    width: auto;
-    background-color: transparent;
-    border:none;
-    color: blue;
-    font-size: 14px;
 
-}
-.fix-lulu:hover{
-  background-color: transparent;
-}
 
 /*************************
           ＲＷＤ
