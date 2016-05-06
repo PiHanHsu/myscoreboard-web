@@ -13,9 +13,9 @@
           </li>
         </div>
         <div class="nav nav-tabs pull-right">  
-          <li class="<%= 'active' if @game_type == "single" %>"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
-          <li class="<%= 'active' if @game_type == "double" %>"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
-          <li class="<%= 'active' if @game_type == "mix" %>"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
+          <li class="<%= 'active' if @game_type == "single" %> game_type"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
+          <li class="<%= 'active' if @game_type == "double" %> game_type"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
+          <li class="<%= 'active' if @game_type == "mix" %> game_type"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
         </div>
       </div>
     </div>
@@ -25,8 +25,10 @@
           <%= image_tag(@team.logo.url(:thumb)) %>
         </div>
         <div class="team_content">
-          <h3>球聚地點：<%= @team.location.place_name %></h3>
-          <h3>球聚時間：<%= @team.day %><br><%= "%02d" % @team.start_time.hour %>：<%= "%02d" % @team.start_time.min %>~~<%= "%02d" % @team.end_time.hour %>：<%= "%02d" % @team.end_time.min %></h3>
+          <p>聚會日期：<%= @team.day %> </p>
+          <p>聚會時間：<%= "%02d" % @team.start_time.hour %>：<%= "%02d" % @team.start_time.min %>~~<%= "%02d" % @team.end_time.hour %>：<%= "%02d" % @team.end_time.min %></p>
+          <p>聚會地點：<%= @team.location.place_name %></p>
+          
         </div>
       </div>
       <div class="col-sm-9 ranking-area">
