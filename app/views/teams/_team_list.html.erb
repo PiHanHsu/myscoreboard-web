@@ -2,19 +2,18 @@
     <div class="row fuction_bar">
 
         <div class="search_bar col-md-offset-6 col-md-3 col-xs-12">
-        <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
+            <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
             <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
             <%= submit_tag "搜尋" %>
-        <% end %>
+            <% end %>
         </div>
 
         <div class="col-md-3 col-xs-12 ">
-          <%= link_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
+            <%= link_to '編輯球隊成員', nil, :class => 'btn btn-default' %>
         </div>
     </div>
 
-    <div class="find_user">
-    </div>
+    <div class="find_user"></div>
 
     <div class="row team_info">
         <div class="col-md-4 col-xs-12">
@@ -29,43 +28,71 @@
                 <h3>球聚時間：<%= team.day %><br><%= "%02d" %team.start_time.hour %>：<%= "%02d" %team.start_time.min %>~~<%= "%02d" %team.end_time.hour %>：<%= "%02d" %team.end_time.min %></h3>
 
                 <div class="team_edit">
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editModal">
-                      編輯球隊
-                  </button>
-                  <%= render :partial => 'edit_modal', :locals =>{team: team} %>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editModal">
+                        編輯球隊
+                    </button>
+                    <%= render :partial => 'edit_modal', :locals =>{team: team} %>
 
                 </div>
             </div>
         </div>
         <div class="col-md-8 col-xs-12 team_list">
-          <!-- <%= check_box_tag 'u_ids[], u.id',false %> -->
-
-          <form action="post">
-            <% team.users.each do |u| %>
+            <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
+            <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
             <div class="col-md-3 col-xs-2 team_member">
-                <span class="user_name">
-                    <%= u.username %></span>
+                <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+                <div class="member_photo_<%= b.value %>" value="<%= b.value %>">
+                    <img src="http://placehold.it/100x100">
+                </div>
 
-                <label for="u.username">
-                  <img src="http://placehold.it/140x150">
-                  <input type="checkbox" name="u.username" id="u.username"></input>
-                </label>
+                <!-- 問題：諸如需要拿一些id到後台做事情的，在前端還是後端？
+                  問題：為了在刪除球員時，讓使用者點圖片即可選取隊員，目前使用label，並與checkbox_input連接上，但如使一來就無法使用ids，將id包成陣列，進而大量刪除releationship -->
+                <!-- 問題：同時也必須拿著team進去到controller一起判斷是要刪除哪一隊     -->
             </div>
             <% end %>
-            <input type="submit" value="送出">
-          </form>
+            <span class="container delete_button">
+            <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+            </span>
+            <%end%>
         </div>
     </div>
 </div>
 
-
 <script>
-  $('input[type="checkbox"]').change(function(){
-    if($(this).is(":checked")){
-      $(this).parent().addClass("selected");
-    }else{
-      $(this).parent().removeClass("selected");
-    }
-  });
+    $("[class^=member_photo_]").click(function () {
+        var input_id = "team_user_ids_" + this.getAttribute('value');
+        if ($("#" + input_id).is(":checked")) {
+            $("#" + input_id).prop("checked", false);
+        } else {
+            $("#" + input_id).prop("checked", true);
+        }
+    });
 </script>
+
+<!-- <script>
+    ok, good enough!
+    $('input[type="checkbox"]').change(function () {
+        if ($(this).is(":checked")) {
+            $(this).parent().addClass("selected");
+        } else {
+            $(this).parent().removeClass("selected");
+        }
+    });
+</script> -->
+
+<!--
+<form action="post">
+  <% team.users.each do |u| %>
+  <div class="col-md-3 col-xs-2 team_member">
+      <span class="user_name">
+          <%= u.username %></span>
+
+      <label for="u.username">
+        <img src="http://placehold.it/140x150">
+        <input type="checkbox" name="u.username" id="u.username"></input>
+      </label>
+  </div>
+  <% end %>
+  <input type="submit" value="送出">
+</form> -->
