@@ -2,14 +2,16 @@ class ApiV1::AuthController < ApiController
 
    before_action :authenticate_user!, :only => [:logout]
 
-
+# 註冊
 def signup
   success = false
   #POST /api/v1/signup
 
   if params[:email] && params[:password]
 
-    user = User.new(:email => params[:email], :password => params[:password])
+    user = User.new(:email => params[:email], :password => params[:password],
+                    :username => params[:username], :gender => params[:gender],
+                    :userid => params[:userid])
     if user.save
       render :json => { :auth_token => user.authentication_token }, :status => 200
     else
@@ -48,6 +50,7 @@ def signup
     end
 end
 
+# 登入
     def login
      success = false
 
@@ -88,6 +91,7 @@ end
 
     end
 
+# 登出
    def logout
      user = current_user
 

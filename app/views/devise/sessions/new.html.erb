@@ -1,13 +1,15 @@
+
+
 <div class="container_mobile_first">
 
-
-  <div class="row">
+<div class="row">
 
     <br>
     <br>
       <%=  image_tag("logo.png") %><br><br>
       <%=  image_tag("pic_slogan.png") %>
-      <div class="sign_logo2"> <h3>登入</h3> </div>
+    <br>
+    <br>
     <br>
 
   </div>
@@ -19,8 +21,9 @@
 
      <div class="visible-xs visible-sm or_bar">
 
-       <span style="text-decoration:underline;">或</span>
-
+     <font color="#FFFFFF" class="or">
+       或
+     </font>
     </div>
 
 
@@ -28,22 +31,28 @@
 
         <div class="field1">
          <div class="email_area">
-         <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-          <%= f.email_field :email, autofocus: true, placeholder: "信箱", class: "transparent"  %>
+         <font color="#FFFFFF">
+         <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+         </font>
+          <%= f.email_field :email, autofocus: true, placeholder: "信箱", class: "transparent"%>
          </div>
         </div>
        <br>
         <div class="field1">
-          <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-          <%= f.password_field :password, autocomplete: "off", placeholder: "密碼", class: "transparent" %>
+        <font color="#FFFFFF">
+          <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+        </font>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "密碼",
+                                          class: "transparent"%>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-        <%= link_to "忘記密碼", new_password_path(resource_name) %><br />
+
+        <%= link_to "忘記密碼", new_password_path(resource_name), class:"password_button" %><br />
         </div>
       <% end -%>
       <br>
 
         <div class="actions">
-          <%= f.submit "登入", class: "btn btn-success" %>
+          <%= f.submit "登入", class: "btn login_submit" %>
         </div>
       <% end %>
 
@@ -59,7 +68,7 @@
       <%- if devise_mapping.omniauthable? %>
         <%- resource_class.omniauth_providers.each do |provider| %>
           <%= link_to omniauth_authorize_path(resource_name, provider) do%>
-           <%=  image_tag("loginfb.png") %><br>
+           <%=  image_tag("bn_login_facebook.png") %><br>
           <% end %>
         <% end -%>
       <% end -%>
@@ -72,7 +81,10 @@
       <br>
 
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-            還沒加入我的記分板?<%= link_to "建立帳號", new_registration_path(resource_name) %><br />
+          <font color="#FFFFFF">還沒加入我的記分板?&nbsp;&nbsp;&nbsp;</font>
+          <span style="text-decoration:underline;">
+          <%= link_to "建立帳號", new_registration_path(resource_name), class:"createuser_button" %><br />
+          </span>
           <% end -%>
   </div>
 

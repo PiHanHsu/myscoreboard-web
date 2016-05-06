@@ -1,5 +1,5 @@
 body {
-    background-color: rgba(132, 174, 238, 1);
+    background-color: #001331;
     padding-top: 80px;
 }
 
@@ -90,7 +90,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 380px;
-    background-color: rgba(255,255,255, 0.8);
+    background-color: #001331;
     height: 600px;
     border-radius: 10px;
 }
@@ -116,10 +116,10 @@ body {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
+    width: 270px;
     border-bottom-style: solid;
-    border-bottom-width: medium;
-    border-bottom-color: #000000;
+    border-bottom-width: 1px;
+    border-bottom-color: #FFFFFF;
 }
 .email_area {
     padding-right: 60px;
@@ -132,10 +132,41 @@ body {
     width: 250px;
 }
 
+.login_submit
+{
+  background-color: #FAC833;
+  width: 110px;
+  height: 44px;
+  font-size:0.47cm;
+  font-color: #002560 ;
+  border-radius:8px;
+}
+
+.or{
+  font-size:0.5cm;
+}
+
 .password_area {
     padding-right: 76px;
 }
 
+.password_button {
+    color: #FFF;
+    font-weight:lighter;
+}
+
+.password_button:hover{
+    color: yellow ;
+}
+
+.createuser_button{
+    color: #FFD500;
+    font-weight:lighter;
+}
+
+.createuser_button:hover {
+    color: #FFF;
+}
 .gender_area {
     padding-right: 110px;
 }
@@ -147,9 +178,9 @@ body {
     text-align: center;
 }
 .nil_line {
-    height: 130px;
+    height: 254px;
     width: 1px;
-    background: #000000;
+    background: #979797;
 
     margin: 0 auto;
 }
@@ -315,8 +346,8 @@ body {
 /*中中中中中中中中中中中中中中中中中*/
 @media (max-width: 992px) {
     .or_bar {
-        padding-top: 70px;
-        padding-bottom: 30px;
+        padding-top: 100px;
+        padding-bottom: 20px;
     }
     .facebook {
         position: absolute;
@@ -329,6 +360,16 @@ body {
         border-bottom-width: 1px;
         border-bottom-color: #0000000;
     }
+
+    .login_submit
+    {
+      width: 276px;
+      border-radius:5px;
+
+    }
+
+
+
 }
 
 /*大大大大大大大大大大大大大大大大大*/
