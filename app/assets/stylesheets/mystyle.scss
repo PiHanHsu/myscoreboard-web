@@ -48,24 +48,44 @@ body {
 .team-ranking{
     background-color: rgba(119, 163, 238, 1);
     border-radius: 5px;
+    height: 500px;
+    p{
+        color: white;
+        font-size: 20px;
+        margin-top: 40px;
+        margin-bottom: 0px;
+    }
 }
-
+.dropdown{
+    a{
+        color: white;
+    }
+    font-size: 20px;
+}
+.caret{
+    color: yellow;
+}
 .scrollit {
     overflow: scroll;
     height: 100px;
 }
 
-.ranking-table{
-   
+.game_type {
+    a{
+        color: white;
+        font-size: 20px;
+    }
 }
 .ranking-area{
     background-color: white;
     border-radius: 5px;
+    height: 500px;
+    overflow-y: scroll; 
 }
 
 #ranking_tr{
     td{
-      height: 50px;
+      height: 70px;
       vertical-align: middle;
     }
 }
@@ -233,8 +253,14 @@ body {
     height: 631px;
 }
 .team_logo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
     width: 200px;
     height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 .team_info {
     position: absolute;
