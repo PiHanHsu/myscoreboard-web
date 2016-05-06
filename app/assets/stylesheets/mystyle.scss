@@ -70,11 +70,15 @@ body {
     height: 100px;
 }
 
+
 .game_type {
     a{
         color: white;
         font-size: 20px;
     }
+}
+
+.ranking-table{
 }
 .ranking-area{
     background-color: white;
@@ -276,14 +280,14 @@ body {
 .team_list{
   margin-bottom: 10px;
   .team_member{
-    label{
+//    label{
       &.selected{
         border: 5px solid red;
       }
       input[type=checkbox]{
-        // display: none;
+        display: none;
       }
-    }
+  //  }
   }
 }
 
@@ -418,4 +422,9 @@ body {
         padding-left: 50px;
         padding-right: 0;
     }
+}
+
+.just-for-demo{
+border:3px solid #ff6600
+
 }
