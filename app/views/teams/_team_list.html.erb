@@ -52,27 +52,50 @@
             </div>
             <% end %>
             <span class="container delete_button">
-            <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+                <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
             </span>
             <%end%>
         </div>
     </div>
 </div>
 
+
+
 <script>
     $("[class^=member_photo_]").click(function () {
         var input_id = "team_user_ids_" + this.getAttribute('value');
         if ($("#" + input_id).is(":checked")) {
             $("#" + input_id).prop("checked", false);
+            $(this).parent().removeClass("selected");
+
         } else {
             $("#" + input_id).prop("checked", true);
+            $(this).parent().addClass("selected");
         }
     });
 </script>
 
+
 <!-- <script>
-    ok, good enough!
-    $('input[type="checkbox"]').change(function () {
+$('.team_list > form > .team_member').on('click',function()
+{
+$(this).children().children().toggleClass('just-for-demo')
+})
+
+</script> -->
+
+<!-- <style>
+
+div[value^="asd"] img:focus {
+  box-shadow: blue;
+}
+
+</style>
+-->
+
+<!-- <script>
+        $('input[type="checkbox"]').change(function () {
+        console.log("hello")
         if ($(this).is(":checked")) {
             $(this).parent().addClass("selected");
         } else {
@@ -80,6 +103,7 @@
         }
     });
 </script> -->
+
 
 <!--
 <form action="post">
