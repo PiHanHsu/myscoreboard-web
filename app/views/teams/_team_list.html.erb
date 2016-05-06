@@ -43,7 +43,7 @@
             <div class="col-md-3 col-xs-2 team_member">
                 <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
                 <div class="member_photo_<%= b.value %>" value="<%= b.value %>">
-                    <img src="http://placehold.it/100x100">
+                    <img src="http://placehold.it/120x120">
                 </div>
 
                 <!-- 問題：諸如需要拿一些id到後台做事情的，在前端還是後端？
@@ -75,8 +75,8 @@
     });
 </script>
 
-
-<!-- <script>
+<!--
+<script>
 $('.team_list > form > .team_member').on('click',function()
 {
 $(this).children().children().toggleClass('just-for-demo')

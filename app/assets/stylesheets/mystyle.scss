@@ -241,7 +241,6 @@ body {
     top:40px;
     right:0;
     height: auto;
-    width: 1050px;
     margin-left: 50px;
     border: 1px solid #bbb;
     .col-md-4 {border: 1px solid #bbb;}
@@ -253,6 +252,7 @@ body {
 //    label{
       &.selected{
         border: 5px solid red;
+        width: auto;
       }
       input[type=checkbox]{
         display: none;
