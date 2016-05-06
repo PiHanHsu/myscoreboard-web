@@ -1,19 +1,17 @@
-<div class="container info">
-  <% if @team %>
-	<h1><%= @team.name %>  排行榜</h1>	  
+<div class="container">
+  <% if @team %>	  
     <div class="row ">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-10">
-      	<div class="nav nav-tabs pull-left">
-			    <li class="dropdown">
-             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=@team.name %><b class="caret"></b></a>
-             <ul class="dropdown-menu">
+      <div class="col-sm-12">
+        <div class="nav nav-tabs pull-left">
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=@team.name %><b class="caret"></b></a>
+            <ul class="dropdown-menu">
               <% @teams.each do |team| %>
-       			    <li><%= link_to team.name, games_path( :team => team ) %></li>
+                <li><%= link_to team.name, games_path( :team => team ) %></li>
               <% end %>
             </ul>
           </li>
-      	</div>
+        </div>
         <div class="nav nav-tabs pull-right">  
           <li class="<%= 'active' if @game_type == "single" %>"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
           <li class="<%= 'active' if @game_type == "double" %>"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
@@ -22,59 +20,69 @@
       </div>
     </div>
     <div class="row">
-    	<div class="col-sm-1"></div>
-        <div class="col-sm-5">
-        	<table class = "table">
-      			<thead class = "thead">
-       				<th> <%= "男子選手排行榜"%></th>
-              <th class="empty_th"></th>
-              <th> <%= "勝"%></th>
-              <th> <%= "敗"%></th>
-              <th> <%= "勝率"%></th>
-              <th> <%= "積分"%></th>
-
-       				</thead>
-       				<tbody> 
-               <% @male_ranking.each do |player| %>
-      				 <tr id="ranking_tr">
-        				<td ><%= image_tag(player[:user].head.url, height: '70', width: '70',:class => "head_image") %></td>
-                <td class="ranking_td"><div><%= player[:user].username %></div></td>
-                <td><%= player[:wins] %></td>
-                <td><%= player[:losses] %></td>
-                <td><%= player[:rate] %></td>
-                <td><%= player[:points] %></td>
-        			 </tr>
-               <% end %>
-        			</tbody>
-       		</table>
+      <div class="col-sm-3 team-ranking">
+        <div class="team_logo">
+          <%= image_tag(@team.logo.url(:thumb)) %>
         </div>
-        <div class="col-sm-5">
-       		<table class = "table ">
-     			  <thead class = "thead">
-       			  <th> <%= "女子選手排行榜"%></th>
-              <th class="empty_th"></th>
-              <th> <%= "勝"%></th>
-              <th> <%= "敗"%></th>
-              <th> <%= "勝率"%></th>
-              <th> <%= "積分"%></th>
-       			</thead>
-       			<tbody> 
-     				  <% @female_ranking.each do |player| %>
-                <tr id="ranking_tr">
-                  <td ><%= image_tag(player[:user].head.url, height: '70', width: '70',:class => "head_image") %></td>
-                  <td class="ranking_td"><div><%= player[:user].username %></div></td>
-                  <td><%= player[:wins] %></td>
-                  <td><%= player[:losses] %></td>
-                  <td><%= player[:rate] %></td>
-                  <td><%= player[:points] %></td>
-                </tr>
-              <% end %>
-        		</tbody>
-       		</table>
+        <div class="team_content">
+          <h3>球聚地點：<%= @team.location.place_name %></h3>
+          <h3>球聚時間：<%= @team.day %><br><%= "%02d" % @team.start_time.hour %>：<%= "%02d" % @team.start_time.min %>~~<%= "%02d" % @team.end_time.hour %>：<%= "%02d" % @team.end_time.min %></h3>
         </div>
-       	<div class="col-sm-1"></div>
+      </div>
+      <div class="col-sm-9 ranking-area">
+        <div class="row">
+          <div class="col-sm-6">
+            <table class = "table ranking-table">
+              <thead class = "thead">
+                <th> <%= "男子選手排行榜"%></th>
+                <th class="empty_th"></th>
+                <th> <%= "勝"%></th>
+                <th> <%= "敗"%></th>
+                <th> <%= "勝率"%></th>
+                <th> <%= "積分"%></th>
+              </thead>
+              <tbody> 
+                <% @male_ranking.each do |player| %>
+                  <tr id="ranking_tr">
+                    <td ><%= image_tag(player[:user].head.url, height: '45', width: '45',:class => "head_image") %></td>
+                    <td class="ranking_td"><div><%= player[:user].username %></div></td>
+                    <td><%= player[:wins] %></td>
+                    <td><%= player[:losses] %></td>
+                    <td><%= player[:rate] %></td>
+                    <td><%= player[:points] %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-6">
+            <table class = "table ranking-table">
+              <thead class = "thead">
+                <th> <%= "女子選手排行榜"%></th>
+                <th class="empty_th"></th>
+                <th> <%= "勝"%></th>
+                <th> <%= "敗"%></th>
+                <th> <%= "勝率"%></th>
+                <th> <%= "積分"%></th>
+              </thead>
+              <tbody> 
+                <% @female_ranking.each do |player| %>
+                  <tr id="ranking_tr">
+                    <td ><%= image_tag(player[:user].head.url, height: '45', width: '',:class => "head_image") %></td>
+                    <td class="ranking_td"><div><%= player[:user].username %></div></td>
+                    <td><%= player[:wins] %></td>
+                    <td><%= player[:losses] %></td>
+                    <td><%= player[:rate] %></td>
+                    <td><%= player[:points] %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   <% else %>
-  <h1> 目前沒有排行榜 </h1>
+    <h1> 目前沒有排行榜 </h1>
   <% end %>
 </div>
