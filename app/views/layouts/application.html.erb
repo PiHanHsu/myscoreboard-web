@@ -12,7 +12,7 @@
 <body>
   <nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <span class="navbar-brand"> <%= link_to 'MyScoreBoard', games_path %></span>
@@ -28,17 +28,26 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div>
                   <ul class="nav navbar-nav pull-right">
+
                     <% if current_user %>
-                    <li><%= link_to "個人頁面", user_path(current_user),:method => :get%></li>
-                    <li><%= link_to "我的球隊", teams_path %></li>
-                    <li><%= link_to "排行榜", games_path %></li>
+
+                      <li><%= link_to "個人頁面", user_path(current_user),:method => :get%></li>
+                      <li><%= link_to "我的球隊", teams_path %></li>
+                      <li><%= link_to "排行榜", games_path %></li>
+
                     <% end %>
+
                     <% if current_user %>
-                    <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
+
+                      <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
+
                     <% else %>
-                    <li><%= link_to('註冊', new_registration_path(:user)) %></li>
-                    <li><%= link_to('登入', new_session_path(:user)) %></li>
-                  <% end %>
+
+                      <li><%= link_to('註冊', new_registration_path(:user)) %></li>
+                      <li><%= link_to('登入', new_session_path(:user)) %></li>
+
+                    <% end %>
+
                   </ul>
                 </div>
             </div>
@@ -70,9 +79,6 @@
   //   $('.dropdown-toggle').dropdown();
   // });
 </script>
-
-
-
 
 <%= yield %>
 

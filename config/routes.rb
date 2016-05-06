@@ -24,7 +24,12 @@ Rails.application.routes.draw do
     post "/logout" => "auth#logout"
     post "/signup" => "auth#signup"
 
-    resources :users
+    resources :users do
+    collection do
+      get :search
+    end
+
+    end
     resources :teams
     resources :games do
       collection do
@@ -32,6 +37,10 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
+  get 'enteruserid' => 'enteruserids#index'
+  patch 'enteruserid' => 'enteruserids#update'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
