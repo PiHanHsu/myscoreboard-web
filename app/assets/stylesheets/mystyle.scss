@@ -193,12 +193,16 @@ body {
         border: 5px solid red;
       }
       input[type=checkbox]{
-        display: none;
+        // display: none;
       }
     }
   }
 }
 
+
+.delete_button{
+  margin-top:20px;
+}
 
 .create_team_wrap::before{
   content: "+";

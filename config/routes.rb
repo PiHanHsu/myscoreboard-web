@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :games
   resources :score_records
   resources :teams do
+    collection do
+      post :bulk_update
+    end
+    
     member do
       post :add_player
     end
