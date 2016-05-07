@@ -56,7 +56,7 @@ body {
 }
 
 .ranking-table{
-   
+
 }
 .ranking-area{
     background-color: white;
@@ -382,14 +382,40 @@ body {
         display: none;
     }
     .facebook {
-        padding-top: 44px;
         height: 160px;
         padding-left: 0;
         padding-right: 150px;
     }
     .signin_box {
-        height: 160px;
+        height: 250px;
         padding-left: 50px;
         padding-right: 0;
+    }
+
+    .password_text {
+    float: left;
+    }
+
+    .email_text {
+    float: left;
+    }
+
+    .forget_password{
+    padding-left: 120px;
+
+    }
+
+    .enter_email_password_box{
+        padding-top:40px;
+    }
+    .facebook {
+        position: absolute;
+        padding-top: 100px;
+        padding-left: 360px;
+    }
+
+    .big_login_submit{
+        position: absolute;
+        padding-top: 30px;
     }
 }
