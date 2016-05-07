@@ -26,9 +26,9 @@
      </font>
     </div>
 
-
+<!-- 以下在小視窗顯示 -->
+<div class="visible-xs visible-sm">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
         <div class="field1">
          <div class="email_area">
          <font color="#FFFFFF">
@@ -42,8 +42,7 @@
         <font color="#FFFFFF">
           <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
         </font>
-          <%= f.password_field :password, autocomplete: "off", placeholder: "密碼",
-                                          class: "transparent"%>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "密碼",class: "transparent"%>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
 
         <%= link_to "忘記密碼", new_password_path(resource_name), class:"password_button" %><br />
@@ -55,6 +54,37 @@
           <%= f.submit "登入", class: "btn login_submit" %>
         </div>
       <% end %>
+</div>
+
+<!-- 以下在大視窗顯示 -->
+
+<div class="visible-md visible-lg">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="enter_email_password_box">
+         <font color="#FFFFFF" size="4" class="email_text">
+        信箱<br>
+         </font>
+          <%= f.email_field :email, autofocus: true, size: "34" %>
+
+       <br> <br>
+
+        <font color="#FFFFFF" size="4" class="password_text">
+        密碼 <%= link_to "忘記密碼", new_password_path(resource_name), class:"password_button forget_password" %><br>
+        </font>
+          <%= f.password_field :password, size: "34"%>
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+
+      <% end -%>
+      <br>
+       </div>
+        <div class="actions big_login_submit">
+          <%= f.submit "登入", class: "btn login_submit" %>
+        </div>
+      <% end %>
+
+
+
+</div>
 
     </div>
 
@@ -81,7 +111,7 @@
       <br>
 
           <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-          <font color="#FFFFFF">還沒加入我的記分板?&nbsp;&nbsp;&nbsp;</font>
+          <font color="#FFFFFF" size="4" >還沒加入我的記分板?&nbsp;&nbsp;&nbsp;</font>
           <span style="text-decoration:underline;">
           <%= link_to "建立帳號", new_registration_path(resource_name), class:"createuser_button" %><br />
           </span>
