@@ -38,21 +38,30 @@
             </div>
         </div>
         <div class="col-md-8 col-xs-12 team_list">
+          <div class="row team_member_wrap">
+
             <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
             <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
-            <div class="col-md-3 col-xs-2 team_member">
-                <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
-                <div class="member_photo_<%= b.value %>" value="<%= b.value %>">
-                    <img src="http://placehold.it/100x100">
-                </div>
+                <div class="col-md-3 col-xs-2 team_member" id ="team_member_<%= b.value %>" value="<%= b.value %>">
+                  <i class="fa fa-check" aria-hidden="true"></i>
 
-                <!-- 問題：諸如需要拿一些id到後台做事情的，在前端還是後端？
+                  <!-- <div class="screen"> -->
+
+                    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+                    <div class="member_photo" id ="member_photo" >
+                        <img src="http://placehold.it/120x120">
+                    </div>
+
+
+                    <!-- 問題：諸如需要拿一些id到後台做事情的，在前端還是後端？
                   問題：為了在刪除球員時，讓使用者點圖片即可選取隊員，目前使用label，並與checkbox_input連接上，但如使一來就無法使用ids，將id包成陣列，進而大量刪除releationship -->
-                <!-- 問題：同時也必須拿著team進去到controller一起判斷是要刪除哪一隊     -->
+                    <!-- 問題：同時也必須拿著team進去到controller一起判斷是要刪除哪一隊     -->
+                <!-- </div> -->
+                </div>
+                <% end %>
             </div>
-            <% end %>
             <span class="container delete_button">
-            <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+                <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
             </span>
             <%end%>
         </div>
@@ -60,19 +69,55 @@
 </div>
 
 <script>
-    $("[class^=member_photo_]").click(function () {
+    $("[id^=team_member_]").click(function () {
         var input_id = "team_user_ids_" + this.getAttribute('value');
+        console.log(this)
         if ($("#" + input_id).is(":checked")) {
             $("#" + input_id).prop("checked", false);
+            $(this).removeClass("selected");
+            $(this).children("#member_photo").css("opacity", "1");
+            $(this).children(".fa-check").css("visibility", "hidden");
+
         } else {
             $("#" + input_id).prop("checked", true);
+            $(this).addClass("selected");
+            $(this).children("#member_photo").css("opacity", "0.1");
+            $(this).children(".fa-check").css("visibility", "visible");
         }
     });
 </script>
 
 <!-- <script>
-    ok, good enough!
-    $('input[type="checkbox"]').change(function () {
+  $('.team_member').click(function(){
+    // if ($(this).is(":opacity:0.1")){
+    }
+    else {
+    }
+
+  })
+</script> -->
+
+<!--
+<script>
+$('.team_list > form > .team_member').on('click',function()
+{
+$(this).children().children().toggleClass('just-for-demo')
+})
+
+</script> -->
+
+<!-- <style>
+
+div[value^="asd"] img:focus {
+  box-shadow: blue;
+}
+
+</style>
+-->
+
+<!-- <script>
+        $('input[type="checkbox"]').change(function () {
+        console.log("hello")
         if ($(this).is(":checked")) {
             $(this).parent().addClass("selected");
         } else {
