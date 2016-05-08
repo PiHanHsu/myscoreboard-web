@@ -5,6 +5,7 @@ json.team do
   json.start_time_min "%02d" %team.start_time.min
   json.end_time_hour "%02d" %team.end_time.hour
   json.end_time_min "%02d" %team.end_time.min
+  json.day team.day
   json.location team.location
   json.teammembers team.users
   json.logo_original_url asset_url(team.logo.url)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505124327) do
+ActiveRecord::Schema.define(version: 20160507135214) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160505124327) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.string   "day"
+    t.string   "day",               default: ""
     t.time     "start_time",        default: '2000-01-01 00:00:00'
     t.time     "end_time",          default: '2000-01-01 00:00:00'
     t.string   "logo_file_name"
