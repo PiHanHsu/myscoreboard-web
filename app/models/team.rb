@@ -7,7 +7,7 @@ class Team < ActiveRecord::Base
   validates_presence_of :name
 #  accepts_nested_attributes_for :location
 
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "200x200>" }, :default_url => "/images/:style/missing.png",
+  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "200x200>" }, :default_url => "team_logo_dafault.png",
                     :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
