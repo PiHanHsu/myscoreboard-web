@@ -224,6 +224,11 @@ body {
 
 //user
 
+.user_head {
+    border-radius: 50%;
+    border:5px solid #FFD200;
+}
+
 .nil_line2 {
     height: 400px;
     width: 1px;
@@ -447,11 +452,13 @@ body {
         display: none;
     }
     .facebook {
+        z-index: 3;
         height: 160px;
         padding-left: 0;
         padding-right: 150px;
     }
     .signin_box {
+        z-index: 4;
         height: 250px;
         padding-left: 50px;
         padding-right: 0;
