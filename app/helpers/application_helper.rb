@@ -9,7 +9,7 @@ def user_avatar(user)
  else
    image_url = "default_head.png"
  end
- image_tag image_url
+ image_tag(image_url, class:"user_head")
 end
 
 
