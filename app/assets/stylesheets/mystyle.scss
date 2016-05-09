@@ -1,5 +1,5 @@
 body {
-    background-color: #001331;
+    background-color: #225CB4;
     padding-top: 80px;
 }
 
@@ -32,7 +32,7 @@ body {
 //navbar
 #navbar {
     min-height: 50px;
-    background-color: rgba(34, 92, 180, 1);
+    background-color: #528EE9;
     border-color: transparent;
 }
 
@@ -78,8 +78,20 @@ body {
     }
 }
 
-.ranking-table{
+.ranking-title{
+    margin-top: 10px;
+    font-size:22px;
+    font-family: PingFang TC;
+}
 
+.ranking-table{
+    text-align: center;
+    font-size: 18px;
+    font-family: PingFang TC;
+    color: #4A4A4A;
+    th{
+        text-align: center;
+    }
 }
 .ranking-area{
     background-color: white;
@@ -93,6 +105,10 @@ body {
       height: 70px;
       vertical-align: middle;
     }
+}
+.ranking-number{
+    font-size: 40px;
+    font-family: Arial Black; 
 }
 
 .fix-lulu  {
@@ -203,9 +219,13 @@ body {
 .gender_area {
     padding-right: 110px;
 }
-.transparent {
+.search_input {
+    width: 80%;
     background: transparent;
-    border: none;
+    border:none;
+    border-bottom-style: solid;
+    border-bottom-color: #225cb4;
+    border-bottom-width: 2px;
 }
 .createuser {
     text-align: center;
@@ -434,6 +454,17 @@ body {
 .delete_button{
   margin-top:20px;
 }
+
+.submit_button{
+  background-repeat: no-repeat;
+  background-image: image_url("ico_member_search.png");
+  width: auto;
+  background-color: transparent;
+  border:none;
+  color: blue;
+  font-size: 14px;
+}
+
 //
 // .create_team_wrap::before{
 //   content: "+";
@@ -483,7 +514,8 @@ body {
   position: relative;
 }
 
-
+.search_bar{
+}
 
 
 //隊伍頁面搜尋使用者

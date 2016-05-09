@@ -1,10 +1,12 @@
 <div class="row team_item">
     <div class="row fuction_bar">
 
-        <div class="search_bar col-md-offset-6 col-md-3 col-xs-12">
+        <div class="col-md-offset-4 col-md-5 col-xs-12 search_bar">
             <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
-            <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "transparent"%>
-            <%= submit_tag "搜尋" %>
+            <%= text_field_tag :search, params[:search], placeholder: "輸入使用者ID 或 Email", class: "search_input"%>
+
+            <%= submit_tag '', class: "checkbox btn btn-default btn-lg submit_button" %>
+
             <% end %>
         </div>
 
@@ -43,20 +45,21 @@
             <div class="row team_member_wrap">
 
                 <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
-                <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
-                <div class="col-md-3 col-xs-2 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
-                    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
-                    <br>
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                    <%= image_tag (b.object.head), :id => "member_photo" %>
-          
-                </div>
-                <% end %>
-            </div>
-            <span class="container delete_button">
-                <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
-            </span>
-            <%end%>
+                  <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
+                    <div class="col-md-3 col-xs-2 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
+                      <i class="fa fa-check" aria-hidden="true"></i>
+
+                        <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+                        <br>
+                        <%= image_tag (b.object.head.url(:thumb)), :id => "member_photo" %>
+                    </div>
+                  <% end %>
+                  <span class="container delete_button">
+                      <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+                  </span>
+                  <% end %>
+              </div>
+
         </div>
     </div>
 </div>
@@ -79,6 +82,9 @@
         }
     });
 </script>
+
+
+
 
 <!-- <script>
   $('.team_member').click(function(){
