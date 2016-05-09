@@ -66,8 +66,10 @@ private
                 else
                   rate = 0
                 end
+                games = wins_count + losses_count
                 points = wins_count *3 + losses_count * 1
                 { user: user,
+                  games: games,
                   wins: wins_count,
                   losses: losses_count,
                   rate: rate.round(2),

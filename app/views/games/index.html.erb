@@ -1,7 +1,8 @@
 <div class="container">
   <% if @team %>	  
     <div class="row ">
-      <div class="col-sm-12">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
         <div class="nav nav-tabs pull-left">
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#"><%=@team.name %><b class="caret"></b></a>
@@ -18,71 +19,65 @@
           <li class="<%= 'active' if @game_type == "mix" %> game_type"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
         </div>
       </div>
+      <div class="col-sm-1"></div>
     </div>
     <div class="row">
-      <div class="col-sm-3 team-ranking">
-        <div class="team_logo">
-          <%= image_tag(@team.logo.url(:thumb)) %>
-        </div>
-        <div class="team_content">
-          <p>聚會日期：<%= @team.day %> </p>
-          <p>聚會時間：<%= "%02d" % @team.start_time.hour %>：<%= "%02d" % @team.start_time.min %>~~<%= "%02d" % @team.end_time.hour %>：<%= "%02d" % @team.end_time.min %></p>
-          <p>聚會地點：<%= @team.location.place_name %></p>
-          
-        </div>
-      </div>
-      <div class="col-sm-9 ranking-area">
-        <div class="row">
+      <div class="col-sm-1"></div> 
+        <div class="col-sm-10 ranking-area">
           <div class="col-sm-6">
-            <table class = "table ranking-table">
+            <p class="ranking-title"> 男子選手排行榜 </p>
+            <table class = "table ranking-table table-striped">
               <thead class = "thead">
-                <th> <%= "男子選手排行榜"%></th>
-                <th class="empty_th"></th>
+                <th> <%= "名次"%></th>
+                <th> <%= "球員"%></th>
+                <th> <%= "總場次"%></th>
                 <th> <%= "勝"%></th>
-                <th> <%= "敗"%></th>
-                <th> <%= "勝率"%></th>
-                <th> <%= "積分"%></th>
+                <th> <%= "勝率(%)"%></th>
               </thead>
               <tbody> 
-                <% @male_ranking.each do |player| %>
+                <% @male_ranking.each_with_index do |player, index| %>
                   <tr id="ranking_tr">
-                    <td ><%= image_tag(player[:user].head.url, height: '45', width: '45',:class => "head_image") %></td>
-                    <td class="ranking_td"><div><%= player[:user].username %></div></td>
+                    <td ><P class="ranking-number"><%= index+1 %></p></td>
+                    <td >
+                      <span class="pull-left"><%= image_tag(player[:user].head.url, height: '45', width: '45',:class => "head_image") %></span>
+                      <span> <%= player[:user].username %> </span>
+                    </td>
+                    <td><%= player[:games] %></td>
                     <td><%= player[:wins] %></td>
-                    <td><%= player[:losses] %></td>
                     <td><%= player[:rate] %></td>
-                    <td><%= player[:points] %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
           </div>
           <div class="col-sm-6">
-            <table class = "table ranking-table">
+            <p class="ranking-title"> 女子選手排行榜 </p>
+            <table class = "table ranking-table table-striped">
               <thead class = "thead">
-                <th> <%= "女子選手排行榜"%></th>
-                <th class="empty_th"></th>
+                <th> <%= "名次"%></th>
+                <th> <%= "球員"%></th>
+                <th> <%= "總場次"%></th>
                 <th> <%= "勝"%></th>
-                <th> <%= "敗"%></th>
-                <th> <%= "勝率"%></th>
-                <th> <%= "積分"%></th>
+                <th> <%= "勝率(%)"%></th>
               </thead>
               <tbody> 
-                <% @female_ranking.each do |player| %>
+                <% @female_ranking.each_with_index do |player, index| %>
                   <tr id="ranking_tr">
-                    <td ><%= image_tag(player[:user].head.url, height: '45', width: '',:class => "head_image") %></td>
-                    <td class="ranking_td"><div><%= player[:user].username %></div></td>
+                    <td ><P class="ranking-number"><%= index+1 %></p></td>
+                    <td >
+                      <span class="pull-left"><%= image_tag(player[:user].head.url, height: '45', width: '45',:class => "head_image") %></span>
+                      <span> <%= player[:user].username %> </span>
+                    </td>
+                    <td><%= player[:games] %></td>
                     <td><%= player[:wins] %></td>
-                    <td><%= player[:losses] %></td>
                     <td><%= player[:rate] %></td>
-                    <td><%= player[:points] %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
+      
     </div>
   <% else %>
     <h1> 目前沒有排行榜 </h1>
