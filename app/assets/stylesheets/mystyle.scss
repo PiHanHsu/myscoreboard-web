@@ -78,8 +78,20 @@ body {
     }
 }
 
-.ranking-table{
+.ranking-title{
+    margin-top: 10px;
+    font-size:22px;
+    font-family: PingFang TC;
+}
 
+.ranking-table{
+    text-align: center;
+    font-size: 18px;
+    font-family: PingFang TC;
+    color: #4A4A4A;
+    th{
+        text-align: center;
+    }
 }
 .ranking-area{
     background-color: white;
@@ -93,6 +105,10 @@ body {
       height: 70px;
       vertical-align: middle;
     }
+}
+.ranking-number{
+    font-size: 40px;
+    font-family: Arial Black; 
 }
 
 .fix-lulu  {
