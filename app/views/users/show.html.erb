@@ -1,90 +1,113 @@
- <div class="container_mobile_user">
+<div id="user_page">
+
+<div class="container_mobile_user">
+
+
+        <div class="nav nav-tabs pull-right">
+          <li class="<%= 'active' if @game_type == "single" %> game_type"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
+          <li class="<%= 'active' if @game_type == "double" %> game_type"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
+          <li class="<%= 'active' if @game_type == "mix" %> game_type"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
+        </div>
 
 <div class="row">
- <h1><%=@user.userid%>的個人頁面</h1>
-</div>
 
-<div class="row">
+   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 user_data_area">
 
-   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-      <div class="playercard">
-
-       <div class="face front">
-          <br>
-          <br>
-          <%= user_avatar(@user) %>
-          <ul>
-          <P> id：<%= @user.userid %></P>
-          <br>
-          <br>
-          <P> 暱稱：<%= @user.username %></P>
-          <P> gender：<%= @user.gender %></P>
-          <P> E-mail：<%= @user.email %> </P>
-          </ul>
+      <div class="row user_data_1">
+      <!-- Button trigger modal -->
+          <div data-toggle="modal" data-target="#myModal">
+           <font size="4" color="#84AEEE" class="edit_page">編輯個人資訊</font>
+          </div>
       </div>
 
-      <div class="face back ">
+      <div class="row user_data_2">
 
-       <%= image_tag "Kumamon.jpg"%>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+           <img src="http://placehold.it/90x150" class="playercard">
+        </div>
+
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          <font size="5" color="#FFD200" class="show_username "><%= @user.username %></font> <br><br>
+          <font size="4" color="#FFF" class="lighter team_rank">球隊總排名：2 </font> <br><br>
+          <font size="4" color="#FFF" class="lighter total_game">累計總場次：87</font>  <br><br>
+          <font size="4" color="#FFF" class="lighter win_percentage">勝率： 80% (勝70敗17)</font>
+        </div>
 
       </div>
 
-    </div>
+      <div class="row user_data_3">
+       <font  color="#FFF" class="lighter float_left ">近期比賽</font>
+      </div>
 
-  </div>
+      <div class="row user_data_4">
+      </div>
+
+      <div class="row user_data_3">
+       <font color="#FFF" class="lighter float_left ">最佳拍檔</font>
+      </div>
+
+      <div class="row user_data_6">
+      </div>
 
 
-   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+   </div>
 
-<!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                        編輯個人頁面
-                    </button>
+
+   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+
 <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+              <div class ="row">
+                  <button type="button" class="close close_x" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">
+                  <i class="fa fa-times fa-4" aria-hidden="true"></i>
+                  </span>
                   </button>
+                </div>
+              <div class="row">
+              <img src="http://placehold.it/90x150" class="playercard"> <br>
+              ID:<%= @user.userid %>
+              <br>
+              <br>
+              </div>
+              <div class="row">
+              <div class="emailemail">
+                <font color="#E0E0E0">帳號</font> <br>
+              </div>
 
+              <div class="useremail">
+                <%= @user.email %>
+              </div>
+              <br>
+              <br>
 
               <%= form_for @user do |f| %>
-                使用者名稱:
-                <div class="field1 edit_area">
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                  <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "transparent"  %>
-                </div>
-
-                使用者ID:
-                <div class="field1 edit_area">
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <%= f.text_field :userid, placeholder: "ID", class: "transparent" %>
-                </div>
-
-                Email:
-                <div class="field1 edit_area">
-                  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                  <%= f.email_field :email, autofocus: "off", class: "transparent"  %>
-                </div>
-
-                性別:
-                <div class=" edit_area">
-                  <%=  image_tag("glyphicons-758-gender-ori-hetero.png", size: "18x18") %>
-                   <%= f.radio_button :gender, "male" %>
-                   <%= f.label :gender_male, "Male" %>
-                   <%= f.radio_button :gender, "female" %>
-                   <%= f.label :gender_female, "Female" %>
-                </div>
+              <div class="emailemail">
+              <font color="#E0E0E0">暱稱 </font>
               </div>
-
-              <div class="modal-footer">
-                  <%= f.submit "儲存", class: "btn btn-primary" %><br><br>
-                  <% end %>
-                  <button class="btn" data-dismiss="modal" aria-hidden="true">關閉</button>
+                <div class="">
+                  <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "username_box"  %>
+                </div>
+                <br>
+                <div class="emailemail">
+                <font color="#E0E0E0">性別</font>
+                </div>
+                <div class="">
+                <%= f.select :gender, options_for_select([["女生","female"],["男生","male"]]), :class => 'gender_box' %>
+                <br>
+                <br>
+                   <%#= f.radio_button :gender, "male" %>
+                   <%#= f.label :gender_male, "Male" %>
+                   <%#= f.radio_button :gender, "female" %>
+                   <%#= f.label :gender_female, "Female" %>
+                </div>
+                 <%= f.submit "儲存", class: "btn save_submit" %><br><br>
+               </div>
               </div>
+              <% end %>
           </div>
       </div>
   </div>
@@ -96,8 +119,8 @@
       <%= form.file_field :avatar %>
       <%= form.submit %>
       <% end %>
-      上傳大頭照
 
+      上傳大頭照
       <%= form_for @user, url: user_path(@user), :method => :patch, html: { multipart: true } do |form| %>
       <%= form.file_field :head %>
       <%= form.submit %>
@@ -110,5 +133,7 @@
    </div>
 
  </div>
+
+</div>
 
 </div>
