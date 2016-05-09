@@ -424,24 +424,24 @@ body {
 .delete_button{
   margin-top:20px;
 }
-
-.create_team_wrap::before{
-  content: "+";
-}
-
-.create_team_wrap{
-  background-color: #2196F3;
-  color: #FFF;
-  width: 60px;
-  height: 60px;
-  font-size: 30px;
-  line-height: 55px;
-  text-align: center;
-  position: fixed;
-  border-radius: 100%;
-  bottom: 85px;
-  left: 1253px;
-}
+//
+// .create_team_wrap::before{
+//   content: "+";
+// }
+//
+// .create_team_wrap{
+//   background-color: #2196F3;
+//   color: #FFF;
+//   width: 60px;
+//   height: 60px;
+//   font-size: 30px;
+//   line-height: 55px;
+//   text-align: center;
+//   position: fixed;
+//   border-radius: 100%;
+//   bottom: 85px;
+//   left: 1253px;
+// }
 
 
 .team_member_wrap+.col-md-3{
@@ -473,13 +473,7 @@ body {
   position: relative;
 }
 
-// .screen{
-//     // position: fixed;
-//     background-color: black;
-//     // z-index: 1;
-//     opacity:0.4;
-//
-// }
+
 
 
 //隊伍頁面搜尋使用者
