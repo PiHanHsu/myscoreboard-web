@@ -11,6 +11,9 @@ class Team < ActiveRecord::Base
                     :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
+  DAY = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日",]
+
+private
   def male_single_ranking
     records = Record.includes(:user, :game).where( users: { :gender => "male" } ).where( games: { team_id: self.id, game_type: "single" } )
     male_single_ranking = create_ranking(records, "male")

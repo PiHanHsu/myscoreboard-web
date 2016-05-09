@@ -377,15 +377,19 @@ body {
     //background-color: rgba(0, 19, 49, 0.7);
     background-color: rgba(255, 255, 255, 0.8);
     height: 100%;
+    // position: relative;
     border-radius: 10px;
 }
-
 // team
+
+.find_user{
+  position: absolute;
+}
+
 .team_item {
     position: relative;
     margin: 0,auto;
-    width: 1100px;
-    height: 631px;
+    height: auto;
 }
 .team_logo {
     margin-top: 20px;
@@ -398,12 +402,12 @@ body {
     overflow: hidden;
 }
 .team_info {
-    position: absolute;
+    // position: absolute;
     top:40px;
     right:0;
     height: auto;
     width: 100%;
-    margin-left: 50px;
+    // margin-left: 50px;
     border: 1px solid #bbb;
     .col-md-4 {border: 1px solid #bbb;}
 }
@@ -418,7 +422,7 @@ body {
 
   .selected{
     // border: 5px solid red;
-    width: auto;
+    // width: auto;
     position: relative;
     background:linear-gradient(rgba(192,192,192,0.3),rgba(192,192,192,0.3));
     z-index: 1;
@@ -437,6 +441,11 @@ body {
   border:none;
   color: blue;
   font-size: 14px;
+  float: right;
+  margin-left: -10px;
+  &:focus{
+    outline: none;
+  }
 }
 
 //
@@ -467,8 +476,8 @@ body {
 
 
 .team_member{
-  width: auto;
   z-index: 1;
+  position: relative;
 }
 
 .fa-check{
@@ -485,6 +494,7 @@ body {
 #member_photo{
   opacity: 1;
   z-index: -1;
+  width: 100%;
   position: relative;
 }
 
