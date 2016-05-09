@@ -236,17 +236,138 @@ body {
     margin: 0px auto;
 }
 
-.container_mobile_user {
+// 以下是個人資訊頁面
+#user_page {
 
-    position: relative;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 650px;
-    background-color: rgba(255, 255, 255, 0.8);
-    height: 650px;
-    border-radius: 10px;
+
+    .container_mobile_user {
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+        width: 940px;
+        background-color: #FFF;
+        height: 550px;
+        border-radius: 5px;
+    }
+
+    .user_data_area {
+         background-color: #225CB4;
+         border-radius: 5px;
+         height: 550px;
+    }
+
+    .edit_page {
+    float: right;
+    margin-right: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    }
+
+    .edit_page:hover {
+     color: #FFF;
+    }
+
+    .show_username{
+    padding-right: 31px;
+    }
+
+    .team_rank {
+    padding-right: 48px;
+    }
+
+    .total_game {
+    padding-right: 43px;
+    }
+
+    .win_percentage {
+    padding-left: 5px;
+    }
+
+    .playercard{
+    border-radius: 7px;
+    border:10px solid #84AEEE;
+    }
+
+    .user_data_1 {
+        height: 50px;
+
+    }
+
+    .user_data_2 {
+        height: 180px;
+
+    }
+
+    .user_data_3 {
+        margin-left: 0px;
+        height: 30px;
+        width: 290px;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #FFF;
+    }
+
+    .float_left {
+        float:left;
+    }
+
+    .user_data_4 {
+        height: 150px;
+
+    }
+
+
+    .user_data_6 {
+
+    }
+
+   .lighter{
+        font-weight:lighter;
+   }
+
+   // 以下是編輯視窗
+
+   .modal-dialog {
+        margin-top: 100px;
+        height: 550px;
+        width: 365px;
+   }
+
+   .close_x {
+        padding-right: 20px;
+   }
+
+   .save_submit {
+        background-color: #FFD500 ;
+        width: 240px;
+   }
+
+   .username_box{
+        width: 250px;
+        border-color:#E0E0E0;
+        border-style:solid;
+        border-width:1px;
+   }
+   .gender_box {
+        width: 250px;
+        border-color:#E0E0E0;
+        border-style:solid;
+        border-width:1px;
+   }
+
+   .emailemail{
+        padding-right:213px;
+   }
+
+   .useremail{
+        padding-right:100px;
+   }
 }
+// 以上是個人頁面
+
+
 
 .myteam_info {
     //background-color: rgba(0, 19, 49, 0.7);
@@ -360,38 +481,6 @@ body {
 //
 // }
 
-// 翻轉球員卡
-
- .playercard {
-        position: relative;
-        -webkit-perspective: 600;
-        width: 325px;
-        height: 455px;
-    }
-.face {
-    width: 325px;
-    height: 455px;
-    position: absolute;
-    -webkit-transition: all 1s;
-    -webkit-backface-visibility: hidden;
-}
-.front {
-    background: #FFFFFF;
-    z-index: 10;
-}
-.back {
-    background: #FFFFFF;
-    -webkit-transform: rotate3d(0, 1, 0, -180deg);
-    z-index: 8;
-}
-.playercard:hover .front {
-    -webkit-transform: rotate3d(0, 1, 0, 180deg);
-    z-index: 8;
-}
-.playercard:hover .back {
-    -webkit-transform: rotate3d(0, 1, 0, 0deg);
-    z-index: 8;
-}
 
 //隊伍頁面搜尋使用者
 
