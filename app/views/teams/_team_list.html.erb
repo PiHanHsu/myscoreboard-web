@@ -54,11 +54,12 @@
                         <%= image_tag (b.object.head.url(:thumb)), :id => "member_photo" %>
                     </div>
                   <% end %>
+                  <span class="container delete_button">
+                      <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+                  </span>
+                  <% end %>
               </div>
-              <span class="container delete_button">
-                  <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
-              </span>
-              <% end %>
+
         </div>
     </div>
 </div>
@@ -81,6 +82,9 @@
         }
     });
 </script>
+
+
+
 
 <!-- <script>
   $('.team_member').click(function(){
