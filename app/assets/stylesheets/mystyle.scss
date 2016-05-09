@@ -108,7 +108,7 @@ body {
 }
 .ranking-number{
     font-size: 40px;
-    font-family: Arial Black; 
+    font-family: Arial Black;
 }
 
 .fix-lulu  {
@@ -221,6 +221,7 @@ body {
 }
 .search_input {
     width: 80%;
+    margin-top: 15px;
     background: transparent;
     border:none;
     border-bottom-style: solid;
@@ -467,32 +468,36 @@ body {
   border:none;
   color: blue;
   font-size: 14px;
+  width: 50px;
+  height: 30px;
   float: right;
   margin-left: -10px;
+  margin-right: 30px;
   &:focus{
     outline: none;
   }
 }
 
-//
-// .create_team_wrap::before{
-//   content: "+";
-// }
-//
-// .create_team_wrap{
-//   background-color: #2196F3;
-//   color: #FFF;
-//   width: 60px;
-//   height: 60px;
-//   font-size: 30px;
-//   line-height: 55px;
-//   text-align: center;
-//   position: fixed;
-//   border-radius: 100%;
-//   bottom: 85px;
-//   left: 1253px;
-// }
+.search_bar{
+  padding: 0 0;
+}
 
+
+#team_tab {
+  font-size: 14px;
+  a{
+    background-color: transparent;
+  }
+}
+
+//隊伍頁面搜尋使用者
+
+.search_box {
+    width: 300px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border: 1px solid #bbb;
+}
 
 .team_member_wrap+.col-md-3{
     padding: 0 0;
@@ -524,19 +529,42 @@ body {
   position: relative;
 }
 
-.search_bar{
+.edit_team_member_button{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-left: 0;
+  padding-bottom: 40px;
+  padding-right: 40px;
+  &:focus{
+  background-color: transparent;
+  }
+
+}
+
+.wrap_edit_team_member_button{
+  padding: 0 0;
 }
 
 
-//隊伍頁面搜尋使用者
-
-.search_box {
-    width: 300px;
-    height: 40px;
-    background-color: #FFFFFF;
-    border: 1px solid #bbb;
-}
-
+//
+// .create_team_wrap::before{
+//   content: "+";
+// }
+//
+// .create_team_wrap{
+//   background-color: #2196F3;
+//   color: #FFF;
+//   width: 60px;
+//   height: 60px;
+//   font-size: 30px;
+//   line-height: 55px;
+//   text-align: center;
+//   position: fixed;
+//   border-radius: 100%;
+//   bottom: 85px;
+//   left: 1253px;
+// }
 
 
 
