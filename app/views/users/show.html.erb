@@ -1,14 +1,6 @@
 <div id="user_page">
 
 <div class="container_mobile_user">
-
-
-        <div class="nav nav-tabs pull-right">
-          <li class="<%= 'active' if @game_type == "single" %> game_type"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
-          <li class="<%= 'active' if @game_type == "double" %> game_type"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
-          <li class="<%= 'active' if @game_type == "mix" %> game_type"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
-        </div>
-
 <div class="row">
 
    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 user_data_area">
@@ -92,18 +84,17 @@
                   <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "username_box"  %>
                 </div>
                 <br>
+
                 <div class="emailemail">
                 <font color="#E0E0E0">性別</font>
                 </div>
-                <div class="">
-                <%= f.select :gender, options_for_select([["女生","female"],["男生","male"]]), :class => 'gender_box' %>
+
+                <div class="form-group">
+                <%= f.select :gender,options_for_select([["男生","male"],["女生","female"]]),{}, {:class => "username_box"}%>
                 <br>
                 <br>
-                   <%#= f.radio_button :gender, "male" %>
-                   <%#= f.label :gender_male, "Male" %>
-                   <%#= f.radio_button :gender, "female" %>
-                   <%#= f.label :gender_female, "Female" %>
                 </div>
+
                  <%= f.submit "儲存", class: "btn save_submit" %><br><br>
                </div>
               </div>
