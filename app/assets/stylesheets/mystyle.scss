@@ -195,9 +195,13 @@ body {
 .gender_area {
     padding-right: 110px;
 }
-.transparent {
+.search_input {
+    width: 80%;
     background: transparent;
-    border: none;
+    border:none;
+    border-bottom-style: solid;
+    border-bottom-color: #225cb4;
+    border-bottom-width: 2px;
 }
 .createuser {
     text-align: center;
@@ -303,6 +307,17 @@ body {
 .delete_button{
   margin-top:20px;
 }
+
+.submit_button{
+  background-repeat: no-repeat;
+  background-image: image_url("ico_member_search.png");
+  width: auto;
+  background-color: transparent;
+  border:none;
+  color: blue;
+  font-size: 14px;
+}
+
 //
 // .create_team_wrap::before{
 //   content: "+";
@@ -352,7 +367,8 @@ body {
   position: relative;
 }
 
-
+.search_bar{
+}
 
 // 翻轉球員卡
 
