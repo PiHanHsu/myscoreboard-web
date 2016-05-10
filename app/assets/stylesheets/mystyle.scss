@@ -127,7 +127,7 @@ body {
     width: auto;
     background-color: transparent;
     border:none;
-    color: blue;
+    color: #84AEEE;
     font-size: 14px;
 
 }
@@ -236,7 +236,9 @@ body {
 .search_input {
     width: 80%;
     margin-top: 15px;
+    margin-left: 10px;
     background: transparent;
+    outline: none;
     border:none;
     border-bottom-style: solid;
     border-bottom-color: #225cb4;
@@ -568,7 +570,7 @@ img.watermark {
   height: 30px;
   float: right;
   margin-left: -10px;
-  margin-right: 30px;
+  margin-right: 43px;
   &:focus{
     outline: none;
   }
@@ -627,7 +629,7 @@ img.watermark {
     background-color: #FFFFFF;
     border: 1px solid #bbb;
     position: absolute;
-    left: -173px;
+    left: -195px;
 }
 
 .team_member_wrap+.col-md-3{
@@ -675,8 +677,24 @@ img.watermark {
   &:focus{
   background-color: transparent;
   }
-
 }
+
+.edit_team_button{
+  font-size: 20px;
+  margin-left: 270px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-left: 0;
+  padding-bottom: 40px;
+  padding-right: 40px;
+  &:focus{
+  background-color: transparent;
+  }
+  &:active{
+  background-color: transparent;
+  }
+}
+
 
 .wrap_edit_team_member_button{
   padding: 0 0;
