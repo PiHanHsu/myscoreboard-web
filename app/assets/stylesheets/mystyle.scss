@@ -497,6 +497,7 @@ body {
     height: 40px;
     background-color: #FFFFFF;
     border: 1px solid #bbb;
+    position: absolute;
 }
 
 .team_member_wrap+.col-md-3{
@@ -546,6 +547,16 @@ body {
   padding: 0 0;
 }
 
+.team_name{
+  text-align: center;
+  text-transform: uppercase;
+  color:#ffd700;
+  font-size: 40px;
+}
+
+.team_content{
+  color: white;
+}
 
 //
 // .create_team_wrap::before{
