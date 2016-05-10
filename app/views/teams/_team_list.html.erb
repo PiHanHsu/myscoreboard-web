@@ -51,7 +51,7 @@
 
                         <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
                         <br>
-                        <%= image_tag (b.object.head.url(:thumb)), :id => "member_photo" %>
+                        <div id="member_photo"> <%= user_avatar(b.object)%> </div>
                     </div>
                   <% end %>
                   <span class="container delete_button">

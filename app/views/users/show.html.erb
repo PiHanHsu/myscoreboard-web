@@ -5,6 +5,12 @@
 
    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 user_data_area">
 
+    <div class="row">
+     <div class="update_playercard">
+
+     </div>
+    </div>
+
       <div class="row user_data_1">
       <!-- Button trigger modal -->
           <div data-toggle="modal" data-target="#myModal">
@@ -15,7 +21,7 @@
       <div class="row user_data_2">
 
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-           <img src="http://placehold.it/90x150" class="playercard">
+           <%=  image_tag("steven.jpg", height: '160', width: '98', class: "playercard")%>
         </div>
 
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -30,8 +36,8 @@
       <div class="row user_data_3">
        <font  color="#FFF" class="lighter float_left ">近期比賽</font>
       </div>
-
       <div class="row user_data_4">
+      <%=  image_tag("score.png", height: '126', width: '300') %>
       </div>
 
       <div class="row user_data_3">
@@ -39,6 +45,7 @@
       </div>
 
       <div class="row user_data_6">
+      <%=  image_tag("best＿partner.png") %>
       </div>
 
 
@@ -46,6 +53,35 @@
 
 
    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+
+     <div class="player_card">
+      <div class="face front">
+
+       <div class="row powerful ">
+       <font size="10" class="" >戰力分析</font>
+       </div>
+       <br>
+
+       <%=  image_tag("fivestar.png") %>
+      </div>
+
+     <div class="face back">
+
+       <div class="row powerful">
+       <font size="10" class="" >球員卡</font>
+       </div>
+       <br>
+     <div class="watermark_box">
+     <% @cards.each do |c| %>
+     <%= image_tag c.avatar.url,height: '390', width: '520'%>
+     <% end %>
+     </div>
+     <%#= image_tag "P2140908.jpg",height: '390', width: '520'%>
+     <%= image_tag "cover1.png",height: '390', width: '520', class:"watermark"%>
+     </div>
+
+    </div>
+
 
 <!-- Modal -->
   <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -60,7 +96,22 @@
                   </button>
                 </div>
               <div class="row">
-              <img src="http://placehold.it/90x150" class="playercard"> <br>
+              <%=  image_tag("steven.jpg", height: '240', width: '143', class: "playercard")%><br>
+上傳球員卡:<br>
+<div class="head_submit">
+<!-- 這邊上傳球員卡 -->
+      <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
+      <%= form.file_field :avatar %>
+      <%= form.submit %>
+      <% end %>
+  </div>
+<!-- 這邊上傳球員卡 -->
+
+              <%= form_for @user do |f| %>
+              上傳大頭照:<br>
+              <div class="head_submit">
+              <%= f.file_field :head %>
+              </div>
               ID:<%= @user.userid %>
               <br>
               <br>
@@ -75,8 +126,6 @@
               </div>
               <br>
               <br>
-
-              <%= form_for @user do |f| %>
               <div class="emailemail">
               <font color="#E0E0E0">暱稱 </font>
               </div>
@@ -105,21 +154,9 @@
 
 <br><br>
 
-      上傳球員卡
-      <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
-      <%= form.file_field :avatar %>
-      <%= form.submit %>
-      <% end %>
 
-      上傳大頭照
-      <%= form_for @user, url: user_path(@user), :method => :patch, html: { multipart: true } do |form| %>
-      <%= form.file_field :head %>
-      <%= form.submit %>
-      <% end %>
 
-   <% @cards.each do |c| %>
-   <%= image_tag c.avatar.url(:thumb)%>
-   <% end %>
+
 
    </div>
 
@@ -128,3 +165,6 @@
 </div>
 
 </div>
+
+<script>
+</script>
