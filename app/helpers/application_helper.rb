@@ -9,7 +9,7 @@ def user_avatar(user)
  else
    image_url = "default_head.png"
  end
- image_tag(image_url, height: '150', width: '150', class:"playercard")
+ image_tag(image_url, height: '150', width: '150')
 end
 
 
