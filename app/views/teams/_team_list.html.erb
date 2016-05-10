@@ -41,7 +41,6 @@
             <div class="row team_member_wrap">
 
                 <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
-<<<<<<< HEAD
                   <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
                     <div class="col-md-3 col-xs-2 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
                       <i class="fa fa-check" aria-hidden="true"></i>
@@ -56,11 +55,9 @@
                   </span>
                   <% end %>
               </div>
-=======
                 <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
                 <div class="col-md-3 col-xs-2 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
                     <i class="fa fa-check" aria-hidden="true"></i>
->>>>>>> 06df6038bdb0153899c46e1392709f35a1c4c815
 
                     <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
                     <br>
