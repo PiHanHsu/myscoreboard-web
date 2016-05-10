@@ -75,7 +75,7 @@ private
                   rate: rate.round(2),
                   points: points }
               end
-    ranking.sort! {|a, b| b[:points] <=> a[:points]}
+    ranking.sort! {|a, b| b[:rate] <=> a[:rate]}
     return ranking
   end
 end
