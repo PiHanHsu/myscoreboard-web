@@ -1,7 +1,7 @@
 <%= t.label :name,'球隊名稱' %>
 <%= t.text_field :name, :class => "form-control" %>
 <%= t.label :day,'球聚日期' %>
-<%= t.text_field :day, :class => "form-control" %>
+<%= t.select :day, team_weekday_options, :class => "form-control" %>
 <%= t.label :start_time,'開始時間' %>
 <%= t.time_field :start_time, :class => "form-control" %>
 <%= t.label :end_time,'結束時間' %>
