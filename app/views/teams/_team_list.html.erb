@@ -49,25 +49,16 @@
                         <br>
                         <div id="member_photo"> <%= user_avatar(b.object)%> </div>
                     </div>
-                  <% end %>
+                    <% end %>
                   <span class="container delete_button">
-                      <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+                    <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
                   </span>
-                  <% end %>
-              </div>
-                <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
-                <div class="col-md-3 col-xs-2 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-
-                    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
-                    <br>
-                    <%= image_tag (b.object.head.url(:thumb)), :id => "member_photo" %>
-                </div>
                 <% end %>
+              </div>
+                
                 <span class="container delete_button">
                     <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
                 </span>
-                <% end %>
             </div>
         </div>
     </div>
