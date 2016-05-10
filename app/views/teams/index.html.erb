@@ -15,13 +15,13 @@
 						<div class="nav nav-tabs pull-left">
 							<% if @teams %>
 							<% @teams.each do |team| %>
-							<li class="<%= 'active' if @team_tab == team %>">
+							<li class="<%= 'active' if @team_tab == team %>" id = "team_tab">
 								<%= link_to team.name, teams_path(team: team) %>
 							</li>
 							<% end %>
 							<% end %>
 							<li>
-								<button type="button" class="btn btn-default btn-lg fix-lulu" data-toggle="modal" data-target="#createModal">
+								<button type="button" class="btn-lg fix-lulu" data-toggle="modal" data-target="#createModal">
 									AddTeam</button>
 							</li>
 						</div>
