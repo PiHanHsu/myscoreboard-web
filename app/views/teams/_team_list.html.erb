@@ -47,7 +47,7 @@
 
                         <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
                         <br>
-                        <div id="member_photo"> <%= user_avatar(b.object)%> </div>
+                        <div id="member_photo"> <%= user_avatar(b.object)(:thumb)%> </div>
                     </div>
                     <% end %>
                   <span class="container delete_button">
@@ -55,7 +55,7 @@
                   </span>
                 <% end %>
               </div>
-                
+
                 <span class="container delete_button">
                     <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
                 </span>
