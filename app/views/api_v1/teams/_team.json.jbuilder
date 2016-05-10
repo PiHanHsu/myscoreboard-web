@@ -10,6 +10,15 @@ json.team do
   json.teammembers team.users
   json.logo_original_url asset_url(team.logo.url)
 end
+
+json.teammates do
+  json.array!(team.users) do |u|
+    json.username u.username
+    json.user_id u.id
+    json.user_photo asset_url(u.head.url)
+  end
+end
+
 # json.logo_medium_url asset_url(team.logo.url(:medium))
 # json.logo_thumb_url asset_url(team.logo.url(:thumb))
 #Todo 確認尺寸，提供特定的網址 原始或者medium,thumb
