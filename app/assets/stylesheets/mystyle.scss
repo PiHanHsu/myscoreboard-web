@@ -1,5 +1,5 @@
 body {
-    background-color: #225CB4;
+    background-color: #84AEEE;
     padding-top: 80px;
 }
 
@@ -32,7 +32,7 @@ body {
 //navbar
 #navbar {
     min-height: 50px;
-    background-color: #528EE9;
+    background-color: #225CB4;
     border-color: transparent;
 }
 
@@ -104,8 +104,19 @@ body {
     td{
       height: 70px;
       vertical-align: middle;
-    }
 }
+.ranking-user{
+      margin-top: 10px;
+      display: inline-block;
+      }
+}
+
+@media (max-width:1200px) {
+  .ranking-table{
+    font-size: 14px;
+  }
+}
+
 .ranking-number{
     font-size: 40px;
     font-family: Arial Black;
@@ -140,12 +151,15 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 300px;
-    height: 650px;
-    border-radius: 10px;
+    height: 700px;
+}
+
+.background {
+    background-color: #001331;
 }
 
 .upload_pic{
-    margin-top: 50px;
+    padding-top: 50px;
 }
 .signup_form{
  margin-top: 23px;
@@ -254,8 +268,7 @@ body {
 //user
 
 .user_head {
-    border-radius: 50%;
-    border:5px solid #FFD200;
+
 }
 
 .nil_line2 {
@@ -274,7 +287,8 @@ body {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 60px;
+        margin-top: 30px;
+        margin-bottom: 30px;
         width: 940px;
         background-color: #FFF;
         height: 550px;
@@ -314,9 +328,15 @@ body {
     padding-left: 5px;
     }
 
-    .playercard{
-    border-radius: 7px;
-    border:10px solid #84AEEE;
+  .playercard{
+    border-radius: 50%;
+    border:3px solid #84AEEE;
+    }
+
+
+    .playercard1{
+    border-radius: 3px;
+    border:3px solid #84AEEE;
     }
 
     .user_data_1 {
@@ -330,7 +350,7 @@ body {
     }
 
     .user_data_3 {
-        margin-left: 0px;
+        margin-left: 1px;
         height: 30px;
         width: 290px;
         border-bottom-style: solid;
@@ -392,9 +412,73 @@ body {
         padding-right:213px;
    }
 
+   .head_submit {
+    padding-left: 60px;
+
+   }
+
    .useremail{
         padding-right:100px;
    }
+
+
+   //翻轉球員卡
+
+   .powerful {
+    margin-left:100px;
+        width: 350px;
+        border-bottom-style: solid;
+        border-bottom-width: 3px;
+        border-bottom-color: #225CB4;
+   }
+
+  .player_card {
+        margin-left:40px;
+         position: relative;
+         -webkit-perspective: 600;
+         width: 325px;
+         height: 455px;
+      }
+ .face {
+     width: 325px;
+     height: 200px;
+     position: absolute;
+     -webkit-transition: all 1s;
+     -webkit-backface-visibility: hidden;
+ }
+ .front {
+     background: #FFFFFF;
+     z-index: 10;
+ }
+ .back {
+     background: #FFFFFF;
+     -webkit-transform: rotate3d(0, 1, 0, -180deg);
+     z-index: 8;
+ }
+ .player_card:hover .front {
+     -webkit-transform: rotate3d(0, 1, 0, 180deg);
+     z-index: 8;
+ }
+ .player_card:hover .back {
+     -webkit-transform: rotate3d(0, 1, 0, 0deg);
+     z-index: 8;
+ }
+
+ // 以下是浮水印
+
+ .watermark_box {
+    position:relative;
+    display: block;
+    border-radius:20px;
+ }
+
+img.watermark {
+    position:absolute;
+    top: 91px;
+    left: 0em;
+}
+
+
 }
 // 以上是個人頁面
 
@@ -670,7 +754,7 @@ body {
 @media (min-width: 992px) {
     .container_mobile_first {
         width: 650px;
-        height: 500px;
+        height: 650px;
     }
     .logo_bar {
         display: none;
