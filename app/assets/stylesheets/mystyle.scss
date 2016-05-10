@@ -479,6 +479,7 @@ body {
 }
 
 .search_bar{
+  position: relative;
   padding: 0 0;
 }
 
@@ -498,6 +499,7 @@ body {
     background-color: #FFFFFF;
     border: 1px solid #bbb;
     position: absolute;
+    left: -173px;
 }
 
 .team_member_wrap+.col-md-3{
