@@ -11,6 +11,9 @@ class Team < ActiveRecord::Base
                     :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
+  DAY = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日",]
+
+
   def male_single_ranking
     records = Record.includes(:user, :game).where( users: { :gender => "male" } ).where( games: { team_id: self.id, game_type: "single" } )
     male_single_ranking = create_ranking(records, "male")
@@ -40,6 +43,8 @@ class Team < ActiveRecord::Base
     records = Record.includes(:user, :game).where( users: { :gender => "female" } ).where( games: { team_id: self.id, game_type: "mix" } )
     male_single_ranking = create_ranking(records, "female")
   end
+
+private
 
   def create_ranking(records, gender)
     wins = records.where( :result => "W" ).group( :user_id ).count
@@ -72,7 +77,7 @@ class Team < ActiveRecord::Base
                   rate: rate.round(2),
                   points: points }
               end
-    ranking.sort! {|a, b| b[:points] <=> a[:points]}
+    ranking.sort! {|a, b| b[:rate] <=> a[:rate]}
     return ranking
   end
 end
