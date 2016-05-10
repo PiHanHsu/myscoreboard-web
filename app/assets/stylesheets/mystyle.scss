@@ -111,6 +111,12 @@ body {
       }
 }
 
+@media (max-width:1200px) {
+  .ranking-table{
+    font-size: 14px;
+  }
+}
+
 .ranking-number{
     font-size: 40px;
     font-family: Arial Black;
