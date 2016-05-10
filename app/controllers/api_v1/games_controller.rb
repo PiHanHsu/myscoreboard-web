@@ -43,7 +43,7 @@ class ApiV1::GamesController < ApiController
         @wins = @user_records.where( :result => "W" ).count
         @losses = @user_records.where( :result => "L" ).count
         @games = @wins + @losses
-        @rate = @wins / (@wins + @losses)
+        @rate = @wins.to_f / (@wins.to_f + @losses.to_f)
         @points = @wins * 3 + @losses * 1
          
         @best_double_partner, @best_mix_partner = get_best_partners(t) 
@@ -56,9 +56,10 @@ class ApiV1::GamesController < ApiController
           :points => @points,
           :best_double_partner => @best_double_partner,
           :best_mix_partner => @best_mix_partner }
-        
       end
       
+      @stats = @stats.sort {|a, b| b[:points] <=> a[:points] }
+
     end
 
   private
