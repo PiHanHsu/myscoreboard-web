@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :records
   has_many :cards
 
+  after_create :set_email_first
 
   # paperclicp
   has_attached_file :head, :styles => { :medium => "300x300#", :thumb => "150x150#" }, :default_url => "default_head.png",
