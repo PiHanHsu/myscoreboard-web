@@ -1,64 +1,53 @@
-<div class="container myteam_info">
-
-			<div class="container head">
-				<div class="row">
-					<div class="col-md-4">
-						<h1>
-							我的球隊列表
-						</h1>
-					</div>
-				</div>
+<div class="container">
+	<div class="row header_tab">
+		<div class="col-md-offset-4 col-md-8 col-sm-12 wrap_nav_tabs">
+			<div class="nav nav-tabs" id = "nav_tabs">
+				<% if @teams %>
+				<% @teams.each do |team| %>
+				<li class="<%= 'active' if @team_tab == team %>" id="team_tab">
+					<%= link_to team.name, teams_path(team: team) %>
+				</li>
+				<% end %>
+				<% end %>
+				<li id="team_tab">
+					<button type="button" class="btn-lg button_fix add_team_button" data-toggle="modal" data-target="#createModal">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+				</li>
 			</div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="nav nav-tabs pull-left">
-							<% if @teams %>
-							<% @teams.each do |team| %>
-							<li class="<%= 'active' if @team_tab == team %>" id = "team_tab">
-								<%= link_to team.name, teams_path(team: team) %>
-							</li>
-							<% end %>
-							<% end %>
-							<li>
-								<button type="button" class="btn-lg fix-lulu" data-toggle="modal" data-target="#createModal">
-									AddTeam</button>
-							</li>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<% if @team_tab %>
-						<%= render :partial => 'team_list', :locals => { :team => @team_tab }  %>
-						<% end %>
-					</div>
-				</div>
-			</div>
-
-</div>
-<!-- Modal -->
-<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="createModalLabel">新增球隊</h4>
-			</div>
-			<%= form_for @team do |t| %>
-			<div class="form-group">
-				<%= render :partial => "team", :locals => {:t => t} %>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">
-					<%= t.submit "儲存變更!", :class => "btn btn-primary btm-lg"%>
-				</button>
-			</div>
-			<% end %>
 		</div>
 	</div>
+	<div class="row teams_wrap">
+
+		<% if @team_tab %>
+		<%= render :partial => 'team_list', :locals => { :team => @team_tab }  %>
+		<% end %>
+
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="createModalLabel">新增球隊</h4>
+				</div>
+				<%= form_for @team do |t| %>
+				<div class="form-group">
+					<%= render :partial => "team", :locals => {:t => t} %>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">
+						<%= t.submit "儲存變更!", :class => "btn btn-primary btm-lg"%>
+					</button>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
 </div>

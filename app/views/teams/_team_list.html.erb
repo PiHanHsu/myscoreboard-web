@@ -1,42 +1,44 @@
-<div class="row team_item">
+<div class="col-md-4 col-xs-12 team_info">
 
-    <div class="col-md-offset-4 col-md-5 col-xs-12 search_bar">
-        <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
-        <%= text_field_tag :search, params[:search], placeholder: "請輸入使用者ID,暱稱或信箱", class: "search_input"%>
-
-        <%= submit_tag '', class: "checkbox submit_button" %>
-
-        <% end %>
-        <div class="find_user"></div>
+    <div class="team_edit ">
+        <button type="button" class="btn btn-default fix-lulu edit_team_button" data-toggle="modal" data-target="#editModal">
+            編輯球隊
+        </button>
+        <%= render :partial => 'edit_modal', :locals =>{team: team} %>
 
     </div>
-
-    <div class="col-md-3 col-xs-12 wrap_edit_team_member_button">
-        <%= button_tag '編輯球隊成員' , :class => 'btn btn-default fix-lulu edit_team_member_button' %>
+    <div class="team_name ">
+        <h3><%= team.name %></h3>
+    </div>
+    <div class="team_logo">
+        <%= image_tag(team.logo.url(:thumb)) %>
     </div>
 
-    <div class="row team_info">
-        <div class="col-md-4 col-xs-12">
-          <div class="team_edit ">
-              <button type="button" class="btn btn-default fix-lulu edit_team_member_button" data-toggle="modal" data-target="#editModal">
-                  編輯球隊
-              </button>
-              <%= render :partial => 'edit_modal', :locals =>{team: team} %>
+    <div class="team_content">
+        <h3>聚會日期：<%= team.day %></h3>
+        <h3>聚會時間：<%= "%02d" %team.start_time.hour %>：<%= "%02d" %team.start_time.min %>~~<%= "%02d" %team.end_time.hour %>：<%= "%02d" %team.end_time.min %></h3>
+        <h3>球場位置：<%= team.location.place_name %></h3>
+    </div>
 
-            </div>
-            <div class="team_name">
-                <h3><%= team.name %></h3>
-            </div>
-            <div class="team_logo">
-                <%= image_tag(team.logo.url(:thumb)) %>
-            </div>
+</div>
 
-            <div class="team_content">
-                <h3>聚會日期：<%= team.day %></h3>
-                <h3>聚會時間：<%= "%02d" %team.start_time.hour %>：<%= "%02d" %team.start_time.min %>~~<%= "%02d" %team.end_time.hour %>：<%= "%02d" %team.end_time.min %></h3>
-                <h3>球場位置：<%= team.location.place_name %></h3>
-            </div>
+<div class="col-md-8 col-xs-12 team_item">
+    <div class="row team_item_header">
+        <div class="col-md-8 col-xs-12 search_bar">
+            <%= form_tag search_users_path(:team_id => team), :method => :get, :remote => true do %>
+            <%= text_field_tag :search, params[:search], placeholder: "請輸入使用者ID,暱稱或信箱", class: "search_input"%>
+
+            <%= submit_tag '', class: "checkbox submit_button" %>
+
+            <% end %>
+            <div class="find_user"></div>
+
         </div>
+        <div class="col-md-4 col-xs-12 wrap_edit_team_member_button">
+            <%= button_tag '編輯球隊成員' , :class => 'btn btn-default fix-lulu edit_team_member_button' %>
+
+        </div>
+<<<<<<< HEAD
         <div class="col-md-8 col-xs-12 team_list">
             <div class="row team_member_wrap">
 
@@ -60,7 +62,27 @@
                     <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
                 </span>
             </div>
+=======
+    </div>
+
+
+    <div class="row team_member_wrap">
+
+        <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
+        <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
+        <div class="col-md-3 col-xs-6 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
+            <i class="fa fa-check" aria-hidden="true"></i>
+
+            <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
+            <br>
+            <div id="member_photo"> <%= user_avatar(b.object)%> </div>
+>>>>>>> c8d1624fd3b322af47834ca5817fa48d977dbc9a
         </div>
+        <% end %>
+        <span class="container delete_button">
+            <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
+        </span>
+        <% end %>
     </div>
 </div>
 
@@ -83,15 +105,8 @@
     });
 </script>
 
-<!-- <script>
-  $('.team_member').click(function(){
-    // if ($(this).is(":opacity:0.1")){
-    }
-    else {
-    }
+</div>
 
-  })
-</script> -->
 
 <!--
 <script>
@@ -121,19 +136,3 @@ div[value^="asd"] img:focus {
         }
     });
 </script> -->
-
-<!--
-<form action="post">
-  <% team.users.each do |u| %>
-  <div class="col-md-3 col-xs-2 team_member">
-      <span class="user_name">
-          <%= u.username %></span>
-
-      <label for="u.username">
-        <img src="http://placehold.it/140x150">
-        <input type="checkbox" name="u.username" id="u.username"></input>
-      </label>
-  </div>
-  <% end %>
-  <input type="submit" value="送出">
-</form> -->
