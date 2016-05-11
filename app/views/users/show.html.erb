@@ -62,13 +62,13 @@
        </div>
        <br>
 
-       <%=  image_tag("fivestar.png") %>
+       <%=  image_tag("pic_userinfo_radar.png",height: '390', width: '520') %>
       </div>
 
      <div class="face back">
 
        <div class="row powerful">
-       <font size="10" class="" >球員卡</font>
+       <font size="10">球員卡</font>
        </div>
        <br>
      <div class="watermark_box">
@@ -76,7 +76,6 @@
      <%= image_tag c.avatar.url,height: '390', width: '520'%>
      <% end %>
      </div>
-     <%#= image_tag "P2140908.jpg",height: '390', width: '520'%>
      <%= image_tag "cover1.png",height: '390', width: '520', class:"watermark"%>
      </div>
 
@@ -98,18 +97,18 @@
               <div class="row">
               <%=  image_tag("steven.jpg", height: '240', width: '143', class: "playercard1")%><br>
 上傳球員卡:<br>
-<div class="head_submit">
+<div class="head_submit row ">
 <!-- 這邊上傳球員卡 -->
       <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
       <%= form.file_field :avatar %>
       <%= form.submit %>
       <% end %>
-  </div>
+  </div><br><br>
 <!-- 這邊上傳球員卡 -->
 
               <%= form_for @user do |f| %>
               上傳大頭照:<br>
-              <div class="head_submit">
+              <div class="head_submit row">
               <%= f.file_field :head %>
               </div>
               ID:<%= @user.userid %>
@@ -118,7 +117,7 @@
               </div>
               <div class="row">
               <div class="emailemail">
-                <font color="#E0E0E0">帳號</font> <br>
+                <font >帳號</font> <br>
               </div>
 
               <div class="useremail">
@@ -127,7 +126,7 @@
               <br>
               <br>
               <div class="emailemail">
-              <font color="#E0E0E0">暱稱 </font>
+              <font >暱稱 </font>
               </div>
                 <div class="">
                   <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "username_box"  %>
@@ -135,7 +134,7 @@
                 <br>
 
                 <div class="emailemail">
-                <font color="#E0E0E0">性別</font>
+                <font >性別</font>
                 </div>
 
                 <div class="form-group">
