@@ -38,33 +38,8 @@
             <%= button_tag '編輯球隊成員' , :class => 'btn btn-default fix-lulu edit_team_member_button', :value => 'hello' %>
 
         </div>
-<<<<<<< HEAD
-        <div class="col-md-8 col-xs-12 team_list">
-            <div class="row team_member_wrap">
 
-                <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
-                  <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
-                    <div class="col-md-3 col-xs-2 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
-                      <i class="fa fa-check" aria-hidden="true"></i>
-
-                        <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
-                        <br>
-                        <div id="member_photo"> <%= user_avatar(b.object)%> </div>
-                    </div>
-                    <% end %>
-                  <span class="container delete_button">
-                    <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
-                  </span>
-                <% end %>
-              </div>
-
-                <span class="container delete_button">
-                    <%= submit_tag "確認刪除", :class =>'btn btn-danger btn-lg' %>
-                </span>
-            </div>
-=======
     </div>
-
 
     <div class="row team_member_wrap">
 
@@ -75,8 +50,9 @@
 
             <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %>
             <br>
-            <div id="member_photo"> <%= user_avatar(b.object)%> </div>
->>>>>>> c8d1624fd3b322af47834ca5817fa48d977dbc9a
+            <div id="member_photo">
+                <%= user_avatar(b.object)%>
+            </div>
         </div>
         <% end %>
         <span class="container delete_button">
@@ -87,11 +63,10 @@
 </div>
 
 <script>
-  $(".edit_team_member_button").click(function(){
-    var content = this.getAttribute('value');
-    console.log(content)
-  })
-
+    $(".edit_team_member_button").click(function () {
+        var content = this.getAttribute('value');
+        console.log(content)
+    })
 </script>
 
 <script>
@@ -114,7 +89,6 @@
 </script>
 
 </div>
-
 
 <!--
 <script>
