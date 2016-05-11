@@ -558,6 +558,7 @@ img.watermark {
 .delete_button{
   margin-top:20px;
   // visibility: hidden;
+  z-index: 20;
 }
 
 .submit_button{
@@ -720,7 +721,7 @@ img.watermark {
 }
 
 .a{
-  z-index: 10000;
+  z-index: 10;
 }
 
 

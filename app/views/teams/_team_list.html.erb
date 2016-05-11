@@ -34,15 +34,15 @@
             <div class="find_user"></div>
 
         </div>
-        <div class="col-md-4 col-xs-12 wrap_edit_team_member_button">
-            <%= button_tag '編輯球隊成員' , :class => 'btn btn-default fix-lulu edit_team_member_button', :value => 'display' %>
+        <div class="col-md-4 col-xs-12 wrap_edit_team_member_button" >
+            <%= button_tag '編輯球隊成員' , :class => 'btn btn-default fix-lulu edit_team_member_button', :id => "edit_team_member_button" , :value => 'display' %>
 
         </div>
 
     </div>
 
     <div class="row team_member_wrap">
-        <div class="screen"></div>
+        <!-- <div class="screen"></div> -->
         <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
         <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
         <div class="col-md-3 col-xs-6 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
@@ -62,20 +62,8 @@
     </div>
 </div>
 
-<!-- <script>
-    $(".edit_team_member_button").click(function () {
-        var content = this.getAttribute('value');
-        if (content == 'display'){
-          $(this).text('選取要刪除的成員');
-          $('.delete_button').css("visibility", "visible");
-          $(this).value = 'edit'
-        }
-        else (content == 'edit') {
-          $('.screen').toggleClass('a');
-          $(this).text('編輯球隊成員');
-        }
-    })
-</script> -->
+
+
 
 <script>
     $("[id^=team_member_]").click(function () {
@@ -95,6 +83,23 @@
         }
     });
 </script>
+
+
+
+<script>
+    $("#edit_team_member_button").click(function () {
+        var content = this.getAttribute('value');
+        if (content == 'display') {
+            $(this).text('選取要刪除的成員');
+            $('.delete_button').css("visibility", "visible");
+            $("#edit_team_member_button").button.value = 'edit';
+        } else {
+            $('.screen').toggleClass('a');
+            $(this).text('編輯球隊成員');
+        }
+    })
+</script>
+
 
 </div>
 
