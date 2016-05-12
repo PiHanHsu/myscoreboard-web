@@ -541,6 +541,7 @@ img.watermark {
     position: relative;
     margin-bottom: 10px;
     input[type=checkbox]{
+
     display: none;
     // z-index: 3;
   }
@@ -557,7 +558,7 @@ img.watermark {
 
 .delete_button{
   margin-top:20px;
-  // visibility: hidden;
+  visibility: hidden;
   z-index: 20;
 }
 
