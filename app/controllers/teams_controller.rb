@@ -82,7 +82,7 @@ class TeamsController < ApplicationController
 	end
 
   def add_player
-    @user_teamship = UserTeamship.create( :team_id => params[:id], :user_id => params[:user_id] )
+    @user_teamship = UserTeamship.find_or_create_by( :team_id => params[:id], :user_id => params[:user_id] )
     redirect_to :back
 	end
 
