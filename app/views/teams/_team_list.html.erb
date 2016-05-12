@@ -70,34 +70,38 @@
     $("#edit_team_member_button").click(function () {
         // console.log($(this).text())
         var content = $(this).text();
-
         if (content == '編輯球隊成員') {
             $(this).text('取消選取');
             $('.delete_button').css("visibility", "visible");
             statusSelect()
         } else {
             $(this).text('編輯球隊成員');
+            $("[id^=team_member_]").off('click');
             $('.delete_button').css("visibility", "hidden");
             $("[id^=team_user_ids]").prop("checked", false);
             $("[id^=team_member_]").removeClass("selected");
             $("[id^=member_photo]").css("opacity", "1");
             $("[id^=tick]").css("visibility", "hidden");
-            statusSelect()
         }
-})
+    })
 </script>
 
 <script >
     function statusSelect() {
-        $("[id^=team_member_]").click(function () {
+        console.log('1');
+        $("[id^=team_member_]").on('click', function () {
             var input_id = "team_user_ids_" + this.getAttribute('value');
             if ($("#" + input_id).is(":checked")) {
+                console.log('2');
+
                 $("#" + input_id).prop("checked", false);
                 $(this).removeClass("selected");
                 $(this).children("#member_photo").css("opacity", "1");
                 $(this).children(".fa-check").css("visibility", "hidden");
 
             } else {
+                console.log('3');
+
                 $("#" + input_id).prop("checked", true);
                 $(this).addClass("selected");
                 $(this).children("#member_photo").css("opacity", "0.1");
