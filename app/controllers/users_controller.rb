@@ -21,6 +21,15 @@ class UsersController < ApplicationController
     @card = Card.new
     # 撈球員卡用
     @cards = current_user.cards
+
+    @teams = current_user.teams
+
+    if params[:team]
+      @team_tab = Team.find( params[:team] )
+    else
+      @team_tab = @teams.first
+    end
+
   end
 
   def edit

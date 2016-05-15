@@ -289,18 +289,24 @@ body {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 30px;
         margin-bottom: 30px;
         width: 940px;
-        background-color: #FFF;
         height: 550px;
         border-radius: 5px;
     }
 
-    .user_data_area {
+    .user_data_left {
          background-color: #225CB4;
-         border-radius: 5px;
+         border-bottom-left-radius: 5px;
+         border-top-left-radius: 5px;
          height: 550px;
+    }
+
+    .user_data_right {
+         border-top-right-radius: 5px;
+         border-bottom-right-radius: 5px;
+         height: 550px;
+         background-color: #FFF;
     }
 
     .edit_page {
@@ -318,7 +324,9 @@ body {
     padding-right: 31px;
     }
 
-  .playercard{
+
+
+   .playercard{
     border-radius: 50%;
     border:3px solid #84AEEE;
     }
@@ -415,44 +423,12 @@ body {
    //翻轉球員卡
 
    .powerful {
-    margin-left:100px;
+        margin:0 auto;
         width: 350px;
         border-bottom-style: solid;
         border-bottom-width: 3px;
         border-bottom-color: #225CB4;
    }
-
-  .player_card {
-        margin-left:40px;
-         position: relative;
-         -webkit-perspective: 600;
-         width: 325px;
-         height: 455px;
-      }
- .face {
-     width: 525px;
-     height: 200px;
-     position: absolute;
-     -webkit-transition: all 1s;
-     -webkit-backface-visibility: hidden;
- }
- .front {
-     background: #FFFFFF;
-     z-index: 10;
- }
- .back {
-     background: #FFFFFF;
-     -webkit-transform: rotate3d(0, 1, 0, -180deg);
-     z-index: 8;
- }
- .player_card:hover .front {
-     -webkit-transform: rotate3d(0, 1, 0, 180deg);
-     z-index: 8;
- }
- .player_card:hover .back {
-     -webkit-transform: rotate3d(0, 1, 0, 0deg);
-     z-index: 8;
- }
 
  // 以下是浮水印
 
@@ -612,7 +588,7 @@ img.watermark {
 //隊伍頁面搜尋使用者
 
 .search_box {
-    width: 300px;
+    width: 415px;
     height: 40px;
     background-color: #FFFFFF;
     border: 1px solid #bbb;

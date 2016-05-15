@@ -11,8 +11,10 @@
       使用者ID:  <%= user.userid %>
     </div>
 
-    <div class="search_user_add col-xs-2 col-sm-2 col-md-2 col-lg-2">
-      <%= link_to "加", add_player_team_path(team, :user_id => user), :method => :post %>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <%= link_to add_player_team_path(team, :user_id => user), :method => :post  do%>
+      <i class="fa fa-plus fa-5" aria-hidden="true"></i>
+      <% end %>
 
     </div>
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <% if @team %>	  
+  <% if @team %>
     <div class="row ">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
@@ -13,7 +13,7 @@
             </ul>
           </li>
         </div>
-        <div class="nav nav-tabs pull-right">  
+        <div class="nav nav-tabs pull-right">
           <li class="<%= 'active' if @game_type == "single" %> game_type"><%= link_to "單打", games_path( :team => @team, game_type: "single") %></li>
           <li class="<%= 'active' if @game_type == "double" %> game_type"><%= link_to "雙打", games_path( :team => @team, game_type: "double") %></li>
           <li class="<%= 'active' if @game_type == "mix" %> game_type"><%= link_to "混雙", games_path( :team => @team, game_type: "mix") %></li>
@@ -22,7 +22,7 @@
       <div class="col-sm-1"></div>
     </div>
     <div class="row">
-      <div class="col-sm-1"></div> 
+      <div class="col-sm-1"></div>
         <div class="col-sm-10 ranking-area">
           <div class="col-sm-6">
             <p class="ranking-title"> 男子選手排行榜 </p>
@@ -34,7 +34,7 @@
                 <th> <%= "勝"%></th>
                 <th> <%= "勝率(%)"%></th>
               </thead>
-              <tbody> 
+              <tbody>
                 <% @male_ranking.each_with_index do |player, index| %>
                   <tr id="ranking_tr">
                     <td ><P class="ranking-number"><%= index+1 %></p></td>
@@ -60,7 +60,7 @@
                 <th> <%= "勝"%></th>
                 <th> <%= "勝率(%)"%></th>
               </thead>
-              <tbody> 
+              <tbody>
                 <% @female_ranking.each_with_index do |player, index| %>
                   <tr id="ranking_tr">
                     <td ><P class="ranking-number"><%= index+1 %></p></td>
@@ -77,7 +77,7 @@
             </table>
           </div>
         </div>
-      
+
     </div>
   <% else %>
     <h1> 目前沒有排行榜 </h1>

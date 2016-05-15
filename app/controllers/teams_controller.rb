@@ -64,7 +64,9 @@ class TeamsController < ApplicationController
     end
 
     if @team.save
-      redirect_to teams_path
+      redirect_to :back
+      #redirect_to teams_path
+      #我這邊幫你修改成 修改完後回到上一頁 我在第二隊修改完之後, 我會回到原本那一隊, 而不是主畫面- steven
     else
       render :action => :update
     end
