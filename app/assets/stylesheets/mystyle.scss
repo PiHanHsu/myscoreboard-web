@@ -132,7 +132,7 @@ body {
 
 }
 .fix-lulu:hover{
-  background-color: transparent;
+  background-color: #dcdcdc;
 }
 
 // login & singup
@@ -502,8 +502,10 @@ img.watermark {
 }
 
   .team_member_wrap{
+    position: relative;
     margin-bottom: 10px;
     input[type=checkbox]{
+
     display: none;
     // z-index: 3;
   }
@@ -520,6 +522,8 @@ img.watermark {
 
 .delete_button{
   margin-top:20px;
+  visibility: hidden;
+  z-index: 20;
 }
 
 .submit_button{
@@ -645,7 +649,7 @@ img.watermark {
 
 .edit_team_button{
   font-size: 20px;
-  margin-left: 270px;
+  margin-left: 250px;
   margin-top: 10px;
   margin-bottom: 15px;
   padding-left: 0;
@@ -674,6 +678,17 @@ img.watermark {
 .team_content{
   color: white;
 }
+
+.screen{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.a{
+  z-index: 10;
+}
+
 
 //
 // .create_team_wrap::before{
