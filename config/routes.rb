@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     collection do
       post :bulk_update
     end
-    
+
     member do
       post :add_player
     end
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :users do
     collection do
       get :search
+      get :user
     end
 
     end
