@@ -55,8 +55,8 @@ end
      success = false
 
      if params[:email] && params[:password]
-       user = User.find_by_email( params[:email] )
-       success = user && user.valid_password?( params[:password] )
+       @user = User.find_by_email( params[:email] )
+       success = @user && @user.valid_password?( params[:password] )
 
      elsif params[:access_token]
        fb_data = User.get_fb_data( params[:access_token] )
@@ -75,7 +75,7 @@ end
                token: params[:access_token]
              }
            })
-           user = User.from_omniauth(auth_hash)
+           @user = User.from_omniauth(auth_hash)
          end
        success = fb_data && user.persisted?
      end
@@ -83,8 +83,7 @@ end
 
 
         if success
-         render :json => { :auth_token => user.authentication_token,
-                           :user_id => user.id}, :status => 200
+         # user jbuilder
         else
          render :json => { :message => "email or password is not correct" }, :status => 401
         end
