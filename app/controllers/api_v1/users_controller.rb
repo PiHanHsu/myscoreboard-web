@@ -24,12 +24,10 @@ class ApiV1::UsersController < ApiController
 
   def update
 
-    if params[:username]
-        @user = User.create( :username => @user.username, :gender => @user.gender)
-    end
+    @user.update(user_params)
 
     if @user.save
-      render json: "12312123"
+      render json: { message: "更新成功" }, :status => 200
     else
       render json: { message: "更新失敗" }, :status => 400
     end
@@ -61,7 +59,7 @@ class ApiV1::UsersController < ApiController
   end
 
   def user_params
-    params.permit(:email, :gender, :head)
+    params.permit(:email, :gender, :head, :username)
   end
 
 end
