@@ -2,7 +2,7 @@ class ApiV1::UsersController < ApiController
 
   # before_action :authenticate_user!
 
-  before_action :set_user, :only => [ :edit, :update, :destroy]
+  before_action :set_user, :only => [ :edit, :update, :destroy, :reset_password]
 
 
   def show
@@ -11,6 +11,16 @@ class ApiV1::UsersController < ApiController
     else
        render :json => { :message => "Fail! " }, :status => 401
     end
+  end
+
+  def reset_password
+
+    if @user.present?
+      @user.send_reset_password_instructions
+    else
+     render json: { message: "更新失敗" }, :status => 401
+    end
+
   end
 
   def new
@@ -59,7 +69,7 @@ class ApiV1::UsersController < ApiController
   end
 
   def user_params
-    params.permit(:email, :gender, :head, :username)
+    params.permit(:email, :gender, :head, :username, :password)
   end
 
 end

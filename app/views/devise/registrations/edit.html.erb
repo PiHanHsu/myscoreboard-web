@@ -1,11 +1,11 @@
 <div class="container_mobile_first">
-<h2> 修改密碼 </h2>
+  <h1> <font color="#FFF">修改密碼</font> </h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <font size="4" color="#FFF">信箱:</font><br/>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -14,17 +14,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <font size="4" color="#FFF">請輸入新密碼</font><br/>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <font size="4" color="#FFF">請再次輸入新密碼</font>><br/>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <font size="4" color="#FFF">請輸入舊密碼</font>><br/>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
@@ -35,6 +35,6 @@
 
 <% end %>
 
-<%= link_to "Back", :back %>
+<%= link_to "回到上一頁", :back %>
 
 </div>

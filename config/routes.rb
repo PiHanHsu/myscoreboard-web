@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => {
+   :omniauth_callbacks => "users/omniauth_callbacks"
+  }
 
   resources :users do
     resources :cards
@@ -27,11 +29,11 @@ Rails.application.routes.draw do
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
     post "/signup" => "auth#signup"
+    patch "reset_password" => "users#reset_password"
 
     resources :users do
     collection do
       get :search
-      get :user
     end
 
     end

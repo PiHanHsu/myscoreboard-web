@@ -46,7 +46,8 @@
           <font size="5" color="#FFD200" class="show_username "><%= @user.username %></font> <br><br>
           <font size="4" color="#FFF" class="lighter ">球隊總排名： </font> <br><br>
           <font size="4" color="#FFF" class="lighter ">累計總場次：<%= @records %></font>  <br><br>
-          <font size="4" color="#FFF" class="lighter">勝率：</font>
+          <font size="4" color="#FFF" class="lighter">勝率：</font><P>
+          <%= link_to 'Change Password', edit_user_registration_path(@user) %>
         </div>
 
       </div>
@@ -88,15 +89,15 @@
                   </button>
                 </div>
               <div class="row">
-              <%=  image_tag("steven.jpg", height: '240', width: '143', class: "playercard1")%><br>
-上傳球員卡:<br>
-<div class="head_submit row ">
+               <%#=  image_tag("steven.jpg", height: '240', width: '143', class: "playercard1")%><br>
+<!-- 上傳球員卡:<br> -->
+<!-- <div class="head_submit row "> -->
 <!-- 這邊上傳球員卡 -->
-      <%= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
-      <%= form.file_field :avatar %>
-      <%= form.submit %>
-      <% end %>
-  </div><br><br>
+      <%#= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
+      <%#= form.file_field :avatar %>
+      <%#= form.submit %>
+      <%# end %>
+  <!-- </div><br><br> -->
 <!-- 這邊上傳球員卡 -->
 
               <%= form_for @user do |f| %>
