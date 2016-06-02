@@ -1,19 +1,19 @@
 class ApiV1::GamesController < ApiController
-    # before_action :authenticate_user!
+    before_action :authenticate_user!
     protect_from_forgery except: :create
 	  def index
 
-      #Ranking api for 3 game_types
-
-      @single_records = Record.joins(:game).where( games: { team_id: params[:team_id], game_type: "single" } )
-      @single_ranking = create_ranking(@single_records)
-
-      @double_records = Record.joins(:game).where( games: { team_id: params[:team_id], game_type: "double" } )
-      @double_ranking = create_ranking(@double_records)
-      
-      @mix_records = Record.joins(:game).where( games: { team_id: params[:team_id], game_type: "mix" } )
-      @mix_ranking = create_ranking(@mix_records)
-
+      #Ranking api for all teams/types ranking 
+      @teams_ranking = current_user.teams.map do |team|
+                  
+                   { team: team.name,
+      male_single_ranking: team.male_single_ranking,
+    female_single_ranking: team.female_single_ranking,
+      male_double_ranking: team.male_double_ranking,
+    female_double_ranking: team.female_double_ranking,
+         male_mix_ranking: team.male_mix_ranking,
+       female_mix_ranking: team.female_mix_ranking }
+      end
     end
 
   	def create
