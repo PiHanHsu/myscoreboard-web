@@ -6,6 +6,7 @@ json.result do
     json.losses s[:losses]
     json.rate s[:rate]
     json.points s[:points]	
+    json.last_3_games s[:last_3_games]
     json.best_double_name s[:best_double_partner_name]
     json.best_double_photo s[:best_double_partner_photo]    
     json.best_mix_name s[:best_mix_partner_name]

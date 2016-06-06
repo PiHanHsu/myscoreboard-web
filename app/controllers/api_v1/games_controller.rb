@@ -35,7 +35,7 @@ class ApiV1::GamesController < ApiController
    	end
 
     def stats
-      current_user = User.first
+      
       @teams = current_user.teams.all
       
       @stats= @teams.map do |t|
@@ -45,6 +45,8 @@ class ApiV1::GamesController < ApiController
         @games = @wins + @losses
         @rate = @wins.to_f / (@wins.to_f + @losses.to_f) * 100
         @points = @wins * 3 + @losses * 1
+
+        @last_3_games = t.last_3_games(current_user)
          
         @best_double_partner, @best_mix_partner = get_best_partners(t) 
 
@@ -54,6 +56,7 @@ class ApiV1::GamesController < ApiController
           :games => @games,
           :rate => @rate.round(2),
           :points => @points,
+          :last_3_games => @last_3_games,
           :best_double_partner_name => @best_double_partner.username,
           :best_double_partner_photo => @best_double_partner.get_photo_url,
           :best_mix_partner_name => @best_mix_partner.username,

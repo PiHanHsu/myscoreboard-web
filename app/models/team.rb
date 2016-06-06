@@ -44,6 +44,19 @@ class Team < ActiveRecord::Base
     male_single_ranking = create_ranking(records, "female")
   end
 
+  def last_3_games(user)
+     #last_games = self.games.last(3)
+    last_3_records_by_game = Record.includes(:game).where( user_id: user.id ).where( games: { team_id: self.id }).group(:game_id).last(3)
+    last_3_records_by_game.map do |record|
+      puts(record.game_id)
+      records = Record.where( game_id: record.game_id)
+      {
+        :game => records
+      }
+    end
+    
+  end
+
 private
 
   def create_ranking(records, gender)
