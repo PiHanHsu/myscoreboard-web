@@ -50,13 +50,12 @@ class ApiV1::GamesController < ApiController
          
         @best_double_partner, @best_mix_partner = get_best_partners(t) 
 
-        @best_double_partner_name = @best_double_partner.username || nil
-        @best_double_partner_photo = @best_double_partner.get_photo_url || nil
+        @best_double_partner_name = @best_double_partner.try(:username)
+        @best_double_partner_photo = @best_double_partner.try(:get_photo_url)
         
-        @best_mix_partner_name = @best_mix_partner.username || nil
-        @best_mix_partner_photo = @best_mix_partner.get_photo_url || nil
-
-
+        @best_mix_partner_name = @best_mix_partner.try(:username)
+        @best_mix_partner_photo = @best_mix_partner.try(:get_photo_url) 
+         
         { :team => t.name,
           :wins => @wins,
           :losses => @losses,
