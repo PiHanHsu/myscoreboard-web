@@ -19,10 +19,21 @@ class User < ActiveRecord::Base
                     :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
   validates_attachment_content_type :head, content_type: /\Aimage\/.*\Z/
 
-   def generate_authentication_token
-     # self.authentication_token = SecureRandom.hex(16)
-     self.authentication_token = Devise.friendly_token
-   end
+    def generate_authentication_token
+      # self.authentication_token = SecureRandom.hex(16)
+      self.authentication_token = Devise.friendly_token
+    end
+
+    def get_photo_url
+      if self.head?
+        self.photo = self.head.url
+      elsif self.fb_pic?
+        self.photo = self.fb_pic
+      else
+        self.photo = nil
+      end
+      return self.photo
+    end
 
     def self.get_fb_data(access_token)
 
