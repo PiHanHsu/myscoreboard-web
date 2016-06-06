@@ -50,6 +50,13 @@ class ApiV1::GamesController < ApiController
          
         @best_double_partner, @best_mix_partner = get_best_partners(t) 
 
+        @best_double_partner_name = @best_double_partner.username || nil
+        @best_double_partner_photo = @best_double_partner.get_photo_url || nil
+        
+        @best_mix_partner_name = @best_mix_partner.username || nil
+        @best_mix_partner_photo = @best_mix_partner.get_photo_url || nil
+
+
         { :team => t.name,
           :wins => @wins,
           :losses => @losses,
@@ -57,10 +64,10 @@ class ApiV1::GamesController < ApiController
           :rate => @rate.round(2),
           :points => @points,
           :last_3_games => @last_3_games,
-          :best_double_partner_name => @best_double_partner.username,
-          :best_double_partner_photo => @best_double_partner.get_photo_url,
-          :best_mix_partner_name => @best_mix_partner.username,
-          :best_mix_partner_photo => @best_mix_partner.get_photo_url }
+          :best_double_partner_name => @best_double_partner_name,
+          :best_double_partner_photo => @best_double_partner_photo,
+          :best_mix_partner_name => @best_mix_partner_name,
+          :best_mix_partner_photo => @best_mix_partner_photo }
       end
       
       @stats = @stats.sort {|a, b| b[:points] <=> a[:points] }
