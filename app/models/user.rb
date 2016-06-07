@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
     end
 
     def get_photo_url
-      if self.head?
+      if self.head.present?
         self.photo = self.head.url
-      elsif self.fb_pic?
+      elsif self.fb_pic.present?
         self.photo = self.fb_pic
       else
         self.photo = nil
