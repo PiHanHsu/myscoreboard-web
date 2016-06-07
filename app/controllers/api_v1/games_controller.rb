@@ -5,6 +5,9 @@ class ApiV1::GamesController < ApiController
 
       #Ranking api for all teams/types ranking 
       @teams_ranking = current_user.teams.map do |team|
+        team.users.each do |user|
+          user.photo = user.get_photo_url
+        end
                   
                    { team: team.name,
       male_single_ranking: team.male_single_ranking,

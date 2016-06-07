@@ -5,6 +5,7 @@ json.result do
     json.male_single do 
       json.array!(team_ranking[:male_single_ranking]) do |r|
         json.user r[:user][:username]
+        json.user_photo r[:user][:photo]
         json.games r[:games]
         json.wins r[:wins]
         json.losses r[:losses]
@@ -15,6 +16,7 @@ json.result do
     json.female_single do 
       json.array!(team_ranking[:female_single_ranking]) do |r|
         json.user r[:user][:username]
+        json.user_photo r[:user][:photo]
         json.games r[:games]
         json.wins r[:wins]
         json.losses r[:losses]
@@ -25,6 +27,7 @@ json.result do
     json.male_double do 
       json.array!(team_ranking[:male_double_ranking]) do |r|
         json.user r[:user][:username]
+        json.user_photo r[:user][:photo]
         json.games r[:games]
         json.wins r[:wins]
         json.losses r[:losses]
@@ -35,6 +38,7 @@ json.result do
     json.female_double do 
       json.array!(team_ranking[:female_double_ranking]) do |r|
         json.user r[:user][:username]
+        json.user_photo r[:user][:photo]
         json.games r[:games]
         json.wins r[:wins]
         json.losses r[:losses]
@@ -45,6 +49,7 @@ json.result do
     json.male_mix do 
       json.array!(team_ranking[:male_mix_ranking]) do |r|
         json.user r[:user][:username]
+        json.user_photo r[:user][:photo]
         json.games r[:games]
         json.wins r[:wins]
         json.losses r[:losses]
@@ -55,6 +60,7 @@ json.result do
     json.female_mix do 
       json.array!(team_ranking[:female_mix_ranking]) do |r|
         json.user r[:user][:username]
+        json.user_photo r[:user][:photo]
         json.games r[:games]
         json.wins r[:wins]
         json.losses r[:losses]

@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
       else
         self.photo = nil
       end
+      self.save
       return self.photo
     end
 
