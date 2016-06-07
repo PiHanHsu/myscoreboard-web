@@ -48,8 +48,12 @@ class Team < ActiveRecord::Base
      #last_games = self.games.last(3)
     last_3_records_by_game = Record.includes(:game).where( user_id: user.id ).where( games: { team_id: self.id }).group(:game_id).last(3)
     last_3_records_by_game.map do |record|
-      puts(record.game_id)
-      records = Record.where( game_id: record.game_id)
+      records = Record.includes(:user).where( game_id: record.game_id)
+      records = records.map do |r|
+                { :username => r.user.username,
+                  :score => r.score
+                }
+      end
       {
         :game => records
       }
