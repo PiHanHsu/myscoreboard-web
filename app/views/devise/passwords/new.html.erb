@@ -1,27 +1,27 @@
 <div class="container_mobile_first">
-
-  <h2>忘記密碼啦啦</h2>
+  <br/>
+  <h2> <font color="#FFF">忘記密碼</font></h2>
 
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
-
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <font color="#FFF"><%= f.label :請輸入您的信箱 %><br/></font>
+      <%= f.email_field :email, autofocus: true %><br/><br/>
     </div>
 
     <div class="actions">
-      <%= f.submit "Send me reset password instructions" %>
+      <%= f.submit "確認" %>
     </div>
   <% end %>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <%= link_to "回到註冊頁面", new_registration_path(resource_name) %>
   <% end -%>
-   /
+  <font color="#FFF">/</font>
   <%- if controller_name != 'sessions' %>
   <%= link_to "回到登入頁面", new_session_path(resource_name) %>
 <% end -%>
+
 
 </div>
 

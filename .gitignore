@@ -20,3 +20,4 @@
 .byebug_history
 /config/facebook.yml
 /config/s3.yml
+/config/email.yml

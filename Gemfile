@@ -11,12 +11,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
+# See https://github.xcom/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'paperclip'
 gem 'kaminari'
 
-
+gem "letter_opener", :group => :development
 gem 'font-awesome-sass'
 gem 'omniauth-facebook'
 gem 'devise'
@@ -33,7 +33,7 @@ gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 gem 'mysql2'
 
-gem 'aws-sdk-v1' 
+gem 'aws-sdk-v1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -53,7 +53,7 @@ gem 'faker'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails'
+  gem "rspec-rails", "~> 3.4.2"
 end
 
 group :development do
