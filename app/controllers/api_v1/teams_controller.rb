@@ -4,7 +4,13 @@ class ApiV1::TeamsController < ApiController
   before_action :set_team, :only => [:update, :edit]
 
   def index
-    @teams = current_user.teams.all
+    @teams = current_user.teams
+      @teams.each do |team|
+        team.users.each do |user|
+          user.photo = user.get_photo_url
+        end
+      end
+
   end
 
   def create

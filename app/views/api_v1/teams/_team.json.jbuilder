@@ -15,7 +15,8 @@ json.teammates do
   json.array!(team.users) do |u|
     json.username u.username
     json.user_id u.id
-    json.user_photo asset_url(u.head.url)
+    json.gender u.gender
+    json.user_photo u.photo
   end
 end
 
