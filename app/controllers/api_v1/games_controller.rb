@@ -24,9 +24,9 @@ class ApiV1::GamesController < ApiController
     	transaction = Game.transaction do
  			game = Game.create( :team_id => params[:team_id], :game_type => params[:game_type])
 
-    		params[:scores].each do |key, value|
+    		params[:scores].each do |record|
 
-    			game.records.create(:game_id => game, :user_id => value["user"], :score => value["score"], :result => value["result"])
+    			game.records.create(:game_id => game, :user_id => record["user"], :score => record["score"], :result => record["result"])
 	    	end
     	end
 
