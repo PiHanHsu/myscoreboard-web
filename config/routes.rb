@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     post "/login" => "auth#login"
     post "/logout" => "auth#logout"
     post "/signup" => "auth#signup"
-    patch "reset_password" => "users#reset_password"
+    post "reset_password" => "users#reset_password"
 
     resources :users do
     collection do
