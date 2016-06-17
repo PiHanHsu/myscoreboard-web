@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   # paperclicp
   has_attached_file :head, :styles => { :medium => "300x300#", :thumb => "150x150#" }, :default_url => "default_head.png",
-                    :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
+                    :storage => :s3, :s3_protocol => :https, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
   validates_attachment_content_type :head, content_type: /\Aimage\/.*\Z/
 
     def generate_authentication_token
