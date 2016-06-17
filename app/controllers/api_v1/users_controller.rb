@@ -16,7 +16,7 @@ class ApiV1::UsersController < ApiController
   def reset_password
 
     if params[:email]
-      if User.find_by_email(params[:email])
+      if User.exists?(email: params[:email])
         @user = User.find_by_email(params[:email])
         @user.send_reset_password_instructions
         render json: { message: "寄信成功" }, :status => 200
