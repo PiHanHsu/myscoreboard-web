@@ -291,7 +291,7 @@ body {
         margin-right: auto;
         margin-bottom: 30px;
         width: 940px;
-        height: 550px;
+        height: 500px;
         border-radius: 5px;
     }
 
@@ -299,13 +299,13 @@ body {
          background-color: #225CB4;
          border-bottom-left-radius: 5px;
          border-top-left-radius: 5px;
-         height: 550px;
+         height: 500px;
     }
 
     .user_data_right {
          border-top-right-radius: 5px;
          border-bottom-right-radius: 5px;
-         height: 550px;
+         height: 500px;
          background-color: #FFF;
     }
 
@@ -318,10 +318,6 @@ body {
 
     .edit_page:hover {
      color: #FFF;
-    }
-
-    .show_username{
-    padding-right: 31px;
     }
 
 
@@ -343,35 +339,56 @@ body {
     }
 
     .user_data_2 {
-        height: 180px;
-
+        height: 210px;
     }
 
-    .user_data_3 {
-        margin-left: 1px;
-        height: 30px;
-        width: 290px;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        border-bottom-color: #FFF;
+    .user_image {
+       border-radius: 50%;
+       border:5px solid #fff;
     }
 
     .float_left {
         float:left;
     }
 
-    .user_data_4 {
-        height: 150px;
+   .user_data_3 {
+        text-align: left;
+        margin-left: 30px;
+        margin-right: 30px;
+        width: auto;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: #FFF;
+   }
 
-    }
+   .lighter {
+    font-style: lighter;
+   }
 
+   .userpage_team_name{
+        margin: 0 auto;
+        width: 300px;
+        border-bottom-style: solid;
+        border-bottom-width: 3px;
+        border-bottom-color: #000000;
+   }
 
-    .user_data_6 {
+   .user_team_list_area2 {
+        margin-top: 10px;
+        height: 200px;
+   }
 
-    }
+   .user_team_list_gamescore{
+        text-align: left;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: auto;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+   }
 
-   .lighter{
-        font-weight:lighter;
+   .user_team_list_area3 {
+    margin-top: 5px;
    }
 
    // 以下是編輯視窗
@@ -418,32 +435,6 @@ body {
    .useremail{
         padding-right:100px;
    }
-
-
-   //翻轉球員卡
-
-   .powerful {
-        margin:0 auto;
-        width: 350px;
-        border-bottom-style: solid;
-        border-bottom-width: 3px;
-        border-bottom-color: #225CB4;
-   }
-
- // 以下是浮水印
-
- .watermark_box {
-    position:relative;
-    display: block;
-    border-radius:20px;
- }
-
-img.watermark {
-    position:absolute;
-    top: 91px;
-    left: 0em;
-}
-
 
 }
 // 以上是個人頁面

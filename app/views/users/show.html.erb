@@ -6,11 +6,11 @@
     <div class="col-md-offset-4 col-md-8 col-sm-12 wrap_nav_tabs">
       <div class="nav nav-tabs" id = "nav_tabs">
         <% if @teams %>
-        <% @teams.each do |team| %>
-        <li class="<%= 'active' if @team_tab == team %>" id="team_tab">
-          <%= link_to team.name, user_path(team: team) %>
-        </li>
-        <% end %>
+          <% @teams.each do |team| %>
+          <li class="<%= 'active' if @team_tab == team %>" id="team_tab">
+            <%= link_to team.name, user_path(team: team) %>
+          </li>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -37,43 +37,24 @@
       </div>
 
       <div class="row user_data_2">
-
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-           個人照片
-        </div>
-
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-          <font size="5" color="#FFD200" class="show_username "><%= @user.username %></font> <br><br>
-          <font size="4" color="#FFF" class="lighter ">球隊總排名： </font> <br><br>
-          <font size="4" color="#FFF" class="lighter ">累計總場次：<%= @records %></font>  <br><br>
-          <font size="4" color="#FFF" class="lighter">勝率：</font><P>
-          <%= link_to 'Change Password', edit_user_registration_path(@user) %>
-        </div>
-
+      <%= user_image(@user)%>
       </div>
 
-      <div class="row user_data_3">
-       <font  color="#FFF" class="lighter float_left ">近期比賽</font>
+      <div class="row">
+        <div class="user_data_3"><font size="4">姓名：<font color="#FFF"><%= @user.username %></font></div><br>
+        <div class="user_data_3"><font size="4">信箱：<font  color="#FFF"><%= @user.email %></font></div><br>
+        <div class="user_data_3"><font size="4">性別：<font  color="#FFF"><%= @user.gender %></font></div><br>
+        <div class="user_data_3"><font size="4">球隊數量：<font  color="#FFF"><%= @user.teams.size  %></font></div><br>
+        <div class="user_data_3"><font size="4">總比賽數量：<font  color="#FFF"><%= @user.records.size%></font></div><br>
       </div>
-      <div class="row user_data_4">
-      </div>
-
-      <div class="row user_data_3">
-       <font color="#FFF" class="lighter float_left ">最佳拍檔</font>
-      </div>
-
-      <div class="row user_data_6">
-      </div>
-
-
    </div>
-
 
    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 user_data_right">
 
-       <div class="row powerful">
-       <font size="10" class="" >戰力分析</font>
-       </div>
+    <% if @team_tab %>
+      <%= render :partial => 'user_team_list', :locals => { :team => @team_tab }  %>
+    <% end %>
+   </div>
 
 
 <!-- Modal -->
@@ -99,7 +80,7 @@
       <%# end %>
   <!-- </div><br><br> -->
 <!-- 這邊上傳球員卡 -->
-
+              <%= link_to 'Change Password', edit_user_registration_path(@user) %>
               <%= form_for @user do |f| %>
               上傳大頭照:<br>
               <div class="head_submit row">
