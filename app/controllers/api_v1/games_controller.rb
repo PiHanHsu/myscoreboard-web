@@ -78,7 +78,7 @@ class ApiV1::GamesController < ApiController
 
     def today_games
       @team = Team.find(params[:team_id])
-      @today_games = @team.today_games(current_user)
+      @today_games = @team.today_games
     end
 
   private
