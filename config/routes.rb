@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :games do
       collection do
         get :stats
+        post :today_games
       end
     end
   end

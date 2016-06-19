@@ -76,6 +76,11 @@ class ApiV1::GamesController < ApiController
 
     end
 
+    def today_games
+      @team = Team.find(params[:team_id])
+      @today_games = @team.today_games(current_user)
+    end
+
   private
     def create_ranking(records)
 

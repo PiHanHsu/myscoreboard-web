@@ -58,7 +58,21 @@ class Team < ActiveRecord::Base
         :game => records
       }
     end
-    
+  end
+
+  def today_games(user)
+    today_records_by_game = Record.includes(:game).where( user_id: user.id ).where( games: { team_id: self.id }).where("created_at >= ?", Time.zone.now.beginning_of_day).group(:game_id)
+    today_records_by_game.map do |record|
+      records = Record.includes(:user).where( game_id: record.game_id)
+      records = records.map do |r|
+                { :username => r.user.username,
+                  :score => r.score
+                }
+      end
+      {
+        :game => records
+      }
+    end
   end
 
 private
