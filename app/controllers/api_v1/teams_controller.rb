@@ -52,7 +52,7 @@ class ApiV1::TeamsController < ApiController
     #  params[:user_ids] #=> [], nil, [1,2,3,...]
     if params[:added_user_ids].present?
       params[:added_user_ids].each do |user_id|
-        @userteamship = UserTeamship.create( :user_id => user_id, :team_id => params[:id] )
+        @userteamship = UserTeamship.lock.find_or_create_by( :user_id => user_id, :team_id => params[:id] )
         #  params[:user_ids][:added].each do |id|
         #  UserTeamships.create(:user_id => params[:user_ids], :team_id => @team)
         #  UserTeamship.create(:user_id => id, :team_id => @team)
