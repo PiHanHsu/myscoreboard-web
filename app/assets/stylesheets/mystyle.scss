@@ -347,6 +347,10 @@ body {
        border:5px solid #fff;
     }
 
+    .user_image2 {
+      border-radius: 50%;
+    }
+
     .float_left {
         float:left;
     }
@@ -428,12 +432,29 @@ body {
    }
 
    .head_submit {
-    padding-left: 60px;
+        padding-left: 60px;
 
    }
 
    .useremail{
         padding-right:100px;
+   }
+
+   .user_recoed{
+    position:relative;
+   }
+
+   .final_score{
+    position:absolute; width:50%; height:100px;
+    top:0; bottom:0; left:0; right:0; margin:auto auto -125px auto;
+   }
+
+   .user_recoed_left {
+    padding-left: 80px;
+   }
+
+   .user_recoed_right {
+    padding-right: 80px;
    }
 
 }

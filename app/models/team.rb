@@ -60,6 +60,23 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def last_2_games(user)
+     #last_games = self.games.last(3)
+    last_2_records_by_game = Record.includes(:game).where( user_id: user.id ).where( games: { team_id: self.id }).group(:game_id).last(2)
+    last_2_records_by_game.map do |record|
+      records = Record.includes(:user).where( game_id: record.game_id)
+      records = records.map do |r|
+                { :username => r.user.username,
+                  :score => r.score,
+                  :user => r.user
+                }
+      end
+      {
+        :game => records
+      }
+    end
+  end
+
   def today_games
     today_games = self.games.where("created_at >= ?", Time.zone.now.beginning_of_day)
     today_games.map do |game|
@@ -74,6 +91,11 @@ class Team < ActiveRecord::Base
       }
     end
   end
+
+  def teams_games(user)
+    teams_games = Record.includes(:game).where( user_id: user.id ).where( games: { team_id: self.id }).group(:game_id)
+  end
+
 
 private
 
