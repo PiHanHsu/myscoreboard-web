@@ -3,12 +3,12 @@ class ApiV1::GamesController < ApiController
     protect_from_forgery except: :create
 	  def index
 
-      #Ranking api for all teams/types ranking 
+      #Ranking api for all teams/types ranking
       @teams_ranking = current_user.teams.map do |team|
         team.users.each do |user|
           user.photo = user.get_photo_url
         end
-                  
+
                    { team: team.name,
       male_single_ranking: team.male_single_ranking,
     female_single_ranking: team.female_single_ranking,
@@ -38,9 +38,9 @@ class ApiV1::GamesController < ApiController
    	end
 
     def stats
-      
+
       @teams = current_user.teams.all
-      
+
       @stats= @teams.map do |t|
         @user_records = current_user.records.joins(:game).where( games: { team_id: t.id } )
         @wins = @user_records.where( :result => "W" ).count
@@ -50,15 +50,15 @@ class ApiV1::GamesController < ApiController
         @points = @wins * 3 + @losses * 1
 
         @last_3_games = t.last_3_games(current_user)
-         
-        @best_double_partner, @best_mix_partner = get_best_partners(t) 
+
+        @best_double_partner, @best_mix_partner = get_best_partners(t)
 
         @best_double_partner_name ||= @best_double_partner.username if @best_double_partner.present?
         @best_double_partner_photo ||= @best_double_partner.get_photo_url if @best_double_partner.present?
-        
+
         @best_mix_partner_name ||= @best_mix_partner.username if @best_mix_partner.present?
         @best_mix_partner_photo ||= @best_mix_partner.get_photo_url if @best_mix_partner.present?
-         
+
         { :team => t.name,
           :wins => @wins,
           :losses => @losses,
@@ -71,7 +71,7 @@ class ApiV1::GamesController < ApiController
           :best_mix_partner_name => @best_mix_partner_name,
           :best_mix_partner_photo => @best_mix_partner_photo }
       end
-      
+
       @stats = @stats.sort {|a, b| b[:points] <=> a[:points] }
 
     end
@@ -94,7 +94,7 @@ class ApiV1::GamesController < ApiController
           end
        end
       end
-        
+
       @records.each do |p|
           w = p[1].to_f
           unless p[2]
@@ -102,9 +102,9 @@ class ApiV1::GamesController < ApiController
             p.push(0).push(1).push(points.round(0))
           end
       end
-      
+
       @records = @records.sort {|a, b| b[4] <=> a[4] }
-    end 
+    end
 
     def get_best_partners(team)
 
@@ -134,7 +134,7 @@ end
 
       user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
       losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "W" ).group(:user).count
-      
+
       teammates.map do |teammate|
         wins = 0
         losses = 0
