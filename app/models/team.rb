@@ -8,7 +8,7 @@ class Team < ActiveRecord::Base
 #  accepts_nested_attributes_for :location
 
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "200x200>" }, :default_url => "team_logo_dafault.png",
-                    :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
+                    :storage => :s3, :s3_protocol => :https, :s3_credentials => "#{Rails.root}/config/s3.yml", :s3_host_name => "s3-ap-northeast-1.amazonaws.com"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
 
   DAY = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日",]
@@ -58,7 +58,21 @@ class Team < ActiveRecord::Base
         :game => records
       }
     end
-    
+  end
+
+  def today_games
+    today_games = self.games.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    today_games.map do |game|
+      records = Record.includes(:user).where( game_id: game.id)
+      records = records.map do |r|
+                { :username => r.try(:user).try(:username),
+                  :score => r.score
+                }
+      end
+      {
+        :game => records
+      }
+    end
   end
 
 private
