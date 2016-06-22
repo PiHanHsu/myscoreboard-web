@@ -11,7 +11,16 @@ def signup
 
     user = User.new(:email => params[:email], :password => params[:password],
                     :username => params[:username], :gender => params[:gender],
-                    :head => StringIO.new(Base64.decode64(params[:head])))
+                    ))
+
+    if paramsp[:head].present?
+      data = StringIO.new(Base64.decode64(paramsp[:head]))
+      data.class.class_eval {attr_accessor :original_filename, :content_type}
+      data.original_filename = self.id.to_s + ".png"
+      data.content_type = "image/png"
+      user.head = data
+    end 
+
     if user.save
       render :json => { :auth_token => user.authentication_token }, :status => 200
     else
