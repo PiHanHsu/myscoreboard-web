@@ -10,10 +10,9 @@ def signup
   if params[:email] && params[:password]
 
     user = User.new(:email => params[:email], :password => params[:password],
-                    :username => params[:username], :gender => params[:gender],
-                    ))
+                    :username => params[:username], :gender => params[:gender])
 
-    if paramsp[:head].present?
+    if params[:head].present?
       data = StringIO.new(Base64.decode64(paramsp[:head]))
       data.class.class_eval {attr_accessor :original_filename, :content_type}
       data.original_filename = self.id.to_s + ".png"
