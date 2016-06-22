@@ -11,7 +11,7 @@ def signup
 
     user = User.new(:email => params[:email], :password => params[:password],
                     :username => params[:username], :gender => params[:gender],
-                    :head => params[:head])
+                    :head => StringIO.new(Base64.decode64(params[:image])))
     if user.save
       render :json => { :auth_token => user.authentication_token }, :status => 200
     else
