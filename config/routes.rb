@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   resources :score_records
   resources :teams do
     collection do
-      post :bulk_update
+      post :bulk_delete_player, controller: 'team_user_ship'
     end
 
     member do
-      post :add_player
+      post :add_player, controller: 'team_user_ship'
     end
   end
 

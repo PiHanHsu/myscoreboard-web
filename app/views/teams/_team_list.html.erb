@@ -42,7 +42,7 @@
 
     <div class="row team_member_wrap">
         <!-- <div class="screen"></div> -->
-        <%= form_tag bulk_update_teams_path(:team_id => team.id) do %>
+        <%= form_tag bulk_delete_player_teams_path(:team_id => team.id) do %>
         <%= collection_check_boxes(:team, :user_ids, team.users, :id, :username) do |b| %>
         <div class="col-md-3 col-xs-6 team_member" id="team_member_<%= b.value %>" value="<%= b.value %>">
             <i class="fa fa-check" aria-hidden="true" id='tick'></i>
