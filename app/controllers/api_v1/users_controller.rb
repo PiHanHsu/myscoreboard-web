@@ -2,7 +2,7 @@ class ApiV1::UsersController < ApiController
 
   # before_action :authenticate_user!
 
-  before_action :set_user, :only => [ :edit, :update, :destroy, :reset_password]
+  before_action :set_user, :only => [ :edit, :update, :destroy]
 
 
   def show
@@ -15,10 +15,14 @@ class ApiV1::UsersController < ApiController
 
   def reset_password
 
-    if @user.present?
-      @user.send_reset_password_instructions
-    else
-     render json: { message: "更新失敗" }, :status => 401
+    if params[:email]
+      if User.exists?(email: params[:email])
+        @user = User.find_by_email(params[:email])
+        @user.send_reset_password_instructions
+        render json: { message: "設定密碼信件已寄出" }, :status => 200
+      else
+        render json: { message: "無此信箱" }, :status => 401
+      end
     end
 
   end

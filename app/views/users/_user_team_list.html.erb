@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="userpage_team_name">
+    <h2><%= team.name %></h2>
+  </div>
+</div>
+
+
+<div class="row user_team_list_area2">
+  近期成績
+  <div class="row user_recoed">
+      <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_left">
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3 ">
+            <%= last_two_game(@user1)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username1 %>
+          </div>
+        </div>
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <%= last_two_game(@user2)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username2 %>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="final_score">
+          <font size="5"><b><%= @score1 %></b></font>
+          <b>VS</b>
+          <font size="5"><b><%= @score3 %></b></font>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_right">
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3 ">
+            <%= last_two_game(@user3)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username3 %>
+          </div>
+        </div>
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <%= last_two_game(@user4)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username4 %>
+          </div>
+        </div>
+      </div>
+  </div>
+    <div class="row user_recoed">
+      <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_left">
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <%= last_two_game(@user5)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username5 %>
+          </div>
+        </div>
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <%= last_two_game(@user6)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username6 %>
+          </div>
+        </div>
+      </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <div class="final_score">
+            <font size="5"><b><%= @score5 %></b></font>
+            <b>VS</b>
+            <font size="5"><b><%= @score7 %></b></font>
+          </div>
+        </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_right">
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <%= last_two_game(@user7)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username7 %>
+          </div>
+        </div>
+        <div class="row user_recoed_area">
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <%= last_two_game(@user8)%>
+          </div>
+          <div class="col-lg-9 col-md-9 col-sm-9">
+            <%= @username8 %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="row user_team_list_area3">
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <h3>戰積：</h3><br/>
+    <div class="user_team_list_gamescore">比賽場數：<%= @teams_games %></div><br/>
+    <div class="user_team_list_gamescore">勝率：<%=  %> </div><br/>
+
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <h3>最佳搭擋：</h3>
+     <div class="row">
+       <div class="col-lg-6 col-md-6 col-sm-6">
+       雙打<br/>
+       <%= best_partner(@best_double_partner)%> <br/>
+       <%= @best_double_partner.username %>
+       </div>
+       <div class="col-lg-6 col-md-6 col-sm-6">
+       混打<br/>
+       <%= best_partner(@best_mix_partner)%> <br/>
+       <%= @best_mix_partner.username %>
+       </div>
+     </div>
+  </div>
+</div>
+
