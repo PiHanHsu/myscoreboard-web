@@ -1,0 +1,2 @@
+module TeamUserShipHelper
+end

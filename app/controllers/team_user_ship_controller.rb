@@ -1,0 +1,4 @@
+class TeamUserShipController < ApplicationController
+
+
+end
