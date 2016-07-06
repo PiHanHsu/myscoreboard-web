@@ -32,6 +32,7 @@ class ApiV1::TeamsController < ApiController
     if @team.save
       render json: {
         message: "儲存成功",
+        team_id: @team.id
       }
     else
       render json: {
