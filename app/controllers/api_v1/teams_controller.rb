@@ -82,7 +82,7 @@ class ApiV1::TeamsController < ApiController
   end
 
   def location_params
-    params.permit(:place_name, :address, :lat, :lng)
+    params.permit(:place_name, :address, :lat, :lng, :google_id)
   end
 
   def team_params
