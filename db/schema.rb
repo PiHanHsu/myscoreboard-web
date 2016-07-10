@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507135214) do
+ActiveRecord::Schema.define(version: 20160710074200) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"
@@ -40,13 +40,13 @@ ActiveRecord::Schema.define(version: 20160507135214) do
   add_index "games", ["team_id"], name: "index_games_on_team_id"
 
   create_table "locations", force: :cascade do |t|
-    t.string   "place_name", default: ""
+    t.string   "place_name",      default: ""
     t.string   "address"
     t.string   "lat"
     t.string   "lng"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "google_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "google_place_id"
   end
 
   create_table "records", force: :cascade do |t|
