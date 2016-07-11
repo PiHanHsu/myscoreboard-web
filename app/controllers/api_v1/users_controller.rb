@@ -58,7 +58,9 @@ class ApiV1::UsersController < ApiController
 
       @users = User.where( 'email_first LIKE? OR username LIKE? OR userid LIKE?' ,
        "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").limit(10)
-
+      @users.each do |user|
+        user.photo = user.get_photo_url
+      end
     else
       render :json => { :message => "Fail! " }, :status => 401
     end

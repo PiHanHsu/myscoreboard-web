@@ -3,7 +3,7 @@ json.results do
 
     json.id user.id
     json.username user.username
-    json.photo user.head.url
+    json.photo user.photo
 
   end
 end
