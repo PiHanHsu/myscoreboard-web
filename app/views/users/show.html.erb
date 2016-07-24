@@ -1,144 +1,133 @@
 <div id="user_page">
-
-<div class="container_mobile_user">
-
-  <div class="row ">
-    <div class="col-md-offset-4 col-md-8 col-sm-12 wrap_nav_tabs">
-      <div class="nav nav-tabs" id = "nav_tabs">
-        <% if @teams %>
-          <% @teams.each do |team| %>
-          <li class="<%= 'active' if @team_tab == team %>" id="team_tab">
-            <%= link_to team.name, user_path(team: team) %>
-          </li>
+  <div class="container_mobile_user">
+    <div class="row ">
+      <div class="col-md-offset-4 col-md-8 col-sm-12 wrap_nav_tabs">
+        <div class="nav nav-tabs" id = "nav_tabs">
+          <% if @teams %>
+            <% @teams.each do |team| %>
+            <li class="<%= 'active' if @team_tab == team %>" id="team_tab">
+              <%= link_to team.name, user_path(team: team) %>
+            </li>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
-
-
-
-
-<div class="row">
-
-   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 user_data_left">
-
     <div class="row">
-     <div class="update_playercard">
-
-     </div>
-    </div>
-
-      <div class="row user_data_1">
-      <!-- Button trigger modal -->
-          <div data-toggle="modal" data-target="#myModal">
-           <font size="4" color="#84AEEE" class="edit_page">編輯個人資訊</font>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 user_data_left">
+        <div class="row">
+          <div class="update_playercard">
           </div>
+        </div>
+        <div class="row user_data_1">
+          <div data-toggle="modal" data-target="#myModal">
+            <font size="4" color="#84AEEE" class="edit_page">編輯個人資訊</font>
+          </div>
+        </div>
+        <div class="row user_data_2">
+          <%= user_image(@user)%>
+        </div>
+        <div class="row">
+          <div class="user_data_3">
+            <font size="4">姓名：
+              <font color="#FFF">
+                <%= @user.username %>
+              </font>
+            </font>
+          </div>
+          <br>
+          <div class="user_data_3">
+            <font size="4">信箱：
+              <font  color="#FFF">
+                <%= @user.email %>
+              </font>
+            </font>
+          </div>
+          <br>
+          <div class="user_data_3">
+            <font size="4">性別：
+              <font  color="#FFF">
+                <%= @user.gender %>
+              </font>
+            </font>
+          </div>
+          <br>
+          <div class="user_data_3">
+            <font size="4">球隊數量：
+              <font  color="#FFF">
+                <%= @user.teams.size  %>
+              </font>
+            </font>
+          </div>
+          <br>
+          <div class="user_data_3">
+            <font size="4">總比賽數量：
+              <font  color="#FFF">
+                <%= @user.records.size%>
+              </font>
+            </font>
+          </div>
+          <br>
+        </div>
       </div>
-
-      <div class="row user_data_2">
-      <%= user_image(@user)%>
-      </div>
-
-      <div class="row">
-        <div class="user_data_3"><font size="4">姓名：<font color="#FFF"><%= @user.username %></font></div><br>
-        <div class="user_data_3"><font size="4">信箱：<font  color="#FFF"><%= @user.email %></font></div><br>
-        <div class="user_data_3"><font size="4">性別：<font  color="#FFF"><%= @user.gender %></font></div><br>
-        <div class="user_data_3"><font size="4">球隊數量：<font  color="#FFF"><%= @user.teams.size  %></font></div><br>
-        <div class="user_data_3"><font size="4">總比賽數量：<font  color="#FFF"><%= @user.records.size%></font></div><br>
-      </div>
-   </div>
-
    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 user_data_right">
-
     <% if @team_tab %>
       <%= render :partial => 'user_team_list', :locals => { :team => @team_tab }  %>
     <% end %>
    </div>
-
-
-<!-- Modal -->
-  <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-              <div class ="row">
-                  <button type="button" class="close close_x" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">
-                  <i class="fa fa-times fa-4" aria-hidden="true"></i>
-                  </span>
-                  </button>
+    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class ="row">
+                    <button type="button" class="close close_x" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                    <i class="fa fa-times fa-4" aria-hidden="true"></i>
+                    </span>
+                    </button>
+                  </div>
+                <div class="row">
+                  <%= link_to 'Change Password', edit_user_registration_path(@user) %>
+                    <%= form_for @user do |f| %>
+                      上傳大頭照:<br>
+                      <div class="head_submit row">
+                        <%= f.file_field :head %>
+                      </div>
+                        ID:<%= @user.userid %>
+                      <br>
+                   <br>
                 </div>
               <div class="row">
-               <%#=  image_tag("steven.jpg", height: '240', width: '143', class: "playercard1")%><br>
-<!-- 上傳球員卡:<br> -->
-<!-- <div class="head_submit row "> -->
-<!-- 這邊上傳球員卡 -->
-      <%#= form_for @card, url: user_cards_path(@user), html: { multipart: true } do |form| %>
-      <%#= form.file_field :avatar %>
-      <%#= form.submit %>
-      <%# end %>
-  <!-- </div><br><br> -->
-<!-- 這邊上傳球員卡 -->
-              <%= link_to 'Change Password', edit_user_registration_path(@user) %>
-              <%= form_for @user do |f| %>
-              上傳大頭照:<br>
-              <div class="head_submit row">
-              <%= f.file_field :head %>
-              </div>
-              ID:<%= @user.userid %>
-              <br>
-              <br>
-              </div>
-              <div class="row">
-              <div class="emailemail">
-                <font >帳號</font> <br>
-              </div>
-
-              <div class="useremail">
-                <%= @user.email %>
-              </div>
-              <br>
-              <br>
-              <div class="emailemail">
-              <font >暱稱 </font>
-              </div>
-                <div class="">
-                  <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "username_box"  %>
-                </div>
-                <br>
-
                 <div class="emailemail">
-                <font >性別</font>
+                  <font >帳號</font> <br>
                 </div>
-
+                <div class="useremail">
+                  <%= @user.email %>
+                </div>
+                  <br>
+                  <br>
+                <div class="emailemail">
+                  <font >暱稱 </font>
+                </div>
+                  <div class="">
+                    <%= f.text_field :username, autofocus: true, placeholder: "使用者名稱", class: "username_box"  %>
+                  </div>
+                <br>
+                <div class="emailemail">
+                  <font >性別</font>
+                </div>
                 <div class="form-group">
-                <%= f.select :gender,options_for_select([["男生","male"],["女生","female"]]),{}, {:class => "username_box"}%>
-                <br>
-                <br>
+                  <%= f.select :gender,options_for_select([["男生","male"],["女生","female"]]),{}, {:class => "username_box"}%>
+                  <br>
+                  <br>
                 </div>
-
-                 <%= f.submit "儲存", class: "btn save_submit" %><br><br>
+                  <%= f.submit "儲存", class: "btn save_submit" %><br><br>
                </div>
               </div>
               <% end %>
           </div>
+        </div>
       </div>
+    </div>
   </div>
-
-<br><br>
-
-
-
-
-
-   </div>
-
- </div>
-
 </div>
-
-</div>
-
-<script>
-</script>
