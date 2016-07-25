@@ -19,17 +19,17 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">功能介紹</a>
+                        <a href="#about">功能介紹</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">關於團隊</a>
+                        <a href="#contact">關於團隊</a>
                     </li>
                     <li class="fake_area">
                     </li>
                     <li class="page-scroll">
                         <div class="pt4">
                             <div class="boder_area">
-                                <a href="#contact">登入</a>
+                                <a href="">登入</a>
                             </div>
                         </div>
                     </li>
@@ -46,24 +46,25 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-4">
                     <div class="row text-center">
-                    LOGO
+                    <%=  image_tag("logo.png", size: "100") %>
                     </div>
                     <div class="row text-center">
                         <h1>我的記分板</h1>
                         <h2>記錄羽球生涯的最佳夥伴</h2>
                     </div>
                     <div class="row text-center">
-                    <div class="col-lg-5">
-                        <div class="btn login_submit">
-                        登入
+                        <div class="btn_area">
+                            <div class="col-lg-5">
+                                <div class="btn index_login_submit">
+                                Email註冊帳號
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-1">
+                                <div class="btn index_fb_submit">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;Facevook登入
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-5 col-lg-offset-2">
-                        <div class="btn login_submit">
-                        FB註冊
-                        </div>
-                    </div>
-
                     </div>
                 </div>
             </div>
@@ -74,46 +75,60 @@
     <section id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>加入記分板 簡單三步驟</h2>
+                <div class="easystep">
+                    <div class="col-lg-12 text-center">
+                        <h2>加入記分板&nbsp;&nbsp;&nbsp;簡單三步驟</h2>
+                    </div>
                 </div>
             </div>
             <div class="row text-center">
                 <div class="col-lg-4 step_boder">
                     <div class="row text-center">
-                        步驟 1 進入網站<font color="#FFF">註冊帳號</font>
+                        <div class="firststep">
+                            <h3>步驟 1 進入網站<font color="#FFF">註冊帳號</font></h3>
+                        </div>
+                    </div>
+                    <div class="row text-left">
+                        <div class="secondstep">
+                            我的記分板可以使用信箱註冊，</br>
+                            或是直接用Facebook帳號連結
+                        </div>
                     </div>
                     <div class="row text-center">
-                        我的記分板可以使用信箱註冊，</br>
-                        或是直接用Facebook帳號連結
-                    </div>
-                    <div class="row text-center">
-                    這邊是照片
-                    </div>
-                </div>
-                <div class="col-lg-4 step_boder">
-                    <div class="row text-center">
-                        步驟 2 進入APP<font color="#FFF">新增球隊</font>
-                    </div>
-                    <div class="row text-center">
-                        只需要一個人登入APP，就可以</br>
-                        把大家拉近同一個球隊群組
-                    </div>
-                    <div class="row text-center">
-                    對, 這邊還是照片
+                    <%= image_tag "https://unsplash.it/200/270" %>
                     </div>
                 </div>
                 <div class="col-lg-4 step_boder">
                     <div class="row text-center">
-                        步驟 3 輕輕鬆鬆<font color="#FFF">開始比賽</font>
+                        <div class="firststep">
+                            <h3>步驟 2 進入APP<font color="#FFF">新增球隊</font></h3>
+                        </div>
+                    </div>
+                    <div class="row text-left">
+                        <div class="secondstep">
+                            只需要一個人登入APP，就可以</br>
+                            把大家拉近同一個球隊群組
+                        </div>
                     </div>
                     <div class="row text-center">
-                        在球場暖身時打開APP，按下開 </br>
-                        始比賽完成基本設定後，就可以</br>
-                        開始打球囉！Have Fun！
+                    <%= image_tag "https://unsplash.it/200/270" %>
+                    </div>
+                </div>
+                <div class="col-lg-4 step_boder">
+                    <div class="row text-center">
+                        <div class="firststep">
+                            <h3>步驟 3 輕輕鬆鬆<font color="#FFF">開始比賽</font></h3>
+                        </div>
+                    </div>
+                    <div class="row text-left">
+                        <div class="secondstep">
+                            在球場暖身時打開APP，按下開 </br>
+                            始比賽完成基本設定後，就可以</br>
+                            開始打球囉！Have Fun！
+                        </div>
                     </div>
                     <div class="row text-center">
-                    一樣是照片啦
+                    <%= image_tag "https://unsplash.it/200/270" %>
                     </div>
                 </div>
             </div>
@@ -124,40 +139,48 @@
     <section class="success" id="about">
         <div class="container">
             <div class="row text-center">
-                <h1>三大功能 不可錯過</h1>
+                <div class="threefunction">
+                    <h1>三大功能 不可錯過</h1>
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                照片照片
+                <%= image_tag "http://i.giphy.com/xT8qBrcgT4PEbYbsoU.gif", size: "197x400", alt: "Auto"%>
                 </div>
                 <div class="col-lg-5">
                     <h2>演算配對</h2>
-                    可自由選擇今日出場的隊友，</br>
-                    由系統自動安排賽程，也可以</br>
-                    手動調整對戰組合。
+                    <div class="functiondes">
+                        可自由選擇今日出場的隊友，</br>
+                        由系統自動安排賽程，也可以</br>
+                        手動調整對戰組合。
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-5 col-lg-offset-4">
                     <h2>即時計分</h2>
-                    除了計分外，系統將同時顯示</br>
-                    下一組的對戰球員，讓隊友提</br>
-                    前準備，提升場地使用時間每</br>
-                    分每秒的效率。
+                        <div class="functiondes">
+                            除了計分外，系統將同時顯示</br>
+                            下一組的對戰球員，讓隊友提</br>
+                            前準備，提升場地使用時間每</br>
+                            分每秒的效率。
+                        </div>
                 </div>
                 <div class="col-lg-3">
-                照片照片
+                 <%= image_tag "http://i.giphy.com/xT8qB021hUnBO08qys.gif", size: "197x400", alt: "Score"%>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3">
-                照片照片
+                <%= image_tag "http://i.giphy.com/3o72F6gS4X33mlH4ek.gif", size: "197x400", alt: "Record"%>
                 </div>
                 <div class="col-lg-5">
                 <h2>英雄排行榜</h2>
-                系統將提供各種數據分析，每</br>
-                一場紀錄，都將成為自己運動</br>
-                生涯中的一個亮點。
+                    <div class="functiondes">
+                        系統將提供各種數據分析，每</br>
+                        一場紀錄，都將成為自己運動</br>
+                        生涯中的一個亮點。
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,21 +189,27 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
+        <div class="row text-center">
+        <h2>關於團隊</h2>
+        </div>
             <div class="row">
                 <div class="col-lg-4">
-                一張照片
+                    <div class="aboutimg">
+                        <%= image_tag "https://unsplash.it/300/400" %>
+                    </div>
                 </div>
 
-                <div class="col-lg-8 text-center">
-                    <h2>關於團隊</h2>
-                    我們是一群熱愛羽球的上班族，假日或平日晚上的羽球聚</br>
-                    會成為我們生活中不可或缺的精神糧食，為了大家決定上</br>
-                    場順序的時間，以及輔助球友們更加了解自己長期累積的</br>
-                    戰況，我們打造一款記錄運動比分的APP與網站。</br>
-                    希望球友們更有意義地留下每場比賽的紀錄，同時添增團</br>
-                    隊賽事的樂趣：趕緊加入我們，一起創造屬於自己的羽球</br>
-                    大聯盟！</br>
-                    <h3>我的計分板 記錄羽球生涯的最佳夥伴</h3>
+                <div class="col-lg-8 text-left">
+                    <div class="aboutdes">
+                        我們是一群熱愛羽球的上班族，假日或平日晚上的羽球聚</br>
+                        會成為我們生活中不可或缺的精神糧食，為了大家決定上</br>
+                        場順序的時間，以及輔助球友們更加了解自己長期累積的</br>
+                        戰況，我們打造一款記錄運動比分的APP與網站。</br>
+                        希望球友們更有意義地留下每場比賽的紀錄，同時添增團</br>
+                        隊賽事的樂趣：趕緊加入我們，一起創造屬於自己的羽球</br>
+                        大聯盟！</br>
+                    </div>
+                    <h3><b>我的計分板 記錄羽球生涯的最佳夥伴</b></h3>
                 </div>
             </div>
         </div>
@@ -192,7 +221,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        MyScoreBoard &copy; Since 2015
+                        <font size="4">
+                            MyScoreBoard &copy; Since 2015
+                        </font>
                     </div>
                 </div>
             </div>
