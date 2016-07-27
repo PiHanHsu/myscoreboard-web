@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   belongs_to :location
-  has_many :games
+  has_many :games, dependent: :destroy
   has_many :user_teamships
   has_many :users, :through => :user_teamships
   validates_length_of :name, :maximum => 20
