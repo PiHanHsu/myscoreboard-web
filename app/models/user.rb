@@ -73,9 +73,15 @@ class User < ActiveRecord::Base
      user.email = auth.info.email
      user.password = Devise.friendly_token[0,20]
      user.fb_raw_data = auth
+     
+
      user.gender = auth.extra.raw_info.gender
      user.username = auth.info.name
-     user.fb_pic = auth.info.image
+     #user.fb_pic = auth.info.image
+     
+     fb_data = self.get_fb_data(auth.credentials.token)
+     user.fb_pic = fb_data["picture"]["data"]["url"]
+
      user.save!
      return user
     end
