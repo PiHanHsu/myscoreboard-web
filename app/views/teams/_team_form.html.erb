@@ -1,0 +1,29 @@
+<%= form_for @team do |t| %>
+  <div class="form-group">
+    <%= t.label :name,'球隊名稱' %>
+    <%= t.text_field :name, :class => "form-control", :required =>true %>
+    <%= t.label :day,'球聚日期' %>
+    <%= t.select :day, team_weekday_options, :class => "form-control" %>
+    <%= simple_format t.label :start_time,'開始時間' %>
+    <%= t.time_field :start_time, :class => "form-control" %>
+    <%= t.label :end_time,'結束時間' %>
+    <%= t.time_field :end_time, :class => "form-control" %>
+    <%= t.file_field :logo %>
+
+    <%= t.fields_for :location do |l| %>
+      <%= l.label :place_name,'球聚地點' %>
+      <%= l.text_field :place_name, :id => "place_name", :class => "form-control", :readonly => true %>
+      <%= l.text_field :address, :id => "formatted_address", :class => "form-control hidden" %>
+      <%= l.text_field :lat, :id => "latitude", :class => "form-control hidden" %>
+      <%= l.text_field :lng, :id => "longitude", :class => "form-control hidden" %>
+      <%= l.text_field :google_place_id, :id => "place_id", :class => "form-control hidden" %>
+    <% end %>
+
+    <input id="pac-input" class="controls" type="text" placeholder="請務必選擇一個地點">
+    <div id="map" style="width: 500px; height:400px;"></div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <%= t.submit "儲存變更!", :class => "btn btn-primary btm-lg"%>
+  </div>
+<% end %>

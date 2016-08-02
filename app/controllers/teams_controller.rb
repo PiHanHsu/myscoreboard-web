@@ -13,8 +13,8 @@ class TeamsController < ApplicationController
     # 若使用者沒有id 會跳到輸入id的頁面
 
     @teams = current_user.teams
-		@team = Team.new
-		@team.build_location
+		# @team = Team.new
+		# @team.build_location
 		# @team.location_id=@location.id
     @user = current_user
 
@@ -25,12 +25,27 @@ class TeamsController < ApplicationController
     end
   end
 
+  def new
+    @team = Team.new
+    @team.build_location
+  end
+
   def create
-    # @location = Location.find_or_create_by(:place_name => params[:place_name])
-		location = Location.find_or_create_by(:place_name => params[:team][:location][:place_name])
+
+    location = Location.find_by(:google_place_id => params[:team][:location][:google_place_id])
+    unless location.present?
+      location = Location.create(
+        :google_place_id => params[:team][:location][:google_place_id],
+        :place_name => params[:team][:location][:place_name],
+        :address => params[:team][:location][:address],
+        :lat => params[:team][:location][:lat],
+        :lng => params[:team][:location][:lng]
+      )
+    end
+
 		team = current_user.teams.create!(team_params)
 		team.location = location
-		# team.location = location
+
     if team.save
       redirect_to teams_path
     else
@@ -42,8 +57,18 @@ class TeamsController < ApplicationController
   end
 
   def update
-    location = Location.find_or_create_by(:place_name => params[:team][:location][:place_name])
-    # params[:location_id] = @location.id
+
+    location = Location.find_by(:google_place_id => params[:team][:location][:google_place_id])
+    unless location.present?
+      location = Location.create(
+        :google_place_id => params[:team][:location][:google_place_id],
+        :place_name => params[:team][:location][:place_name],
+        :address => params[:team][:location][:address],
+        :lat => params[:team][:location][:lat],
+        :lng => params[:team][:location][:lng]
+      )
+    end
+
 		@team.location = location
     @team.update_attributes!(team_params)
 
