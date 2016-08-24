@@ -55,7 +55,11 @@
           <div class="user_data_3">
             <font size="4">球隊數量：
               <font  color="#FFF">
-                <%= @user.teams.size  %>
+                <% if @user.teams.present? %>
+                <%= @user.teams.size %>
+                <% else %>
+                <%= 0 %>
+                <% end %>
               </font>
             </font>
           </div>
@@ -63,7 +67,11 @@
           <div class="user_data_3">
             <font size="4">總比賽數量：
               <font  color="#FFF">
-                <%= @user.records.size%>
+                <% if @user.records.present? %>
+                <%= @user.records.size %>
+                <% else %>
+                <%= 0 %>
+                <% end %>
               </font>
             </font>
           </div>
