@@ -1,31 +1,25 @@
-<div class="background">
 
-<div class="container_mobile_signup">
-
-  <div class="row upload_pic">
-    <%=  image_tag("div_upload.png") %>
+  <div class="container_mobile_signup">
+    <div class="row upload_pic">
+      <%=  image_tag("div_upload.png") %>
+    </div>
+    <br>
+    <div class="col-md-12">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-group">
+        <%# f.text_field :userid, autofocus: true, placeholder: "請設定ID", class: " form-control signup_form"  %>
+        <%= f.text_field :username, autofocus: true, placeholder: "請輸入暱稱 (五個中文字以內) ", class: " form-control signup_form"  %>
+        <%= f.select :gender,options_for_select([["男生","male"],["女生","female"]]),{ :prompt => "請選擇性別"}, {:class => "username_box form-control signup_form"}%>
+        <%= f.email_field :email, autofocus: true, placeholder: "信箱", class: " form-control signup_form"  %>
+        <%= f.password_field :password, autocomplete: "off", placeholder: "輸入密碼 (最少八位數)", class: " form-control signup_form"%>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "請再輸入一次密碼", class: " form-control signup_form"%><br><br>
+      </div>
+      <div class="actions">
+        <%= f.submit " 建立帳號", class: "btn signup_submit"  %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <br>
 
 
-  <div class="row">
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-
-    <div class="form-group">
-      <%= f.text_field :userid, autofocus: true, placeholder: "請設定ID", class: " form-control signup_form"  %>
-      <%= f.text_field :username, autofocus: true, placeholder: "請輸入暱稱 (五個中文字以內) ", class: " form-control signup_form"  %>
-      <%= f.select :gender,options_for_select([["男生","male"],["女生","female"]]),{ :prompt => "請選擇性別"}, {:class => "username_box form-control signup_form"}%>
-      <%= f.email_field :email, autofocus: true, placeholder: "信箱", class: " form-control signup_form"  %>
-      <%= f.password_field :password, autocomplete: "off", placeholder: "輸入密碼 (最少八位數)", class: " form-control signup_form"%>
-      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "請再輸入一次密碼", class: " form-control signup_form"%><br><br>
-    </div>
-    <div class="actions">
-      <%= f.submit " 建立帳號", class: "btn signup_submit"  %>
-    </div>
-
-   <% end %>
- </div>
-</div>
-</div>
