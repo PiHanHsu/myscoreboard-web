@@ -38,11 +38,11 @@
 		<div class="col-md-offset-4 col-md-8 col-sm-12 wrap_nav_tabs">
 			<div class="nav nav-tabs" id = "nav_tabs">
 				<% if @teams %>
-				<% @teams.each do |team| %>
-				<li class="<%= 'active' if @team_tab == team %>" id="team_tab">
-					<%= link_to team.name, teams_path(team: team) %>
-				</li>
-				<% end %>
+					<% @teams.each do |team| %>
+					<li class="<%= 'active' if @team_tab == team %>" id="team_tab">
+						<%= link_to team.name, teams_path(team: team) %>
+					</li>
+					<% end %>
 				<% end %>
 				<li id="team_tab">
 					<%= link_to new_team_path, remote: true, class: "btn-lg button_fix add_team_button" do %>
@@ -54,9 +54,15 @@
 	</div>
 	<div class="row teams_wrap">
 
-		<% if @team_tab %>
+	<% if @team_tab %>
 		<%= render :partial => 'team_list', :locals => { :team => @team_tab }  %>
-		<% end %>
+	<% else %>
+	  <div class="col-md-4 col-xs-12 team_info">
+	  </div>
+	  <div class="col-md-8 col-xs-12 team_item">
+	  	<h3> 點選"+"新增球隊 </h3>
+	  </div>
+	<% end %>
 
 	</div>
 
