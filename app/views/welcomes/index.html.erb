@@ -27,11 +27,7 @@
                     <li class="fake_area">
                     </li>
                     <li class="page-scroll">
-                        <div class="pt4">
-                            <div class="boder_area">
-                                <a href="">登入</a>
-                            </div>
-                        </div>
+                        <li><%= link_to('登入/註冊', new_session_path(:user)) %></li>
                     </li>
                 </ul>
             </div>
@@ -55,15 +51,11 @@
                     <div class="row text-center">
                         <div class="btn_area">
                             <div class="col-lg-5">
-                                <div class="btn welcome_login_submit welcome_btn">
-                                Email註冊帳號
-                                </div>
+                                <%= link_to 'Email註冊帳號', new_registration_path(:user) , :class => "btn welcome_login_submit welcome_btn" %>
+                                
                             </div>
                             <div class="col-lg-5 col-lg-offset-1">
-                                <div class="btn welcome_fb_submit welcome_btn">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;Facevook登入
-
-                                </div>
+                                <%= link_to 'Facebook登入', new_registration_path(:user) , :class => "btn welcome_fb_submit welcome_btn" %>
                             </div>
                         </div>
                     </div>
