@@ -58,5 +58,16 @@ def last_two_game(user)
  image_tag(image_url, height: '50', width: '50', class: "user_image2")
 end
 
+def user_photo_games(user)
+ if user.head?
+   image_url = user.head.url(:medium)
+ elsif user.fb_pic?
+   image_url = user.fb_pic
+ else
+   image_url = "default_head.png"
+ end
+ image_tag(image_url, height: '45', width: '45', class: "head_image")
+end
+
 
 end

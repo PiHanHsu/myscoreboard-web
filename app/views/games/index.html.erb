@@ -39,7 +39,7 @@
                   <tr id="ranking_tr">
                     <td ><P class="ranking-number"><%= index+1 %></p></td>
                     <td >
-                      <span class="pull-left"><%= image_tag(player[:user].head.url, height: '45', width: '45',:class => "head_image") %></span>
+                      <span class="pull-left"><%= user_photo_games(player[:user]) %></span>
                       <div class="ranking-user"> <%= player[:user].username %> </div>
                     </td>
                     <td><%= player[:games] %></td>
@@ -65,7 +65,7 @@
                   <tr id="ranking_tr">
                     <td ><P class="ranking-number"><%= index+1 %></p></td>
                     <td >
-                      <span class="pull-left"><%= image_tag(player[:user].head.url, height: '45', width: '45',:class => "head_image") %></span>
+                      <span class="pull-left"><%= user_photo_games(player[:user]) %></span>
                       <div class="ranking-user"> <%= player[:user].username %> </div>
                     </td>
                     <td><%= player[:games] %></td>
