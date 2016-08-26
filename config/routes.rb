@@ -23,7 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
-   get 'welcomes/index' => 'welcomes#index'
+  resources :welcomes
+  #get 'welcomes/index' => 'welcomes#index'
 
   scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
 
@@ -56,7 +57,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'games#index'
+   root 'welcomes#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
