@@ -1,7 +1,11 @@
 class WelcomesController < ApplicationController
 
   def index
-     render layout: 'other_page_application.html.erb'
+    if current_user.present?
+      redirect_to games_path
+    else
+      render layout: 'other_page_application.html.erb'
+    end
   end
 
 end
