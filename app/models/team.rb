@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   belongs_to :location
-  has_many :games
+  has_many :games, dependent: :destroy
   has_many :user_teamships
   has_many :users, :through => :user_teamships
   validates_length_of :name, :maximum => 20
@@ -90,10 +90,19 @@ class Team < ActiveRecord::Base
         :game => records
       }
     end
+    
   end
 
-  def teams_games(user)
-    teams_games = Record.includes(:game).where( user_id: user.id ).where( games: { team_id: self.id }).group(:game_id)
+  def get_games_win_rate(user)
+    
+    user_records = user.records.joins(:game).where( games: { team_id: self.id } )
+    wins = user_records.where( :result => "W" ).count
+    losses = user_records.where( :result => "L" ).count
+    games = wins + losses
+    win_rate = wins.to_f / games.to_f * 100
+
+    return games, win_rate.round(2)
+
   end
 
 

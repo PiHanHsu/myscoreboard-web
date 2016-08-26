@@ -1,53 +1,90 @@
+<style>
+
+	.controls {
+	  margin-top: 10px;
+	  border: 1px solid transparent;
+	  border-radius: 2px 0 0 2px;
+	  box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  height: 32px;
+	  outline: none;
+	  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	}
+
+	#pac-input {
+	  background-color: #fff;
+	  font-family: Roboto;
+	  font-size: 15px;
+	  font-weight: 300;
+	  margin-left: 12px;
+	  padding: 0 11px 0 13px;
+	  text-overflow: ellipsis;
+	  width: 300px;
+	}
+
+	#pac-input:focus {
+	  border-color: #4d90fe;
+	}
+
+	.pac-container {
+	  font-family: Roboto;
+	  z-index: 2000;
+	}
+
+
+</style>
 <div class="container">
 	<div class="row header_tab">
 		<div class="col-md-offset-4 col-md-8 col-sm-12 wrap_nav_tabs">
 			<div class="nav nav-tabs" id = "nav_tabs">
 				<% if @teams %>
-				<% @teams.each do |team| %>
-				<li class="<%= 'active' if @team_tab == team %>" id="team_tab">
-					<%= link_to team.name, teams_path(team: team) %>
-				</li>
-				<% end %>
+					<% @teams.each do |team| %>
+					<li class="<%= 'active' if @team_tab == team %>" id="team_tab">
+						<%= link_to team.name, teams_path(team: team) %>
+					</li>
+					<% end %>
 				<% end %>
 				<li id="team_tab">
-					<button type="button" class="btn-lg button_fix add_team_button" data-toggle="modal" data-target="#createModal">
+					<%= link_to new_team_path, remote: true, class: "btn-lg button_fix add_team_button" do %>
 						<i class="fa fa-plus" aria-hidden="true"></i>
-</button>
+					<% end %>
 				</li>
 			</div>
 		</div>
 	</div>
 	<div class="row teams_wrap">
 
-		<% if @team_tab %>
+	<% if @team_tab %>
 		<%= render :partial => 'team_list', :locals => { :team => @team_tab }  %>
-		<% end %>
+	<% else %>
+	  <div class="col-md-4 col-xs-12 team_info">
+	  </div>
+	  <div class="col-md-8 col-xs-12 team_item">
+	  	<h3> 點選"+"新增球隊 </h3>
+	  </div>
+	<% end %>
 
 	</div>
 
 	<!-- Modal -->
-	<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+	<div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="createModalLabel">新增球隊</h4>
+					<h4 class="modal-title" id="createModalLabel"></h4>
 				</div>
-				<%= form_for @team do |t| %>
-				<div class="form-group">
-					<%= render :partial => "team", :locals => {:t => t} %>
+				<div class="modal-body">
+
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">
-						<%= t.submit "儲存變更!", :class => "btn btn-primary btm-lg"%>
-					</button>
-				</div>
-				<% end %>
 			</div>
 		</div>
 	</div>
 
 </div>
+
+
+
+
