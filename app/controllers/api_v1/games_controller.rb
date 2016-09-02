@@ -139,10 +139,10 @@ end
 
     def calculate_partner_standing(teammates)
     
-      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team] } ).pluck( :game_id )
+      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
       wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "W" ).group(:user).count
 
-      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team] } ).pluck( :game_id )
+      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
       losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "L" ).group(:user).count
 
       teammates_with_winrate = teammates.map do |teammate|
