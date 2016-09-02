@@ -128,8 +128,8 @@ class ApiV1::GamesController < ApiController
 
       #double_teammates.drop(current_user)
 
-      double_teammates_standing = calculate_partner_standing(double_teammates)
-      mix_teammates_standing = calculate_partner_standing(mix_teammates)
+      double_teammates_standing = calculate_partner_standing(double_teammates, team.id)
+      mix_teammates_standing = calculate_partner_standing(mix_teammates, team.id)
 
       return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
 
@@ -137,12 +137,12 @@ class ApiV1::GamesController < ApiController
 
 end
 
-    def calculate_partner_standing(teammates)
+    def calculate_partner_standing(teammates, team_id)
     
-      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
+      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: team_id } ).pluck( :game_id )
       wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "W" ).group(:user).count
 
-      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
+      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: team_id } ).pluck( :game_id )
       losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "L" ).group(:user).count
 
       teammates_with_winrate = teammates.map do |teammate|
@@ -171,5 +171,7 @@ end
        
       teammates_with_winrate.select!{|t| t[:wins] + t[:losses] != 0}
       teammates_with_winrate.sort! {|a, b| [b[:rate], b[:games]] <=> [a[:rate], a[:games]] }
+
+      return teammates_with_winrate
 
     end

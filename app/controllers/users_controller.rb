@@ -138,7 +138,7 @@ class UsersController < ApplicationController
         mix_teammates = team.users.where( :gender => "male" )
       end
 
-      double_teammates.delete(current_user)
+      #double_teammates.drop(current_user)
 
       double_teammates_standing = calculate_partner_standing(double_teammates)
       mix_teammates_standing = calculate_partner_standing(mix_teammates)
