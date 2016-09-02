@@ -143,7 +143,9 @@ class UsersController < ApplicationController
       double_teammates_standing = calculate_partner_standing(double_teammates)
       mix_teammates_standing = calculate_partner_standing(mix_teammates)
 
-      return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
+      if double_teammates_standing.present? && mix_teammates_standing.present?  
+        return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
+      end
 
     end
 
