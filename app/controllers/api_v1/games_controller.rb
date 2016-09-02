@@ -51,13 +51,18 @@ class ApiV1::GamesController < ApiController
 
         @last_3_games = t.last_3_games(current_user)
 
-        @best_double_partner, @best_mix_partner = get_best_partners(t)
+        if @games > 0 
+         
+          @best_double_partner, @best_mix_partner = get_best_partners(t)
+        
+        end
 
-        @best_double_partner_name ||= @best_double_partner.username if @best_double_partner.present?
-        @best_double_partner_photo ||= @best_double_partner.get_photo_url if @best_double_partner.present?
+          @best_double_partner_name ||= @best_double_partner.username if @best_double_partner.present?
+          @best_double_partner_photo ||= @best_double_partner.get_photo_url if @best_double_partner.present?
 
-        @best_mix_partner_name ||= @best_mix_partner.username if @best_mix_partner.present?
-        @best_mix_partner_photo ||= @best_mix_partner.get_photo_url if @best_mix_partner.present?
+          @best_mix_partner_name ||= @best_mix_partner.username if @best_mix_partner.present?
+          @best_mix_partner_photo ||= @best_mix_partner.get_photo_url if @best_mix_partner.present?
+        
 
         { :team => t.name,
           :wins => @wins,
@@ -72,7 +77,7 @@ class ApiV1::GamesController < ApiController
           :best_mix_partner_photo => @best_mix_partner_photo }
       end
 
-      @stats = @stats.sort {|a, b| b[:points] <=> a[:points] }
+      @stats = @stats.sort {|a, b| [b[:rate], b[:games]] <=> [a[:rate], a[:games]] }
 
     end
 

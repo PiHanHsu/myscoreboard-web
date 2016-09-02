@@ -143,9 +143,7 @@ class UsersController < ApplicationController
       double_teammates_standing = calculate_partner_standing(double_teammates)
       mix_teammates_standing = calculate_partner_standing(mix_teammates)
 
-      if double_teammates_standing.present? && mix_teammates_standing.present?  
-        return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
-      end
+      return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
 
     end
 
@@ -183,6 +181,8 @@ class UsersController < ApplicationController
        
       teammates_with_winrate.select!{|t| t[:wins] + t[:losses] != 0}
       teammates_with_winrate.sort! {|a, b| [b[:rate], b[:games]] <=> [a[:rate], a[:games]] }
+
+      return teammates_with_winrate
 
     end
 
