@@ -126,35 +126,45 @@ class ApiV1::GamesController < ApiController
       double_teammates_standing = calculate_partner_standing(double_teammates)
       mix_teammates_standing = calculate_partner_standing(mix_teammates)
 
-      return double_teammates_standing[0], mix_teammates_standing[0]
+      return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
 
     end
 
 end
 
     def calculate_partner_standing(teammates)
+    
+      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team] } ).pluck( :game_id )
+      wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "W" ).group(:user).count
 
-      user_win_games = current_user.records.where( result: "W").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
-      wins_with_teammates = Record.where( game_id: user_win_games ).where( :result => "L" ).group(:user).count
+      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team] } ).pluck( :game_id )
+      losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "L" ).group(:user).count
 
-      user_loss_games = current_user.records.where( result: "L").joins(:game).where( games: { team_id: params[:team_id] } ).pluck( :game_id )
-      losses_with_teammates = Record.where( game_id: user_loss_games ).where( :result => "W" ).group(:user).count
+      teammates_with_winrate = teammates.map do |teammate|
 
-      teammates.map do |teammate|
         wins = 0
         losses = 0
+        
         if wins_with_teammates[teammate]
           wins = wins_with_teammates[teammate]
         end
+        
         if losses_with_teammates[teammate]
           losses = losses_with_teammates[teammate]
         end
+        
         rate = wins.to_f / (wins.to_f + losses.to_f)
+        games = wins + losses
+
         {user: teammate,
          wins: wins,
          losses: losses,
+         games: games,
          rate: rate.round(2)}
-      end
 
-      teammates = teammates.sort {|a, b| b[:rate] <=> a[:rate] }
+      end
+       
+      teammates_with_winrate.select!{|t| t[:wins] + t[:losses] != 0}
+      teammates_with_winrate.sort! {|a, b| [b[:rate], b[:games]] <=> [a[:rate], a[:games]] }
+
     end
