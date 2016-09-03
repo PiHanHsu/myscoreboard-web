@@ -77,7 +77,7 @@ class ApiV1::GamesController < ApiController
           :best_mix_partner_photo => @best_mix_partner_photo }
       end
 
-      @stats = @stats.sort {|a, b| [b[:rate], b[:games]] <=> [a[:rate], a[:games]] }
+      @stats = @stats.sort {|a, b| b[:points] <=> a[:points] }
 
     end
 
