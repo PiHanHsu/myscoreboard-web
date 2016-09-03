@@ -125,13 +125,13 @@ class ApiV1::GamesController < ApiController
         double_teammates = team.users.where( :gender => "female" )
         mix_teammates = team.users.where( :gender => "male" )
       end
-
-      #double_teammates.drop(current_user)
-
+      
       double_teammates_standing = calculate_partner_standing(double_teammates, team.id)
       mix_teammates_standing = calculate_partner_standing(mix_teammates, team.id)
-
-      return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
+        
+      if double_teammates_standing.present? && mix_teammates_standing.present?
+        return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
+      end
 
     end
 
@@ -170,6 +170,7 @@ end
       end
        
       teammates_with_winrate.select!{|t| t[:wins] + t[:losses] != 0}
+      teammates_with_winrate.select!{|t| t[:user] != current_user }
       teammates_with_winrate.sort! {|a, b| [b[:rate], b[:games]] <=> [a[:rate], a[:games]] }
 
       return teammates_with_winrate
