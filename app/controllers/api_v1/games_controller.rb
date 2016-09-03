@@ -57,12 +57,22 @@ class ApiV1::GamesController < ApiController
         
         end
 
-          @best_double_partner_name ||= @best_double_partner.username if @best_double_partner.present?
-          @best_double_partner_photo ||= @best_double_partner.get_photo_url if @best_double_partner.present?
+        if @best_double_partner.present?
+          @best_double_partner_name = @best_double_partner.username  
+          @best_double_partner_photo = @best_double_partner.get_photo_url 
+        else
+          @best_double_partner_name = nil
+          @best_double_partner_photo = nil
+        end
 
-          @best_mix_partner_name ||= @best_mix_partner.username if @best_mix_partner.present?
-          @best_mix_partner_photo ||= @best_mix_partner.get_photo_url if @best_mix_partner.present?
-        
+
+        if @best_mix_partner.present?
+          @best_mix_partner_name = @best_mix_partner.username 
+          @best_mix_partner_photo = @best_mix_partner.get_photo_url 
+        else
+          @best_mix_partner_name = nil
+          @best_mix_partner_photo = nil
+        end
 
         { :team => t.name,
           :wins => @wins,
