@@ -62,7 +62,7 @@ class ApiV1::TeamsController < ApiController
     end
 
     if params[:removed_user_ids]
-        @userteamship = UserTeamship.where( :user_id => params[:removed_user_ids] ).destroy_all
+        @userteamship = UserTeamship.where( :user_id => params[:removed_user_ids], :team_id => params[:id] ).destroy_all
           # UserTeamship.where(:id => params[:user_ids][:removed]).destroy_all
     end
 
