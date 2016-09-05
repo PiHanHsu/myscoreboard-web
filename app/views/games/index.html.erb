@@ -30,8 +30,8 @@
               <thead class = "thead">
                 <th> <%= "名次"%></th>
                 <th> <%= "球員"%></th>
-                <th> <%= "總場次"%></th>
                 <th> <%= "勝"%></th>
+                <th> <%= "敗"%></th>
                 <th> <%= "勝率(%)"%></th>
               </thead>
               <tbody>
@@ -42,8 +42,8 @@
                       <span class="pull-left"><%= user_photo_games(player[:user]) %></span>
                       <div class="ranking-user"> <%= player[:user].username %> </div>
                     </td>
-                    <td><%= player[:games] %></td>
                     <td><%= player[:wins] %></td>
+                    <td><%= player[:losses] %></td>
                     <td><%= player[:rate] %></td>
                   </tr>
                 <% end %>
@@ -56,8 +56,8 @@
               <thead class = "thead">
                 <th> <%= "名次"%></th>
                 <th> <%= "球員"%></th>
-                <th> <%= "總場次"%></th>
                 <th> <%= "勝"%></th>
+                <th> <%= "敗"%></th>
                 <th> <%= "勝率(%)"%></th>
               </thead>
               <tbody>
@@ -68,8 +68,8 @@
                       <span class="pull-left"><%= user_photo_games(player[:user]) %></span>
                       <div class="ranking-user"> <%= player[:user].username %> </div>
                     </td>
-                    <td><%= player[:games] %></td>
                     <td><%= player[:wins] %></td>
+                    <td><%= player[:losses] %></td>
                     <td><%= player[:rate] %></td>
                   </tr>
                 <% end %>
