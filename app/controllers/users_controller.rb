@@ -64,29 +64,31 @@ class UsersController < ApplicationController
       @score4 = @userdata4[:score]
       @user4 =@userdata4[:user]
 
-      @team_record2 = @records[1]
-      @userrecord2 = @team_record2[:game]
+      if @records[1].present?
+        @team_record2 = @records[1]
+        @userrecord2 = @team_record2[:game]
 
-      @userdata5 = @userrecord2[0]
-      @username5 = @userdata5[:username]
-      @score5 = @userdata5[:score]
-      @user5 =@userdata5[:user]
+        @userdata5 = @userrecord2[0]
+        @username5 = @userdata5[:username]
+        @score5 = @userdata5[:score]
+        @user5 =@userdata5[:user]
 
-      @userdata6 = @userrecord2[1]
-      @username6 = @userdata6[:username]
-      @score6 = @userdata6[:score]
-      @user6 =@userdata6[:user]
+        @userdata6 = @userrecord2[1]
+        @username6 = @userdata6[:username]
+        @score6 = @userdata6[:score]
+        @user6 =@userdata6[:user]
 
 
-      @userdata7 = @userrecord2[2]
-      @username7 = @userdata7[:username]
-      @score7 = @userdata7[:score]
-      @user7 =@userdata7[:user]
+        @userdata7 = @userrecord2[2]
+        @username7 = @userdata7[:username]
+        @score7 = @userdata7[:score]
+        @user7 =@userdata7[:user]
 
-      @userdata8 = @userrecord2[3]
-      @username8 = @userdata8[:username]
-      @score8 = @userdata8[:score]
-      @user8 =@userdata8[:user]
+        @userdata8 = @userrecord2[3]
+        @username8 = @userdata8[:username]
+        @score8 = @userdata8[:score]
+        @user8 =@userdata8[:user]
+      end
 
       @best_double_partner, @best_mix_partner = get_best_partners(@team_tab)
       @games, @win_rate = @team_tab.get_games_win_rate(current_user)

@@ -11,15 +11,16 @@
         <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_left">
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3 ">
-              <%= last_two_game(@user1)%>
+              <%= user_photo_games(@user1)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username1 %>
             </div>
           </div>
+          <br>
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <%= last_two_game(@user2)%>
+              <%= user_photo_games(@user2)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username2 %>
@@ -36,15 +37,16 @@
         <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_right">
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3 ">
-              <%= last_two_game(@user3)%>
+              <%= user_photo_games(@user3)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username3 %>
             </div>
           </div>
+          <br>
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <%= last_two_game(@user4)%>
+              <%= user_photo_games(@user4)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username4 %>
@@ -52,19 +54,22 @@
           </div>
         </div>
     </div>
+    <br>
       <div class="row user_recoed">
+        <% if @team_record2.present? %>
         <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_left">
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <%= last_two_game(@user5)%>
+              <%= user_photo_games(@user5)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username5 %>
             </div>
           </div>
+          <br>
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <%= last_two_game(@user6)%>
+              <%= user_photo_games(@user6)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username6 %>
@@ -81,21 +86,23 @@
         <div class="col-lg-4 col-md-4 col-sm-4 user_recoed_right">
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <%= last_two_game(@user7)%>
+              <%= user_photo_games(@user7)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username7 %>
             </div>
           </div>
+          <br>
           <div class="row user_recoed_area">
             <div class="col-lg-3 col-md-3 col-sm-3">
-              <%= last_two_game(@user8)%>
+              <%= user_photo_games(@user8)%>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-9">
               <%= @username8 %>
             </div>
           </div>
         </div>
+      <% end %>   
     </div>
   </div>
 
@@ -111,12 +118,12 @@
        <div class="row">
          <div class="col-lg-6 col-md-6 col-sm-6">
          雙打<br/>
-         <%= best_partner(@best_double_partner)%> <br/>
+         <%= user_photo_games(@best_double_partner)%> <br/>
          <%= @best_double_partner.username %>
          </div>
          <div class="col-lg-6 col-md-6 col-sm-6">
-         混打<br/>
-         <%= best_partner(@best_mix_partner)%> <br/>
+         混雙<br/>
+         <%= user_photo_games(@best_mix_partner)%> <br/>
          <%= @best_mix_partner.username %>
          </div>
        </div>
