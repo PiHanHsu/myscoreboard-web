@@ -144,8 +144,16 @@ class UsersController < ApplicationController
 
       double_teammates_standing = calculate_partner_standing(double_teammates)
       mix_teammates_standing = calculate_partner_standing(mix_teammates)
+      
+      if double_teammates_standing.present?
+        best_double_partner = double_teammates_standing[0][:user]
+      end
 
-      return double_teammates_standing[0][:user], mix_teammates_standing[0][:user]
+      if mix_teammates_standing.present?
+        best_mix_partner = mix_teammates_standing[0][:user]
+      end
+
+      return best_double_partner, best_mix_partner
 
     end
 

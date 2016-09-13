@@ -118,13 +118,17 @@
        <div class="row">
          <div class="col-lg-6 col-md-6 col-sm-6">
          雙打<br/>
+         <% if @best_double_partner.present? %>
          <%= user_photo_games(@best_double_partner)%> <br/>
          <%= @best_double_partner.username %>
+         <% end %>
          </div>
          <div class="col-lg-6 col-md-6 col-sm-6">
          混雙<br/>
+         <% if @best_mix_partner.present? %>
          <%= user_photo_games(@best_mix_partner)%> <br/>
          <%= @best_mix_partner.username %>
+         <% end %>
          </div>
        </div>
     </div>
