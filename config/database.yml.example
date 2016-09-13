@@ -1,7 +1,7 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: myscoreboard_db
+  database: database_name
   host: localhost
   username: root
   password:
@@ -9,7 +9,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: myscoreboard_db_test
+  database: database_name_test
   host: localhost
   username: root
   password:
